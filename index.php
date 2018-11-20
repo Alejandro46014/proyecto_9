@@ -1,181 +1,90 @@
-<!DOCTYPE html>
+<?php
+session_start();
+//require_once("modelos/UsuariosModelo.php");
+//require_once("modelos/AdministradorModelo.php");
 
-<html>
-<head>
- <title>BeLight</title>
- <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-
-<header>
-  <div id="banner">
-    <img src="https://i2.wp.com/itstacambaro.edu.mx/archivo/uploads/2015/12/banner-amarillo-web-CONTADOR.jpg?ssl=1">
-  </div>
-
-  <div id="menu">
-    <div id="categorias">
-      <a href=""><span>Patinetes</span></a>
-      <a href=""><span>Bicicletas</span></a>
-      <a href=""><span>NineBots</span></a>
-      <a href=""><span>Segways</span></a>
-      <a href=""><span>Monociclos</span></a>
-      <a href=""><span>HoverBoards</span></a>
-    </div>
-
-    <div id="menu_sesion">
-      <?php
-      session_start();
-      session_destroy();
-      //se comprueba si existe alguna sesión o no, entonces se muestra menu de registro o menu del usuario
-        if(session_status() == PHP_SESSION_ACTIVE){
-          echo "<a href=''><div id='boton_usuario'>Usuario</div></a>";
-        }else{
-          echo "<a href=''><div id='boton_registro'>Registrarse</div></a>
-          <a href=''><div id='boton_inicio_sesion'>Iniciar Sesión</div></a>";
-        }
-        ?>
-      </div>
-    </div>
+?>
 
 
-</header>
 
-<body>
+<?php
+//require_once("modelos/UsuariosModelo.php");
 
-  <div>
-    <h1>Patinetes eléctricos<h1>
-  </div>
+require_once('modelos/ConectarModelo.php');
 
-  <div id="box">
 
-    <?
-    //bucle para ir sacando todos los productos
-    ?>
-    <div class="item_box">
-      <img src="https://tecnocio.com/52379-large_default/patinete-electrico-urban-fox-rocks-x2.jpg"/>
+	// la variable controller guarda el nombre del controlador y action guarda la acción por ejemplo registrar 
 
-      <div class="item_title">
-        <span>Patinete lo que sea</span>
-      </div>
+	//si la variable controller y action son pasadas por la url desde layout.php entran en el if
 
-      <div class="item_desc">
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor. In vitae est nec mi tristique aliquam. Donec porta ante id leo sollicitudin, ac volutpat justo lobortis.
-        </span>
-      </div>
+	if (isset($_GET['controller'])&&isset($_GET['action'])) {
 
-      <div class="item_price">
-        <span>Precio: xxx€</span>
-      </div>
-    </div>
+		$controller=$_GET['controller'];
 
-    <div class="item_box">
-      <img src="https://tecnocio.com/52379-large_default/patinete-electrico-urban-fox-rocks-x2.jpg"/>
+		$action=$_GET['action'];		
 
-      <div class="item_title">
-        <span>Patinete lo que sea</span>
-      </div>
+	} else {
 
-      <div class="item_desc">
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor. In vitae est nec mi tristique aliquam. Donec porta ante id leo sollicitudin, ac volutpat justo lobortis.
-        </span>
-      </div>
+		$controller='Productos';
 
-      <div class="item_price">
-        <span>Precio: xxx€</span>
-      </div>
-    </div>
+		$action='index';
 
-    <div class="item_box">
-      <img src="https://tecnocio.com/52379-large_default/patinete-electrico-urban-fox-rocks-x2.jpg"/>
+	}	
+	//carga la vista layout.php
+       
+	require_once('vistas/layoutVista.php');
+ 
+?>
+<?php
 
-      <div class="item_title">
-        <span>Patinete lo que sea</span>
-      </div>
+/*if(isset($_POST['login'])){
+	
+	$usuario=new UsuariosModelo();
+	$usuario->login();
+	
+	
+}*/
+//if(isset($_POST['guardar'])){
+	
+	/*$apellido1=$_POST['apellido1'];
+		$apellido2=$_POST['apellido2'];
+		$apellidos=$apellido1." ".$apellido2;
+	echo($apellidos);*/
+	
+	//$usuario=new UsuariosModelo();
+	//$usuario->crearUsuario();
+	
+	/*$usuario=$usuario->getById(1);
+	
+		
+		echo($usuario->getNombreUsuario()." ");
+		echo($usuario->getApellidosUsuario()." ");
+		echo($usuario->getFechaNacimiento()." ");
+		echo($usuario->getFechaAltaUsuario()." ");
+		echo($usuario->getTipoUsuario());*/
+	
+	//$usuario->darseBaja();
+	/*$usuario->crearUsuario();
+		$apellido1=$_POST['apellido1'];
+		$apellido2=$_POST['apellido2'];
+		$apellidos=$apellido1." ".$apellido2;
+	
+	echo $apellidos;
+	$usuario->setApellidos($apellidos);
+	echo($usuario->getApellidos());*/
+	
+	/*				$admin=new AdministradorModelo();
+	echo $admin->getTipoUsuario();
+}
 
-      <div class="item_desc">
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor. In vitae est nec mi tristique aliquam. Donec porta ante id leo sollicitudin, ac volutpat justo lobortis.
-        </span>
-      </div>
+if(isset($_POST['login'])){
+	
+	$usuario=new UsuariosModelo();
+	
+	$usuario=$usuario->login();
+}*/
+//}
 
-      <div class="item_price">
-        <span>Precio: xxx€</span>
-      </div>
-    </div>
 
-    <div class="item_box">
-      <img src="https://tecnocio.com/52379-large_default/patinete-electrico-urban-fox-rocks-x2.jpg"/>
 
-      <div class="item_title">
-        <span>Patinete lo que sea</span>
-      </div>
 
-      <div class="item_desc">
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor. In vitae est nec mi tristique aliquam. Donec porta ante id leo sollicitudin, ac volutpat justo lobortis.
-        </span>
-      </div>
-
-      <div class="item_price">
-        <span>Precio: xxx€</span>
-      </div>
-    </div>
-
-    <div class="item_box">
-      <img src="https://tecnocio.com/52379-large_default/patinete-electrico-urban-fox-rocks-x2.jpg"/>
-
-      <div class="item_title">
-        <span>Patinete lo que sea</span>
-      </div>
-
-      <div class="item_desc">
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor. In vitae est nec mi tristique aliquam. Donec porta ante id leo sollicitudin, ac volutpat justo lobortis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor. In vitae est nec mi tristique aliquam. Donec porta ante id leo sollicitudin, ac volutpat justo lobortis.
-        </span>
-      </div>
-
-      <div class="item_price">
-        <span>Precio: xxx€</span>
-      </div>
-    </div>
-
-    <div class="item_box">
-      <img src="https://tecnocio.com/52379-large_default/patinete-electrico-urban-fox-rocks-x2.jpg"/>
-
-      <div class="item_title">
-        <span>Patinete lo que sea</span>
-      </div>
-
-      <div class="item_desc">
-        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor. In vitae est nec mi tristique aliquam. Donec porta ante id leo sollicitudin, ac volutpat justo lobortis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor. In vitae est nec mi tristique aliquam. Donec porta ante id leo sollicitudin, ac volutpat justo lobortis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor. In vitae est nec mi tristique aliquam. Donec porta ante id leo sollicitudin, ac volutpat justo lobortis.
-        </span>
-      </div>
-
-      <div class="item_price">
-        <span>Precio: xxx€</span>
-      </div>
-    </div>
-
-  </div>
-
-<body>
-
-<footer>
-
-  <div class="footer_apartado">
-    <div class="footer_title">Sobre <font color="lightblue">Nosotros</font></div>
-    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor.
-    </span>
-  </div>
-
-  <div class="footer_apartado">
-    <div class="footer_title">Últimos <font color="lightblue">tweets</font></div>
-    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nibh leo, aliquet eu turpis a, sollicitudin mattis dui. Pellentesque sollicitudin pulvinar nulla id porta. Donec id massa eleifend, vestibulum sem quis, tincidunt dolor.
-    </span>
-  </div>
-
-  <div class="footer_apartado">
-    <div class="footer_title">Redes <font color="lightblue">sociales</font></div>
-    <img src="https://image.flaticon.com/icons/png/512/33/33702.png">
-    <img src="https://image.flaticon.com/icons/svg/23/23931.svg">
-    <img src="https://cdn140.picsart.com/241272321041212.png?r1024x1024">
-  </div>
-</foter>
-
-</html>
