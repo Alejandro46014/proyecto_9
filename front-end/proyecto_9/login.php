@@ -73,26 +73,23 @@
 	</div><!--.contenedor+clearfix-->
 </div><!--.barra-->
 			
-<body>
-
-
     <div class="formulario">
     <h2>Formulario de login</h2>
-    <form class="form" action="login.php" method="post">
-        
-        <label>Nombre de usuario</label>
-        <input type="text" name="usuario" required="true" placeholder="Introduce tu usuario" /> <br>
-        
-        <label>Contraseña</label>
-        <input type="password" name="contrasena" required="true" placeholder="Introduce tu contraseña" /> <br>
+    <form action="login.php" method="post">
+	<div>       
+<p><label for="usuario">Usuario</label><br /><input type="text" name="usuario" required="true" placeholder="Introduce tu usuario" /></p>
+</div>
+<div>
+<p><label for="password">Password</label><br /><input type="text" name="password" required="true" placeholder="Introduce tu contraseña" /></p>
+</div>
+<p><input type="submit" value="Enviar" /> <input type="reset" value="Restablecer" /></p>
 
-
-        <input type="submit" value="Accede a tu cuenta" />
+</form>
         
     </form>
     </div>
 
-</body>
+
 <!--FOOTER-->
 	
 	<footer class="site-footer">
