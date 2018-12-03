@@ -36,7 +36,7 @@ h2,h1{
 
 }
 h2::after{
-
+	
 	content: '';
 	margin: 30px auto;
 	background-image: url(../img/separador.png);
@@ -84,7 +84,7 @@ ul{
 }
 
 .buttom_red:hover{
-	background-color: #b5320e;
+	background-color: #e33000;
 }
 
 .buttom_green:hover{
@@ -107,36 +107,36 @@ ul{
 }
 
 @media only screen and (min-width:480px){
-
+	
 	.contenedor{
 	width: 95%;
-
+	
 }
-
+	
 }
 
 @media only screen and (min-width:768px){
-
+	
 	.barra_contenedor{
 		width: 95%;
 		margin-left: 30px;
 	}
-
+	
 	.contenedor{
 	width: 90%;
-
+	
 }
-
+	
 }
 
 @media only screen and (min-width:992px){
-
+	
 	.contenedor{
 	width: 90%;
 	max-width: 1100px;
-
+	
 }
-
+	
 }
 
 
@@ -145,11 +145,11 @@ ul{
 
 
 div.contenido-header{
-
-
+	
+	
 }
 div.contenido-header img{
-
+	
 	width: 100%;
 }
 
@@ -159,9 +159,14 @@ div.contenido-header img{
 /*----------------BARRA---------------*/
 
 div.barra{
+	
 	background-color: #353535;
 	padding: 20px 0;
 }
+
+
+	
+
 
 
 
@@ -183,13 +188,13 @@ nav.navegacion-principal a{
 	text-transform: uppercase;
 	font-size: 1.2em;
 	transition: all .6s ease;
-
+	
 	padding: 10px;
 	width: 100%;
 	display: inline-block;
 	text-align: center;
-
-
+	
+	
 }
 
 nav.navegacion-principal a:hover{
@@ -198,23 +203,23 @@ nav.navegacion-principal a:hover{
 	}
 
 @media only screen and (min-width:768px){
-
+	
 	nav.navegacion-principal{
-
+		
 		width: 100%;
 		float: left;
 		text-align: left;
 		display: block;
 	}
-
+	
 	/*nav.navegacion-principal a{
-
+		
 		margin-right: 10px;
 		padding: 10px;
 		display: inline-block;
-
+		
 	}*/
-
+	
 	nav.navegacion-principal a{
 	font-family: oswald, sans-serif;
 	color: #9900cc;
@@ -227,27 +232,27 @@ nav.navegacion-principal a:hover{
 	padding: 10px;
 	display: inline-block;
 	width: auto;
-
-
+	
+	
 }
-
-
+	
+	
 nav.navegacion-principal a:last-child{
 		float: right;
 		border: none;
-
-	}
-
+	
+	}	
+	
 	nav.navegacion-principal a:last-child i{
 		margin-right: 22px;
 		font-size: 2em;
-
-	}
-
-
-
+	
+	}	
+	
+	
+	
 }
-
+	
 div.menu-movil{
 	display: block;
 	width: 60px;
@@ -258,16 +263,16 @@ div.menu-movil{
 
 div.menu-movil:hover{
 	cursor: pointer;
-
+	
 }
 
 div.menu-movil:hover span{
-
+	
 	background-color: #BDBDBD;
 }
 
 div.menu-movil span{
-
+	
 	height: 8px;
 	display: block;
 	margin-bottom: 6px;
@@ -277,7 +282,7 @@ div.menu-movil span{
 
 div.extendido-usuarios{
 	background-color: #ffffff;
-
+	
 }
 div.extendido-usuarios a{
 	font-family: oswald, sans-serif;
@@ -291,10 +296,11 @@ div.extendido-usuarios a{
 	padding: 10px;
 	display: inline-block;
 	width: 100%;
+	
 }
 
 div.extendido-usuarios a:hover{
-
+	
 	background-color: #9900cc;
 	color: #ffffff;
 }
@@ -302,28 +308,28 @@ div.extendido-usuarios a:hover{
 
 
 @media only screen and (min-width:768px){
-
-
+	
+	
 div.extendido-usuarios{
 	width: 9%;
-	border-top-right-radius: 5px;
+	border-top-right-radius: 5px; 
 	border-top-left-radius: 5px;
 	position: relative;
 	left:91%;
 	top:57px;
-
+	
 }
-
-
+	
+	
 }
 
 div.extendido-usuarios{
-
+	
 	display: none;
 }
 
 @media only screen and (min-width:768px){
-
+	
 	div.menu-movil{
 		display: none;
 	}
@@ -341,15 +347,15 @@ div.extendido-usuarios{
  margin-top: 30px;
   height: 560px;
   display: inline-block;
-
+  
 }
 
 @media only screen and (min-width:768px){
-
+	
 	.item_box{
 		margin: 30px 15px;
 		width: 25%;
-
+		
 	}
 }
 .item_box img{
@@ -390,13 +396,13 @@ h2.clasificacion{
     direction: rtl;/* right to left */
     unicode-bidi: bidi-override;/* bidi de bidireccional */
   }
-label{
-
+label{ 
+	
 	color:#F90005;
 	font-size: 1.3em;
 }
 label:hover{
-
+	
 	color:#24CB60;
 }
 input[type = "radio"]{
@@ -407,18 +413,18 @@ input[type = "radio"]:checked ~ label{
 }
 
 div.autor_comentario h4{
-
+	
 	text-align: left;
 }
 
 div.item_comentarios{
-
+	
 	font-size: 0.7em;
 	text-align: justify;
 	border-bottom: 3px solid #0200F9;
 }
 @media only screen and (min-width:768px){
-
+	
 	div.valor_valoracion{
 		width: 50%;
 		float: left;
@@ -427,16 +433,16 @@ div.item_comentarios{
 	div.autor_comentario{
 		width:20%;
 		height: 200px;
-
+		
 		float: left
 	}
-
+	
 	div.item_comentario{
-
+		
 		padding: 0 10px;
-
+		
 	}
-
+	
 }
 
 /*------------------------FORMULARIOS-------------------------*/
@@ -445,10 +451,11 @@ div.cabecera_formularios h3{
 	text-align: center;
 	border-bottom: 2px solid #F90005;
 	padding-bottom: 15px;
-
+	text-transform: uppercase;
+	
 }
 div.formulario{
-
+	
 	background-color: #7fb2e5;
 	border: 1px solid #747170;
 	box-shadow: 2px 2px 10px 10px #747170;
@@ -457,7 +464,7 @@ div.formulario{
 }
 
 div.formulario_small{
-
+	
 	background-color: #7fb2e5;
 	border: 1px solid #747170;
 	box-shadow: 2px 2px 10px 10px #747170;
@@ -467,7 +474,7 @@ div.formulario_small{
 
 div.col_formulario input,
 div.col_formulario textarea{
-
+	
 	width: 100%;
 	display: block;
 	margin: 20px auto;
@@ -475,101 +482,103 @@ div.col_formulario textarea{
 
 div.col_3_formulario input,
 div.col_3_formulario select{
-
+	
 	width: 90%;
 	display: block;
 	margin: 20px auto;
 }
 
 @media only screen and (max-width:600px){
-
+	
 	div.col_3_formulario input,
 	div.col_3_formulario select{
-
+		
 		width: 100%;
 	}
-
+	
 	div.col_3_formulario checkbox{
-
+		
 		display: inline;
 	}
 }
-
-
+	
+	
 div.col_2_formulario input{
-
+	
 	width: 90%;
 	display: block;
-
+	height:40px ;
+	padding: 10px;
+	margin-top: 5px;
 }
 
 div.col_2_formulario label,
 div.col_formulario label,
 div.col_3_formulario label{
-
+	
 	color: #000000;
-
+	
 }
 
-
-
+	
+	
 
 
 @media only screen and (min-width:768px){
-
+	
 	div.row{
 	margin: 120px 0 20px 0;
 	}
-
+	
 	div.formulario{
-
+	
 		width: 70%;
 		margin: 0 auto;
-
+		
 }
-
+	
 	div.formulario_small{
-
+	
 		width: 25%;
 		margin: 0 auto;
-
+		
 }
-
+	
 	div.col_formulario{
-
-		width: 50%;
+		
+		width: 60%;
 		margin: 0 auto;
-
+		
 	}
 
 	div.col_2_formulario{
-
+	
 	width: 50%;
 	float: left;
 	margin:15px 0px;
-
+	
 }
 	div.col_3_formulario{
-
+		
 		width: 33.3%;
 		margin: 0 auto;
 		float: left;
 	}
-
+	
 	div.leyenda{
 		color: #B1080A;
 		width: 60%;
 		margin: 20px auto;
 	}
-
+	
 }
 
 /*----------------------------------GESTIONAR USUARIOS Y TABLAS---------------------*/
 
-
+    
 div.tabla{
 	overflow-x:auto;
-
+	
 }
 
 table{
@@ -577,7 +586,7 @@ table{
 	border: 1px solid #ddd;
 	border-collapse: collapse;
 	border-spacing: 0;
-
+		
 }
 
 td,tr{
@@ -591,17 +600,17 @@ tr:nth-child(even){
 }
 
 tr:hover{
-
+	
 	background-color: #939191;
 }
 @media only screen and (min-width:768px){
-
+	
 	div.tabla{
-
+		
 		width: 70%;
 		margin: 50px auto;
 	}
-
+	
 	table.tabla{
 		width: 100%;
 	}
@@ -615,15 +624,15 @@ footer.site-footer{
 }
 
 footer .contenedor > div{
-
+	
 	color: #ffffff;
 	padding: 0 20px;
 	font-size: 12px;
-
+	
 }
 
 @media only screen and (min-width:768px){
-
+	
 	footer .contenedor > div{
 		width: 33.3%;
 		float: left;
@@ -644,10 +653,10 @@ nav.redes-sociales-footer{
 	text-align: center;
 }
 nav.redes-sociales-footer a{
-
+	
 	color: #ffffff;
 	font-size: 30px;
-
+	
 }
 p.copyright{
 	color: #ffffff;
@@ -655,5 +664,5 @@ p.copyright{
 	padding: 10px 0;
 	margin: 0;
 	text-align: center;
-
+	
 }

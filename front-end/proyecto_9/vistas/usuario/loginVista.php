@@ -72,22 +72,26 @@
  			 </div>
 	</div><!--.contenedor+clearfix-->
 </div><!--.barra-->
-			
-    <div class="formulario_small">
-    <h2>Formulario de login</h2>
-    <form action="login.php" method="post">
-	<div>       
-<p><label for="usuario">Usuario</label><br /><input type="text" name="usuario" required="true" placeholder="Introduce tu usuario" /></p>
-</div>
-<div>
-<p><label for="password">Password</label><br /><input type="text" name="password" required="true" placeholder="Introduce tu contraseña" /></p>
-</div>
-<p><input type="submit" value="Enviar" /> <input type="reset" value="Restablecer" /></p>
+<section class="seccion">
+<div class="formulario_small clearfix">
+	<div class="cabecera_formularios">
+        <h3>Loguéate</h3>
+        </div>
+        <form action="?controller=Usuarios&action=loguearse" method="post" >
+        <div class="col_formulario">
+        <label for="email">Correo electrónico: </label><input type="email" id="email" name="email_usuario" required="true"/>
+        </div>  
+        <div class="col_formulario">
+        <label for="password">Contraseña: </label><input type="password" id="password" name="password_usuario" required="true"/>
+        </div> 
+        <div class="col_formulario">
+			<input class="buttom_green" type="submit" value="Login" />
+		</div>
+        </form>
 
-</form>
-        
-    </form>
-    </div>
+   
+</div>     
+
 
 
 <!--FOOTER-->
