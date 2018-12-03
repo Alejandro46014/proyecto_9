@@ -8,28 +8,28 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
+
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="../../css/normalize.css">
 	<!--<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">-->
-	
-  
-	<link rel="stylesheet" href="css/estilos _p9.css">
+
+
+	<link rel="stylesheet" href="../../css/estilos _p9.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-	
-	
+
+
 	<?php
 	$archivo=basename($_SERVER['PHP_SELF']);
 	$pagina=str_replace(".php","",$archivo);
-	
+
 	if($pagina==='invitados' || $pagina==='index'){
-		
-		echo('<link rel="stylesheet" href="css/colorbox.css">');
+
+		echo('<link rel="stylesheet" href="../css/colorbox.css">');
 	}elseif($pagina==='conferencias'){
-		
-		echo('<link rel="stylesheet" href="css/lightbox.css">');
+
+		echo('<link rel="stylesheet" href="../css/lightbox.css">');
 	}
 	?>
 </head>
@@ -40,20 +40,20 @@
   <![endif]-->
 
   <header class="site-header">
-	
+
 	  <div class="contenido-header">
-		
-		 <img src="img/cabecera_peliculas.png" alt="Cabecera"/>
-		 
+
+		 <img src="../../img/cabecera_peliculas.png" alt="Cabecera"/>
+
 	  </div><!--.contenido_header-->
 	</header>
 
-	<?php require_once("includes/navegacion_administrador.php"); ?>
-			
+	<?php require_once("../includes/navegacion_administrador.php"); ?>
+
 	<!--contenido principal-->
-	
+
 	<section class="seccion">
-	
+
 	<div class="formulario clearfix">
 		<div class="cabecera_formularios">
 		<h3>Nuevo producto</h3>
@@ -77,7 +77,7 @@
                     <option value="6">Ciencia-ficción</option>
                     <option value="7">Drama</option>
                     <option value="8">Musicales</option>
-                   
+
                 </select>
             </label>
 		</div>
@@ -86,7 +86,7 @@
         $cont = date('Y');
             ?>
             <label for="anio_lanzamiento">Año de lanzamiento:
-                
+
      <select id="anio_lanzamiento" name="anio_lanzamiento">
         <?php while ($cont >= 1950) { ?>
          <option value="<?php echo($cont); ?>"><?php echo($cont); ?></option>
@@ -106,30 +106,30 @@
 		<div class="col_3_formulario">
 			 <label for="nombre_imagen">Imagen 1
                 <select name="nombre_imagen[]" id="nombre_imagen">
-             		<option value="">--Nombre imagen--</option> 
+             		<option value="">--Nombre imagen--</option>
                     <option>Portada</option>
                     <option>Escena</option>
-                 
+
                      </select>
                      </label>
 		</div>
 		<div class="col_3_formulario">
 			<label for="nombre_imagen">Imagen 2
                 <select name="nombre_imagen[]" id="nombre_imagen">
-             		<option value="">--Nombre imagen--</option> 
+             		<option value="">--Nombre imagen--</option>
                     <option>Portada</option>
                     <option>Escena</option>
-                 
+
                      </select>
                      </label>
 		</div>
 		<div class="col_3_formulario">
 			 <label for="nombre_imagen">Imagen 2
                 <select name="nombre_imagen[]" id="nombre_imagen">
-             		<option value="">--Nombre imagen--</option> 
+             		<option value="">--Nombre imagen--</option>
                     <option>Portada</option>
                     <option>Escena</option>
-                 
+
                      </select>
                      </label>
 		</div>
@@ -147,17 +147,17 @@
 		</div>
 		</div>
 	</section>
-	
+
 <!--FOOTER-->
-	
-	
-	
-	
+
+
+<?php require_once("../includes/footer.php")?>
+
 	<!--LINKADO DE JAVASCRIPT-->
-	
-  
+
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="js/main.js"></script>
+  <script src="../../js/main.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>

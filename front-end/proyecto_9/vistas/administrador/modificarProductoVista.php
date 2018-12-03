@@ -1,13 +1,13 @@
-<?php require_once("includes/header.php"); ?>
+<?php require_once("../includes/header.php"); ?>
 
-<?php require_once("includes/navegacion_administrador.php"); ?>
+<?php require_once("../includes/navegacion_administrador.php"); ?>
 
 <!--CONTENIDO PRINCIPAL-->
 
 <section class="seccion">
 	<?php  foreach($productos as $producto) { ?>
 	<form action="?controller=Productos&action=buscarProductos" method="post">
-            
+
             <label for="nombre_producto"><input type="text" id="nombre_producto" name="nombre_producto"/></label>
             <label for="categoria_producto">
                 <select name="categoria_producto" id="categoria_producto">
@@ -29,14 +29,14 @@
                 <select name="anio_lanzamiento" id="anio_lanzamiento">
                     <option value="">--Año lanzamiento--</option>
                   <?php while ($cont >= 1950) { ?>
-                    
+
          <option value="<?php echo($cont); ?>"><?php echo($cont); ?></option>
-            <?php $cont = ($cont-1); } ?>   
+            <?php $cont = ($cont-1); } ?>
                 </select>
                 </label>
             <input type="submit" name="buscar" value="Buscar"/>
         </form>
-	
+
 	<div class="formulario clearfix">
 		<div class="cabecera_formularios">
 		<h3>Modificar producto</h3>
@@ -56,11 +56,11 @@
                     <option value="6">Ciencia-ficción</option>
                     <option value="7">Drama</option>
                     <option value="8">Musicales</option>
-                   
+
                 </select>
             </label><br>
             <?php } elseif ($producto->getCategoria()->getIdCategoria()==2) { ?>
-            
+
             <label for="categoria">Categoria:
                 <select name="categoria" id="categoria">
                     <option value="">---Categoria--</option>
@@ -72,11 +72,11 @@
                     <option value="6">Ciencia-ficción</option>
                     <option value="7">Drama</option>
                     <option value="8">Musicales</option>
-                   
+
                 </select>
             </label><br>
             <?php } elseif ($producto->getCategoria()->getIdCategoria()==3) { ?>
-            
+
             <label for="categoria">Categoria:
                 <select name="categoria" id="categoria">
                     <option value="">---Categoria--</option>
@@ -88,12 +88,12 @@
                     <option value="6">Ciencia-ficción</option>
                     <option value="7">Drama</option>
                     <option value="8">Musicales</option>
-                   
+
                 </select>
             </label><br>
-           
+
             <?php }elseif ($producto->getCategoria()->getIdCategoria()==4) { ?>
-            
+
                 <label for="categoria">Categoria:
                 <select name="categoria" id="categoria">
                     <option value="">---Categoria--</option>
@@ -105,11 +105,11 @@
                     <option value="6">Ciencia-ficción</option>
                     <option value="7">Drama</option>
                     <option value="8">Musicales</option>
-                   
+
                 </select>
             </label><br>
             <?php }elseif ($producto->getCategoria()->getIdCategoria()==5) { ?>
-            
+
             <label for="categoria">Categoria:
                 <select name="categoria" id="categoria">
                     <option value="">---Categoria--</option>
@@ -121,12 +121,12 @@
                     <option value="6">Ciencia-ficción</option>
                     <option value="7">Drama</option>
                     <option value="8">Musicales</option>
-                   
+
                 </select>
             </label><br>
-            
+
             <?php }elseif ($producto->getCategoria()->getIdCategoria()==6) { ?>
-            
+
             <label for="categoria">Categoria:
                 <select name="categoria" id="categoria">
                     <option value="">---Categoria--</option>
@@ -138,12 +138,12 @@
                     <option value="<?php echo $producto->getCategoria()->getIdCategoria(); ?>" selected>Ciencia-ficción</option>
                     <option value="7">Drama</option>
                     <option value="8">Musicales</option>
-                   
+
                 </select>
             </label><br>
-            
+
             <?php }elseif ($producto->getCategoria()->getIdCategoria()==7) { ?>
-            
+
             <label for="categoria">Categoria:
                 <select name="categoria" id="categoria">
                     <option value="">---Categoria--</option>
@@ -155,12 +155,12 @@
                     <option value="6">Ciencia-ficción</option>
                     <option value="<?php echo $producto->getCategoria()->getIdCategoria(); ?>" selected>Drama</option>
                     <option value="8">Musicales</option>
-                   
+
                 </select>
             </label><br>
-            
+
             <?php }elseif ($producto->getCategoria()->getIdCategoria()==8) { ?>
-            
+
                 <label for="categoria">Categoria:
                 <select name="categoria" id="categoria">
                     <option value="">---Categoria--</option>
@@ -172,16 +172,16 @@
                     <option value="6">Ciencia-ficción</option>
                     <option value="7">Drama</option>
                     <option value="<?php echo $producto->getCategoria()->getIdCategoria(); ?>" selected>Musicales</option>
-                   
+
                 </select>
             </label><br>
-            
+
                 <?php } ?>
             <?php
         $cont = $producto->getAnioLanzamiento();
             ?>
             <label for="anio_lanzamiento">Año de lanzamiento:
-                
+
                 <select id="anio_lanzamiento" name="anio_lanzamiento">
         <?php while ($cont >= 1950) { ?>
          <option value="<?php echo($cont); ?>"><?php echo($cont); ?></option>
@@ -200,34 +200,34 @@
                     <option value="">---Nombre imagen--</option>
                     <option value="<?php $imagen->getNombreImagen(); ?>" selected >Portada</option>
                     <option >Escena</option>
-                   
-                   
+
+
                 </select>
             </label><br>
      <?php }elseif ($imagen->getNombreImagen()=="Escena") { ?>
-                        
+
           <label for="nombre_imagen">Nombre imagen:
                 <select name="nombre_imagen[]" id="nombre_imagen">
                     <option value="">---Nombre imagen--</option>
                     <option >Portada</option>
                     <option value="<?php $imagen->getNombreImagen(); ?>" selected >Escena</option>
-                   
-                   
+
+
                 </select>
             </label><br>
-            
-            
+
+
                    <?php } ?>
-             <label for="directorio_imagen">Director:<input type="text" id="directorio_imagen" name="directorio_imagen[]" value="<?php echo $imagen->getDirectorioImagen(); ?>"/></label><br>       
+             <label for="directorio_imagen">Director:<input type="text" id="directorio_imagen" name="directorio_imagen[]" value="<?php echo $imagen->getDirectorioImagen(); ?>"/></label><br>
             <?php } ?>
             <input type="submit" name="modificar_producto" value="Guardar"/><br>
             <a href="?controller=Productos&action=eliminarProducto&id=<?php echo $producto->getIdProducto(); ?>">Eliminar producto</a>
         </form>
-        
+
         <?php  } ?>
 		</div>
 	</section>
 
 
 
-<?php require_once("includes/footer.php");  ?>
+<?php require_once("../includes/footer.php");  ?>

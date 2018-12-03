@@ -8,27 +8,27 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
+
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="../../css/normalize.css">
 	<!--<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">-->
-	
-  
-	<link rel="stylesheet" href="css/estilos _p9.css">
+
+
+	<link rel="stylesheet" href="../../css/estilos _p9.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-	
-	
+
+
 	<?php
 	$archivo=basename($_SERVER['PHP_SELF']);
 	$pagina=str_replace(".php","",$archivo);
-	
+
 	if($pagina==='invitados' || $pagina==='index'){
-		
+
 		echo('<link rel="stylesheet" href="css/colorbox.css">');
 	}elseif($pagina==='conferencias'){
-		
+
 		echo('<link rel="stylesheet" href="css/lightbox.css">');
 	}
 	?>
@@ -40,18 +40,18 @@
   <![endif]-->
 
   <header class="site-header">
-	
+
 	  <div class="contenido-header">
-		
-		 <img src="img/cabecera_peliculas.png" alt="Cabecera"/>
-		 
+
+		 <img src="../../img/cabecera_peliculas.png" alt="Cabecera"/>
+
 	  </div><!--.contenido_header-->
 	</header>
 
-	<?php require_once("includes/navegacion_administrador.php")  ?>
-			
+	<?php require_once("../includes/navegacion_administrador.php")  ?>
+
 	<!--contenido principal-->
-	
+
 <section class="seccion">
 	<div class="formulario clearfix">
 		<form action="?controller=Administrador&action=buscarUsuarios" method="post">
@@ -65,7 +65,7 @@
                     <option value="2">Usuario novel</option>
                     <option value="3">Usuario experto</option>
                     <option value="4">Usuario profesional</option>
-                    
+
                 </select>
             </label>
 		</div>
@@ -80,9 +80,9 @@
 	</div>
 	<div class="lista_usuarios">
 	<div class="tabla">
-		
+
 		<table class="tabla">
-	
+
 	<tr>
 		<th>Id</th>
 		<th>Nombre</th>
@@ -93,11 +93,11 @@
 		<th>Fecha alta</th>
 		<th>Activo</th>
 		<th>Tipo usuario</th>
-		
+
 		<th colspan=2 >Acciones</th>
 	</tr>
 <?php foreach ($usuarios as $usuario) { ?>
-		
+
 			<tr>
 				<td><?php echo $usuario->getIdUsuario(); ?></td>
 				<td><?php echo $usuario->getNombreUsuario(); ?></td>
@@ -108,24 +108,24 @@
 				<td><?php echo $usuario->getFechaAltaUsuario();?></td>
 				<td><?php echo $usuario->getActivoUsuario();?></td>
 				<td><?php echo $usuario->getTipoUsuario()->getTipoUsuario;?></td>
-				
-				
+
+
 				<td><a href="?controller=Usuarios&action=modificarUsuario&id=<?php echo $usuario->getIdUsuario(); ?>">Actualizar</a> </td>
 				<td><a href="?controller=Administrador&action=bloquearUsuario&id=<?php echo $usuario->getIdUsuario(); ?>">Bloquear</a> </td>
 			</tr>
-			
+
 	<?php } ?>
 </table>
 		</div>
 	</div>
-	
+
 	</section><!--fin contenido-->
-	
-	
-	
+
+<?php require_once("../includes/footer.php");?>
+
 	<!--LINKADO DE JAVASCRIPT-->
-	
-  
+
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
 
