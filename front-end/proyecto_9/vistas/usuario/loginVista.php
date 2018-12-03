@@ -73,7 +73,7 @@
 	</div><!--.contenedor+clearfix-->
 </div><!--.barra-->
 			
-    <div class="formulario">
+    <div class="formulario_small">
     <h2>Formulario de login</h2>
     <form action="login.php" method="post">
 	<div>       
