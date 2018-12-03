@@ -8,27 +8,27 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
+
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/normalize.css">
 	<!--<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">-->
-	
-  
+
+
 	<link rel="stylesheet" href="css/estilos _p9.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-	
-	
+
+
 	<?php
 	$archivo=basename($_SERVER['PHP_SELF']);
 	$pagina=str_replace(".php","",$archivo);
-	
+
 	if($pagina==='invitados' || $pagina==='index'){
-		
+
 		echo('<link rel="stylesheet" href="css/colorbox.css">');
 	}elseif($pagina==='conferencias'){
-		
+
 		echo('<link rel="stylesheet" href="css/lightbox.css">');
 	}
 	?>
@@ -40,10 +40,10 @@
   <![endif]-->
 
   <header class="site-header">
-	
+
 	  <div class="contenido-header">
-		
-		 <img src="img/cabecera_peliculas.png" alt="Cabecera"/>
-		 
+
+		 <img src="../../img/cabecera_peliculas.png" alt="Cabecera"/>
+
 	  </div><!--.contenido_header-->
 	</header>

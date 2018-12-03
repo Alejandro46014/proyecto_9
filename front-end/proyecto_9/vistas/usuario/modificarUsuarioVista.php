@@ -8,30 +8,31 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  
+
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="../../css/normalize.css">
 	<!--<link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|PT+Sans" rel="stylesheet">-->
-	
-  
-	<link rel="stylesheet" href="css/estilos _p9.css">
+
+
+	<link rel="stylesheet" href="../../css/estilos _p9.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-	
-	
+
+
 	<?php
 	$archivo=basename($_SERVER['PHP_SELF']);
 	$pagina=str_replace(".php","",$archivo);
-	
+
 	if($pagina==='invitados' || $pagina==='index'){
-		
-		echo('<link rel="stylesheet" href="css/colorbox.css">');
+
+		echo('<link rel="stylesheet" href="../../css/colorbox.css">');
 	}elseif($pagina==='conferencias'){
-		
-		echo('<link rel="stylesheet" href="css/lightbox.css">');
+
+		echo('<link rel="stylesheet" href="../../css/lightbox.css">');
 	}
 	?>
+
 </head>
 
 <body class="<?php echo($pagina); ?>">
@@ -40,17 +41,19 @@
   <![endif]-->
 
   <header class="site-header">
-	
+
 	  <div class="contenido-header">
-		
-		 <img src="img/cabecera_peliculas.png" alt="Cabecera"/>
-		 
+
+		 <?php require_once("../includes/header.php");  ?>
+
 	  </div><!--.contenido_header-->
 	</header>
 
-	<div class="barra">
+<body>
+  <?php require_once("../includes/navegacion_usuarios.php");?>
+	<!--<div class="barra">
 		<div class="contenedor clearfix">
-	
+
 		<div class="menu-movil">
 			<span></span>
 			<span></span>
@@ -58,25 +61,26 @@
 		</div>
 		<nav class="navegacion-principal">
 			<a href="conferencias.php">Acción</a>
-			<a href="calendario.php">Románticas</a> 
-			<a href="invitados.php">Terror</a> <a href="registro.php">NineBots</a> 
+			<a href="calendario.php">Románticas</a>
+			<a href="invitados.php">Terror</a> <a href="registro.php">NineBots</a>
 			<a href="registro.php">Comedia</a>
-			<a href="registro.php">Drama</a> 
-			<a href="registro.php">Ciencia-ficción</a> 
+			<a href="registro.php">Drama</a>
+			<a href="registro.php">Ciencia-ficción</a>
 			<a class="user-icono" href="#"><i class="fas fa-user"></i><spam>Alejandro</spam></a></nav>
 			<div class="extendido-usuarios">
 				<a  href="#">Modificar perfil</a>
    				<a  href="#">Darse de baja</a>
     			<a  href="#">Cerrar sesión</a>
-				
+
  			 </div>
-	</div><!--.contenedor+clearfix-->
-</div><!--.barra-->
-			
-	
+	</div>--> <!--.contenedor+clearfix-->
+<!--</div>--> <!--.barra-->
+
+
+
 <!--FOOTER-->
-	
-	<footer class="site-footer">
+<?php require_once("../includes/footer.php");?>
+<!--	<footer class="site-footer">
 		<div class="contenedor clearfix">
 			<div class="footer-informacion">
 			<h3>Sobre <span>evaluaweb</span></h3>
@@ -98,20 +102,20 @@
 			<a href="#"><i class="fab fa-pinterest-square" aria-hidden="true"></i></a>
 			<a href="#"><i class="fab fa-youtube-square" aria-hidden="true"></i></a>
 			<a href="#"><i class="fab fa-instagram-square" aria-hidden="true"></i></a>
-			
+
 		  </nav>
 			</div>
 		</div>
 		<p class="copyright">Todos los derechos reservados 2018</p>
-	</footer>
-	
-	
-	
+	</footer> -->
+
+
+
 	<!--LINKADO DE JAVASCRIPT-->
-	
-  
+
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-  <script src="js/main.js"></script>
+  <script src="../../js/main.js"></script>
 
   <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>
