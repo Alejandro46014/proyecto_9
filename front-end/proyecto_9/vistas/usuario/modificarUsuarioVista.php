@@ -73,7 +73,37 @@
 	</div><!--.contenedor+clearfix-->
 </div><!--.barra-->
 			
-	
+<div class="formulario">
+    <h2>Formulario de modificación</h2>
+    <form action="alta.php" method="post">
+	<div style="width:50%; float:left;">      
+<p><label for="nombre">Nombre *</label><br /><input type="text" name="nombre" required="true" placeholder="Introduce tu nombre" /></p>
+</div>
+<div style="width:50%; float:left;">     
+<p><label for="nombre">Primer apellido *</label><br /><input type="text" name="usuario" required="true" placeholder="Introduce tu primer apellido" /></p>
+</div>
+<div style="width:50%; float:left;">      
+<p><label for="nombre">Segundo apellido</label><br /><input type="text" name="usuario" placeholder="Introduce tu segundo apellido" /></p>
+</div>
+<div style="width:50%; float:left;">       
+<p><label for="nombre">Fecha de nacimiento *</label><br /><input type="date" name="fecha" required="true" placeholder="Introduce tu feche de naciemiento" /></p>
+</div>
+<div style="width:50%; float:left;">     
+<p><label for="nombre">Poblacion *</label><br /><input type="text" name="poblacion" required="true" placeholder="Introduce tu poblacion" /></p>
+</div>
+<div style="width:50%; float:left;">      
+<p><label for="nombre">Email *</label><br /><input type="text" name="email" required="true" placeholder="Introduce tu direccion de correo electrónico" /></p>
+</div>
+<div style="width:50%; float:left;">       
+<p><label for="nombre">Usuario *</label><br /><input type="text" name="usuario" required="true" placeholder="Introduce tu usuario" /></p>
+</div>
+<div style="width:50%; float:left;">
+<p><label for="password">Password *</label><br /><input type="text" name="password" required="true" placeholder="Introduce tu contraseña" /></p>
+</div>
+<p><input type="submit" value="Actualizar datos" /> </p>
+<p align="center"><b>* los campos marcados con este símbolo son obligatorios</b></p>
+</form>
+ </div>
 <!--FOOTER-->
 	
 	<footer class="site-footer">
