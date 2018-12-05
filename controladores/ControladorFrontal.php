@@ -74,7 +74,7 @@
                                                 'Administrador'=>['index','listarUsuarios','listarUsuarioId','actualizarUsuario','modificarUsuario','bloquearUsuario','buscarUsuarios'],
                                                 'Productos'=>['index','listarProductos','listarProductoId','nuevoProducto','guardarProducto','modificarProducto','actualizarProducto','eliminarProducto','buscarProductos'],
                                                 'Imagenes'=>['guardarImagen','eliminarImagen','actualizarImagen','nuevaImagen','modificarImagen'],
-                                                'Valoraciones'=>['listarValoraciones','listarValoracionId','nuevaValoracion','modificarValoracion','bloquearValoracion','guardarValoracion']
+                                                'Valoraciones'=>['listarValoraciones','listarValoracionId','nuevaValoracion','modificarValoracion','bloquearValoracion','guardarValoracion','buscarValoraciones']
 
 						);
 

@@ -44,8 +44,7 @@ class AdministradorModelo extends UsuariosModelo{
 		try{
 			
 			$id= $usuario->id;
-                        $activo= $usuario
-                                ->activo_usuario;
+                        $activo= $usuario->activo_usuario;
                         
 			$conexion=ConectarModelo::conexion();
 			$sql="UPDATE usuarios SET activo_usuario=:activo WHERE id_usuario=:id";

@@ -73,40 +73,60 @@
 	</div><!--.contenedor+clearfix-->
 </div><!--.barra-->
 
-<div class="formulario">
-    <h2>Formulario de alta</h2>
-    <form action="alta.php" method="post">
-	<div style="width:50%; float:left;">      
-<p><label for="nombre">Nombre *</label><br /><input type="text" name="nombre" required="true" placeholder="Introduce tu nombre" /></p>
-</div>
-<div style="width:50%; float:left;">     
-<p><label for="nombre">Primer apellido *</label><br /><input type="text" name="usuario" required="true" placeholder="Introduce tu primer apellido" /></p>
-</div>
-<div style="width:50%; float:left;">      
-<p><label for="nombre">Segundo apellido</label><br /><input type="text" name="usuario" placeholder="Introduce tu segundo apellido" /></p>
-</div>
-<div style="width:50%; float:left;">       
-<p><label for="nombre">Fecha de nacimiento *</label><br /><input type="date" name="fecha" required="true" placeholder="Introduce tu feche de naciemiento" /></p>
-</div>
-<div style="width:50%; float:left;">     
-<p><label for="nombre">Poblacion *</label><br /><input type="text" name="poblacion" required="true" placeholder="Introduce tu poblacion" /></p>
-</div>
-<div style="width:50%; float:left;">      
-<p><label for="nombre">Email *</label><br /><input type="text" name="email" required="true" placeholder="Introduce tu direccion de correo electrónico" /></p>
-</div>
-<div style="width:50%; float:left;">       
-<p><label for="nombre">Usuario *</label><br /><input type="text" name="usuario" required="true" placeholder="Introduce tu usuario" /></p>
-</div>
-<div style="width:50%; float:left;">
-<p><label for="password">Password *</label><br /><input type="text" name="password" required="true" placeholder="Introduce tu contraseña" /></p>
-</div>
-<p><input type="submit" value="Darse de alta" /> </p>
-<p align="center"><b>* los campos marcados con este símbolo son obligatorios</b></p>
-</form>
- </div>
-</form>
- </div>
+<section class="seccion">
+<div class="formulario clearfix">
+	<div class="cabecera_formularios">
+		<h3>Formulario de alta en la web</h3>
+	<form method="post" action="alta.php">
+		</div>
+	<div class="col_2_formulario">
 	
+            <label for="nombre">* Nombre: <input type="text" name="nombre_usuario" required="true" id="nombre" value="<?php //echo $usuario->getNombreUsuario(); ?>"/></label>
+	</div>
+	<div class="col_2_formulario">
+	
+             <label for="apellidos"> * Primer apellido: <input type="text"  name="apellidouno_usuario" required="true" id="apellidouno" value="<?php //echo $usuario->getApellidosUsuario(); ?>"/></label>
+    </div>
+    <div class="col_2_formulario">
+	
+             <label for="apellidos"> Segundo apellido: <input type="text" name="apellidodos_usuario" id="apellidodos" value="<?php //echo $usuario->getApellidosUsuario(); ?>"/></label>
+	</div>
+		<div class="col_2_formulario">
+	
+            <label for="email"> * Correo electrónico: <input type="email" name="email_usuario" required="true" id="email" value="<?php //echo $usuario->getEmailUsuario(); ?>"/></label>
+	</div>
+	<div class="col_2_formulario">
+	
+            <label for="password"> * Contraseña: <input type="password" name="password_usuario" required="true" id="password" value="<?php //echo $usuario->getpasswordUsuario(); ?>"/></label>
+	</div>
+    <div class="col_2_formulario">
+	
+    <label for="rpassword"> * Repite contraseña: <input type="password" name="rpassword_usuario" required="true" id="rpassword"></label>
+</div>
+    
+    
+    <div class="col_2_formulario">
+	
+            <label for="pais"> * Pais: <input type="text" name="pais_usuario" id="pais" value="<?php //echo $usuario->getPaisUsuario(); ?>"/></label>
+	</div>
+		<div class="col_2_formulario">
+	
+            <label for="fecha_nacimiento"> * Fecha de nacimiento: <input type="date" name="fecha_nacimiento_usuario" min="1918-12-31" max="2000-12-31" id="fecha_nacimiento" value="<?php echo $_POST['fecha_nacimiento_usuario'] ?>"/></label>
+	</div>
+		<div class="col_formulario">
+			
+			<input class="buttom_green" type="submit" value="Darse de alta" />
+		</div>
+        <div class="leyenda">
+        <p ><b>* los campos marcados con este símbolo son obligatorios</b></p>
+        </div>	
+
+	</form>
+ </div>
+	</div>
+
+    
+ </div>
 <!--FOOTER-->
 	
 	<footer class="site-footer">

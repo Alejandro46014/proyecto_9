@@ -47,21 +47,64 @@ class ValoracionesControlador{
         
      
     }
+    public function listarValoraciones(){
+        
+            require_once("modelos/ValoracionesModelo.php");
+			
+
+			$valoracion=new valoracionesModelo();
+			$valoraciones=$valoracion->getTodo();
+			
+			require_once("vistas/administrador/gestionarValoracionesVista.php");
+		}
+                
+                public function buscarValoraciones(){
+                    if ((isset($_POST['buscar']))){
+                     $id_usuario=$_POST['id_usuario'];
+                     $id_producto=$_POST['id_producto'];
+                     $bloqueada=$_POST['estado_valoracion'];
+                     
+                    $valoracion=new valoracionesModelo();
+                   $valoraciones=$valoracion->buscarValoraciones($id_usuario, $id_producto, $bloqueada); 
+                    
+                    require_once("vistas/administrador/gestionarValoracionesVista.php");
+                    }
+                }
+    
 
         public function modificarValoracion(){
         
-            echo 'Vaaaaaaaaaaa';
+            
     }
     
-    public function bloquearValoración(){
-        
+    public function bloquearValoracion(){
+        echo('<script type="text/javascript">
+				alert("La valoración fué bloqueada ");
+				</script>');
+       if(isset($_GET['id'])){
+           
+            $id=$_GET['id'];
+            
+            $valoracion=new valoracionesModelo();
+            
+            if ($valoracion->bloquear($id)){
+               
+                echo('<script type="text/javascript">
+				alert("La valoración fué bloqueada ");
+				</script>');
+                
+                 header("Location:?controller=Valoraciones&action=listarValoraciones");
+                 
+			}else{
+				echo('<script type="text/javascript">
+				alert("No se pudo bloquear la valoración ");
+				</script>');
+			}
+            }
         
     }
     
-    public function buscarValoraciones(){
-        
-        
-    }
+    
        
 }
 

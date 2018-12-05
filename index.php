@@ -1,14 +1,13 @@
 <?php
+
 session_start();
-//require_once("modelos/UsuariosModelo.php");
-//require_once("modelos/AdministradorModelo.php");
 
 ?>
 
 
 
 <?php
-//require_once("modelos/UsuariosModelo.php");
+
 
 require_once('modelos/ConectarModelo.php');
 
@@ -24,67 +23,33 @@ require_once('modelos/ConectarModelo.php');
 		$action=$_GET['action'];		
 
 	} else {
+            
+            $_GET['id']=1;
+            $controller=new ProductosControlador();
+            $controller->index();
+           // header("Location:?controller=Productos&action=index&id=1");
 
-		$controller='Productos';
-
-		$action='index';
-
-	}	
-	//carga la vista layout.php
-       
-	require_once('vistas/layoutVista.php');
- 
+	}
+        
+        require_once 'vistas/plantillas/header.php';
+        
+        
+      //session_start();
+      //session_destroy();
+      //se comprueba si existe alguna sesión o no, entonces se muestra menu de registro o menu del usuario
+        if(session_status() == PHP_SESSION_ACTIVE){
+            
+          require_once 'vistas/plantillas/navegacion_invitados.php';
+          
+        }elseif(session_status() == PHP_SESSION_ACTIVE && $usuario->getTipoUsuario()->getTipoUsuario()=="Administrador"){
+            
+            require_once 'vistas/plantillas/navegacion_administrador.php';
+            
+        }else{
+          require_once 'vistas/plantillas/navegacion_invitados.php';
+        }
+        
+        
+	
 ?>
-<?php
-
-/*if(isset($_POST['login'])){
-	
-	$usuario=new UsuariosModelo();
-	$usuario->login();
-	
-	
-}*/
-//if(isset($_POST['guardar'])){
-	
-	/*$apellido1=$_POST['apellido1'];
-		$apellido2=$_POST['apellido2'];
-		$apellidos=$apellido1." ".$apellido2;
-	echo($apellidos);*/
-	
-	//$usuario=new UsuariosModelo();
-	//$usuario->crearUsuario();
-	
-	/*$usuario=$usuario->getById(1);
-	
-		
-		echo($usuario->getNombreUsuario()." ");
-		echo($usuario->getApellidosUsuario()." ");
-		echo($usuario->getFechaNacimiento()." ");
-		echo($usuario->getFechaAltaUsuario()." ");
-		echo($usuario->getTipoUsuario());*/
-	
-	//$usuario->darseBaja();
-	/*$usuario->crearUsuario();
-		$apellido1=$_POST['apellido1'];
-		$apellido2=$_POST['apellido2'];
-		$apellidos=$apellido1." ".$apellido2;
-	
-	echo $apellidos;
-	$usuario->setApellidos($apellidos);
-	echo($usuario->getApellidos());*/
-	
-	/*				$admin=new AdministradorModelo();
-	echo $admin->getTipoUsuario();
-}
-
-if(isset($_POST['login'])){
-	
-	$usuario=new UsuariosModelo();
-	
-	$usuario=$usuario->login();
-}*/
-//}
-
-
-
-
+<?php require_once 'vistas/plantillas/footer_administrador.php';?>

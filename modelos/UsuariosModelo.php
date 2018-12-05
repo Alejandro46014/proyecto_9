@@ -203,7 +203,7 @@ class UsuariosModelo {
 		
 		try{
 		$conexion=ConectarModelo::conexion();
-		$sql="SELECT * FROM usuarios WHERE id_usuario=:id AND activo_usuario='Si' ";
+		$sql="SELECT * FROM usuarios WHERE id_usuario=:id ";
 		
 			
 		$consulta=$conexion->prepare($sql);
@@ -437,21 +437,10 @@ class UsuariosModelo {
 		$pais=$usuario->pais_usuario;
 		$email=$usuario->email_usuario;
 		
-		//$activo=$this->activo_usuario;
-		//$tipo_usuario= $this->tipo_usuario->getIdTipoUsuario();
+		
 		$password=$usuario->password_usuario;
 		
-	echo $id."<br>";
-        echo $nombre."<br>";
-        echo $apellidos."<br>";
-        echo $fecha_nacimiento."<br>";
-        echo $anys."<br>";
-        echo $pais."<br>";
-        echo $email."<br>";
-        echo $password."<br>";
-        echo $usuario->tipo_usuario->getTipoUsuario()."<br>";
-        echo $usuario->activo_usuario."<br>";
-		
+	
 		
 		
 /*-----------------COMPROBAMOS TODOS LOS CAMPOS INTRODUCIDOS-------------------------*/
@@ -712,7 +701,8 @@ class UsuariosModelo {
 						
 						if($tipo_usuario->actualizarTipoUsuario(3,$usuario)){
 						$usuario->setTipoUsuario(3);
-							
+                                                session_start();
+						$_SESSION['usuario']= serialize($usuario);	
 							
 						
 						echo('<script type="text/javascript">
@@ -728,7 +718,8 @@ class UsuariosModelo {
 						
 						if($tipo_usuario->actualizarTipoUsuario(4,$usuario)){
 						$usuario->setTipoUsuario(4);
-						
+						session_start();
+                                                $_SESSION['usuario']= serialize($usuario);
 							
 							
 						echo('<script type="text/javascript">
@@ -741,12 +732,13 @@ class UsuariosModelo {
 							
 						}
 					}elseif($usuario->tipo_usuario->getIdTipoUsuario()==1){
-						
-						
+						session_start();
+						$_SESSION['usuario']= serialize($usuario);
 						
 						require_once("vistas/administrador/administradorVista.php");
                                         }else{
-                                            
+                                            session_start();
+                                            $_SESSION['usuario']= serialize($usuario);
                                         }
 					
 				
@@ -759,12 +751,7 @@ class UsuariosModelo {
 				die ("Error ".$e->getMessage());
 				echo("Linea de error ".$e->getLine());
 				
-				$error=$conexion->rollBack();
-				
-				if($error){
-					
-					
-				}
+	
 			}
 		}
 		return($usuario);

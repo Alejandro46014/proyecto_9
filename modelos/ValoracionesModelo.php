@@ -94,8 +94,110 @@ class valoracionesModelo{
 	}
         
         /*---------------------VALORAR--------------------*/
-	
-	public function valorar($usuario,$producto,$valoracion){
+        
+        public function buscarValoraciones($id_usuario,$id_producto,$bloqueada){
+            
+            require_once 'modelos/ConectarModelo.php';
+            
+            
+            try{
+                $conexion= ConectarModelo::conexion();
+                
+                $listaValoraciones=[];
+                
+                 $sql="SELECT * FROM valoraciones   WHERE"
+                        . " usuarios_id_usuario LIKE :id_usuario OR productos_id_producto LIKE :id_producto OR bloqueada LIKE :bloqueada";
+                $consulta=$conexion->prepare($sql);
+                
+                $consulta->bindParam(':id_usuario',$id_usuario,PDO::PARAM_INT);
+                $consulta->bindParam(':id_producto',$id_producto,PDO::PARAM_INT);
+                $consulta->bindParam(':bloqueada',$bloqueada,PDO::PARAM_STR);
+                $consulta->execute();
+                $resultado=$consulta->fetchAll();
+                
+                if(!$resultado){
+                    echo '<script type="text/javascript">
+				alert("No existe ninguna valoracion con esos criterios de busqueda");
+				</script>';
+                }else{
+                    
+                   
+                    foreach ($resultado as $fila){
+                        
+                        $valoracion=new valoracionesModelo();
+                        
+                        $valoracion->id_usuario=$fila['usuarios_id_usuario'];
+                        $valoracion->id_producto=$fila['productos_id_producto'];
+                        $valoracion->id_valoracion=$fila['id_valoracion'];
+                        $valoracion->bloqueada=$fila['bloqueada'];
+                        $valoracion->valor_votacion=$fila['valor_votacion'];
+                        $valoracion->numero_votaciones=$fila['numero_votaciones'];
+                        $valoracion->comentario=$fila['comentario'];
+                        
+                        
+                        $listaValoraciones[]=$valoracion;
+                    } 
+                }
+                $consulta->closeCursor();
+            } catch (PDOException $e) {
+                
+                die("No se pudo conectar con la BBDD ".$e->getMessage());
+			echo("Linea de error ".$e->getLine());
+            }
+            $conexion=null;
+            
+            return $listaValoraciones;
+        }
+        
+        public function getTodo(){
+            
+            require_once 'ConectarModelo.php';
+            try{
+            $conexion= ConectarModelo::conexion();
+            
+		$listaValoraciones=[];
+                
+            $sql="SELECT * FROM valoraciones   ORDER BY id_valoracion DESC";
+				
+            $consulta=$conexion->prepare($sql);
+            $consulta->execute();
+			
+	    $resultado=$consulta->fetchAll();
+				
+				foreach ($resultado as $fila) {
+					
+					$valoracion=new valoracionesModelo();
+					
+					$valoracion->id_valoracion=$fila['id_valoracion'];
+					$valoracion->id_usuario=$fila['usuarios_id_usuario'];
+					$valoracion->id_producto=$fila['productos_id_producto'];
+					$valoracion->valor_votacion=$fila['valor_votacion'];
+					$valoracion->numero_votaciones=$fila['numero_votaciones'];
+					$valoracion->comentario=$fila['comentario'];
+					$valoracion->bloqueada=$fila['bloqueada'];
+					
+					
+			$listaValoraciones[]= $valoracion;
+
+		}
+
+		
+
+				$consulta->closeCursor();
+			
+				
+			}catch(PDOException $e){
+				
+				die ("Error ".$e->getMessage());
+			echo("Linea de error ".$e->getLine());
+			}
+			
+			$conexion=null;
+			
+            return $listaValoraciones;
+        }
+
+                public function valorar($usuario,$producto,$valoracion){
 		
 		require_once("ConectarModelo.php");
                 require_once("UsuariosModelo.php");
@@ -184,6 +286,42 @@ class valoracionesModelo{
 		
 		return($valoracion);
 	}
+        
+        public function bloquear($id){
+            
+            require_once("ConectarModelo.php");
+		
+            $bloqueada='Si';
+		
+	try{	
+		$conexion= ConectarModelo::conexion();
+			
+		$sql="UPDATE valoraciones SET bloqueada=:bloqueada WHERE id_valoracion=:id";
+		
+		$consulta=$conexion->prepare($sql);
+		
+		$consulta->bindParam(':id',$id,PDO::PARAM_INT);
+                $consulta->bindParam(':bloqueada',$bloqueada,PDO::PARAM_STR);
+		
+		
+		$resultado=$consulta->execute();
+                
+		
+		$consulta->closeCursor();
+		
+		
+		
+	}catch(PDOException $e){
+		
+		die ("Error ".$e->getMessage());
+			echo("Linea de error ".$e->getLine());
+	}
+		$conexion=null;
+		
+		return($resultado);
+		
+	
+        }
 	
 	
 }

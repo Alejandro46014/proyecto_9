@@ -355,7 +355,7 @@ class ProductosModelo{
                             $consulta=$conexion->prepare($sql);
                             
                             $consulta->bindParam(':nombre_imagen',$nombre_imagen,PDO::PARAM_STR);
-                            $consulta->bindParam(':directorio_imagen',$directorio_imagenn,PDO::PARAM_STR);
+                            $consulta->bindParam(':directorio_imagen',$directorio_imagen,PDO::PARAM_STR);
                             $consulta->bindParam(':id_producto',$ultimo_id,PDO::PARAM_INT);
                             
                            $consulta->execute();
@@ -433,7 +433,7 @@ class ProductosModelo{
 			$consulta->bindParam(':sinopsis',$sinopsis,PDO::PARAM_STR);
 			$consulta->bindParam(':reparto',$reparto,PDO::PARAM_STR);
 			$consulta->bindParam(':director',$director,PDO::PARAM_STR);
-			$consulta->bindParam(':categoria',$categoria,PDO::PARAM_INT);
+			$consulta->bindParam(':categoria',$categoria,PDO::PARAM_STR);
                         
 			
 			$consulta->execute();
@@ -445,14 +445,15 @@ class ProductosModelo{
                             
                           $nombre_imagen=$imagen->getNombreImagen();
                           $directorio_imagen=$imagen->getDirectorioImagen();
-                          $id=$imagen->getIdImagen();
+                          $id_imagen=$imagen->getIdImagen();
                           
-                          $sql="UPDATE imagenes SET nombre_imagen=:nombre_imagen,directorio_imagen=:directorio_imagen WHERE id_imagen=:id";
+                          $sql="UPDATE imagenes SET nombre_imagen=:nombre_imagen,directorio_imagen=:directorio_imagen WHERE id_imagen=:id_imagen";
                           
                          $consulta=$conexion->prepare($sql);
                          
                         $consulta->bindParam(':nombre_imagen',$nombre_imagen,PDO::PARAM_STR);
 			$consulta->bindParam(':directorio_imagen',$directorio_imagen,PDO::PARAM_STR);
+                        $consulta->bindParam(':id_imagen',$id_imagen,PDO::PARAM_INT);
                         
                         $consulta->execute();
                             

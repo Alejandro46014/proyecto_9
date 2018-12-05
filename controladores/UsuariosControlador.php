@@ -8,19 +8,6 @@ class UsuariosControlador
 
 
 
-		public function index(){
-
-			//echo 'index desde UsuarioController';
-
-			require_once("modelos/UsuariosModelo.php");
-			
-
-			//$usuarios=new UsuariosModelo();
-			//$usuarios=$usuarios->getTodo();
-
-			require_once('vistas/indexVista.php');
-
-		}
 		
 		public function listarUsuarios(){
 			
@@ -135,13 +122,16 @@ class UsuariosControlador
                 }
                 
                 public function loguearse(){
-                    
+                    require_once 'controladores/ProductosControlador.php';
+                    require_once 'modelos/ProductosModelo.php';
                     $usuarioAccion=new UsuariosModelo();
                     $usuarioAccion->setEmailUsuario($_POST['email_usuario']);
                     $usuarioAccion->setPasswordUsuario($_POST['password_usuario']);
                     $usuario=$usuarioAccion->login();
                     
-                    require_once('vistas/usuario/indexVista.php');
+                    $_GET['id']=1;
+                    $controller=new ProductosControlador();
+                    $controller->index();
                 }
                 
                 public function bajaVista(){

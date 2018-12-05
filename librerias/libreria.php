@@ -79,7 +79,7 @@ function subir_multiples_archivos(){
 	foreach($_FILES["archivo"]['tmp_name'] as $key => $tmp_name)
 	{
             $nombre_imagen=$_POST['nombre_imagen'][$i];
-            $directorio_imagen="img/peliculas/".$_FILES['archivo']['name'][$i];
+            $directorio_imagen="img/".$_FILES['archivo']['name'][$i];
             if (empty($nombre_imagen)){
                 
                 echo('<script type="text/javascript">
@@ -105,17 +105,14 @@ function subir_multiples_archivos(){
 			//El primer campo es el origen y el segundo el destino
 			if(move_uploaded_file($source, $target_path)) {	
                             
-                           // $imagen=['nombre_imagen'=>$nombre_imagen,'directorio_imagen'=>$directorio_imagen];
+                           
                             $imagen=new ImagenesModelo($nombre_imagen,$directorio_imagen,"");
                             $imagenes[]=$imagen;
                             
-                           // foreach ($imagenes as $imagen){
-                           // echo $imagen['nombre_imagen'].'<br>';
-                           // echo $imagen['directorio_imagen'].'<br>';
-                            //}
-				echo "El archivo $filename se ha almacenado en forma exitosa.<br>";
+                           
+				/*echo "El archivo $filename se ha almacenado en forma exitosa.<br>";
 				} else {	
-				echo "Ha ocurrido un error, por favor inténtelo de nuevo.<br>";
+				echo "Ha ocurrido un error, por favor inténtelo de nuevo.<br>";*/
 			}
 			closedir($dir); //Cerramos el directorio de destino
 		}

@@ -5,6 +5,7 @@ class ProductosControlador{
     public function __construct(){}
     
     public function index(){
+        
         if(isset($_GET['id'])){
             
             $id_categoria=$_GET['id'];
@@ -17,10 +18,7 @@ class ProductosControlador{
         }
     }
     
-    public function listarProductos(){
-        
-        
-    }
+    
     
     public function nuevoProducto(){
         
@@ -30,25 +28,27 @@ class ProductosControlador{
     
     public function guardarProducto(){
         
+        require_once("librerias/libreria.php");
         require_once("modelos/ImagenesModelo.php");
         require_once 'modelos/CategoriasProductosModelo.php';
         
         if (isset($_POST['nuevo_producto'])){
             
+            $imagenes= subir_multiples_archivos();
            
-                                $producto=new ProductosModelo(1);
+                                $producto=new ProductosModelo();
 				
 				
 				$producto->setNombreProducto($_POST['nombre_producto']);
                                 $producto->setNombreOriginalProducto($_POST['nombre_original_producto']);
-                               $categoria=new CategoriasProductosModelo($_POST['categoria']);
+                                $categoria=new CategoriasProductosModelo($_POST['categoria']);
                                 $producto->setCategoria($categoria);
 				$producto->setAnioLanzamiento($_POST['anio_lanzamiento']);
 				$producto->setSinopsis($_POST['sinopsis']);
 				$producto->setReparto($_POST['reparto']);
 				$producto->setDirector($_POST['director']);
                                 
-                                $producto->guardar();
+                                $producto->guardar($imagenes);
         }
         require_once 'vistas/administrador/nuevoProductoVista.php';
     }
@@ -72,7 +72,7 @@ class ProductosControlador{
             
         $id=$_GET['id'];
         $imagenes=[];
-        foreach ($_POST['nombre_imagen'] as $key=>$value){
+        foreach ($_POST['directorio_imagen'] as $key=>$value){
             
             $nombre_imagen=$_POST['nombre_imagen'][$key];
             $directorio_imagen=$_POST['directorio_imagen'][$key];
@@ -83,21 +83,24 @@ class ProductosControlador{
             $imagenes[]=$imagen;
         }
         
-        $producto=new ProductosModelo($_POST['categoria']);
-        $producto->setNombreProducto($_POST['nombre_producto']);
-        $producto->setNombreOriginalProducto($_POST['nombre_original_producto']);
-        $categoria=new CategoriasProductosModelo($_POST['categoria']);
-        $producto->setCategoria($categoria);
-        $producto->setAnioLanzamiento($_POST['anio_lanzamiento']);
-	$producto->setSinopsis($_POST['sinopsis']);
-	$producto->setReparto($_POST['reparto']);
-	$producto->setDirector($_POST['director']);
+            $producto=new ProductosModelo();
+				
+				
+            $producto->setNombreProducto($_POST['nombre_producto']);
+            $producto->setNombreOriginalProducto($_POST['nombre_original_producto']);
+            $categoria=new CategoriasProductosModelo($_POST['categoria']);
+            $producto->setCategoria($categoria);
+            $producto->setAnioLanzamiento($_POST['anio_lanzamiento']);
+            $producto->setSinopsis($_POST['sinopsis']);
+            $producto->setReparto($_POST['reparto']);
+            $producto->setDirector($_POST['director']);
         
-        $producto->setImagenes($imagenes);
-        $producto->actualizar($id);
-        
-        $controller=new ProductosControlador();
-        $controller->modificarProducto();
+            $producto->setImagenes($imagenes);
+            $producto->actualizar($id);
+            
+            $controller=new ProductosControlador();
+            $controller->modificarProducto();
+           // header("Location:?controller=Productos&action=modificarProducto");
 
             }
         }
@@ -109,14 +112,12 @@ class ProductosControlador{
         
             $id=$_GET['id'];
        
-        $producto=new ProductosModelo(1);
+        $producto=new ProductosModelo();
         $producto->eliminar($id);
         
         $controller=new ProductosControlador();
         $controller->modificarProducto();
         
-        }else{
-            echo 'puta caca';
         }
     }
     
