@@ -11,11 +11,11 @@
 	</div>
 	<div class="col_2_formulario">
 	
-             <label for="apellidos"> * Primer apellido: <input type="text" name="apellidouno_usuario" id="apellidouno" value="<?php echo $usuario->getApellidosUsuario(); ?>"/></label>
+             <label for="apellidos"> * Primer apellido: <input type="text" name="apellido1" id="apellidouno" value="<?php echo $usuario->getApellidosUsuario(); ?>"/></label>
     </div>
     <div class="col_2_formulario">
 	
-             <label for="apellidos"> Segundo apellido: <input type="text" name="apellidodos_usuario" id="apellidodos" value="<?php echo $usuario->getApellidosUsuario(); ?>"/></label>
+             <label for="apellidos"> Segundo apellido: <input type="text" name="apellido2" id="apellidodos" value="<?php echo $usuario->getApellidosUsuario(); ?>"/></label>
 	</div>
 		<div class="col_2_formulario">
 	
