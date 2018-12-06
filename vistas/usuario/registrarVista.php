@@ -35,7 +35,7 @@
 	</div>
 		<div class="col_2_formulario">
 	
-            <label for="fecha_nacimiento"> * Fecha de nacimiento: <input type="date" name="fecha_nacimiento_usuario" min="1918-12-31" max="2000-12-31" id="fecha_nacimiento" value="<?php echo $_POST['fecha_nacimiento_usuario'];->getfechaUsuario(); ?>"/></label>
+            <label for="fecha_nacimiento"> * Fecha de nacimiento: <input type="date" name="fecha_nacimiento_usuario" min="1918-12-31" max="2000-12-31" id="fecha_nacimiento" value="<?php echo $usuario->getFechaNacimientoUsuario(); ?>"/></label>
 	</div>
 		<div class="col_formulario">
 			
