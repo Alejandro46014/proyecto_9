@@ -1,37 +1,53 @@
-
 <section class="seccion">
 <div class="formulario clearfix">
-    <h2>Formulario de alta</h2>
-    <form action="?controller=Usuarios&action=crearUsuario" method="post">
-	<div class="col_2_formulario">      
-<label for="nombre">Nombre *</label><input id="nombre" type="text" name="nombre_usuario" required="true" placeholder="Introduce tu nombre" value="<?php echo $_POST['nombre  ?>/>
-</div>
-<div class="col_2_formulario">     
-<p><label for="apellido1">Primer apellido *</label><br /><input id="apellido1" type="text" name="apellido1" required="true" placeholder="Introduce tu primer apellido" /></p>
-</div>
-<div class="col_2_formulario">      
-<p><label for="apellido">Segundo apellido</label><br /><input type="text" name="usuario" placeholder="Introduce tu segundo apellido" /></p>
-</div>
-<div class="col_2_formulario>       
-<p><label for="nombre">Fecha de nacimiento *</label><br /><input type="date" name="fecha" required="true" placeholder="Introduce tu feche de naciemiento" /></p>
-</div>
-<div style="width:50%; float:left;">     
-<p><label for="nombre">Poblacion *</label><br /><input type="text" name="poblacion" required="true" placeholder="Introduce tu poblacion" /></p>
-</div>
-<div style="width:50%; float:left;">      
-<p><label for="nombre">Email *</label><br /><input type="text" name="email" required="true" placeholder="Introduce tu direccion de correo electrónico" /></p>
-</div>
-<div style="width:50%; float:left;">       
-<p><label for="nombre">Usuario *</label><br /><input type="text" name="usuario" required="true" placeholder="Introduce tu usuario" /></p>
-</div>
-<div style="width:50%; float:left;">
-<p><label for="password">Password *</label><br /><input type="text" name="password" required="true" placeholder="Introduce tu contraseña" /></p>
-</div>
-<p><input type="submit" value="Darse de alta"  name="guardar"/> </p>
-<small>* los campos marcados con este símbolo son obligatorios</small>
-</form>
- </div>
-</form>
- </div>
+	<div class="cabecera_formularios">
+		<h3>Formulario de alta en la web</h3>
+	<form method="post" action="alta.php">
+		</div>
+	<div class="col_2_formulario">
 	
-</section>
+            <label for="nombre">* Nombre: <input type="text" name="nombre_usuario" required="true" id="nombre" value="<?php echo $_POST["nombre_usuario"];->getNombreUsuario(); ?>"/></label>
+	</div>
+	<div class="col_2_formulario">
+	
+             <label for="apellidos"> * Primer apellido: <input type="text"  name="apellido1" required="true" id="apellidouno" value="<?php echo $_POST["apellido1"];->getApellidosUsuario(); ?>"/></label>
+    </div>
+    <div class="col_2_formulario">
+	
+             <label for="apellidos"> Segundo apellido: <input type="text" name="apellido2" id="apellidodos" value="<?php echo $_POST["apellido2"];->getApellidosUsuario(); ?>"/></label>
+	</div>
+		<div class="col_2_formulario">
+	
+            <label for="email"> * Correo electrónico: <input type="email" name="email_usuario" required="true" id="email" value="<?php echo $_POST["email_usuario"];->getEmailUsuario(); ?>"/></label>
+	</div>
+	<div class="col_2_formulario">
+	
+            <label for="password"> * Contraseña: <input type="password" name="password_usuario" required="true" id="password" value="<?php echo $_POST["password_usuario"];->getpasswordUsuario(); ?>"/></label>
+	</div>
+    <div class="col_2_formulario">
+	
+    <label for="rpassword"> * Repite contraseña: <input type="password" name="rpassword_usuario" required="true" id="rpassword"></label>
+</div>
+        
+    <div class="col_2_formulario">
+	
+            <label for="pais"> * Pais: <input type="text" name="pais_usuario" id="pais" value="<?php echo $_POST["pais_usuario"];->getPaisUsuario(); ?>"/></label>
+	</div>
+		<div class="col_2_formulario">
+	
+            <label for="fecha_nacimiento"> * Fecha de nacimiento: <input type="date" name="fecha_nacimiento_usuario" min="1918-12-31" max="2000-12-31" id="fecha_nacimiento" value="<?php echo $_POST['fecha_nacimiento_usuario'];->getfechaUsuario(); ?>"/></label>
+	</div>
+		<div class="col_formulario">
+			
+			<input class="buttom_green" type="submit" value="Darse de alta" />
+		</div>
+        <div class="leyenda">
+        <p ><b>* los campos marcados con este símbolo son obligatorios</b></p>
+        </div>	
+
+	</form>
+ </div>
+	</div>
+
+    
+ </div>
