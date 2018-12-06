@@ -4,15 +4,15 @@
     <h2>Formulario de alta</h2>
     <form action="?controller=Usuarios&action=crearUsuario" method="post">
 	<div class="col_2_formulario">      
-<label for="nombre">Nombre *</label><input id="nombre" type="text" name="nombre_usuario" required="true" placeholder="Introduce tu nombre" />
+<label for="nombre">Nombre *</label><input id="nombre" type="text" name="nombre_usuario" required="true" placeholder="Introduce tu nombre" value="<?php echo $_POST['nombre  ?>/>
 </div>
 <div class="col_2_formulario">     
 <p><label for="apellido1">Primer apellido *</label><br /><input id="apellido1" type="text" name="apellido1" required="true" placeholder="Introduce tu primer apellido" /></p>
 </div>
-<div class=col_2_formulario>      
-<p><label for="nombre">Segundo apellido</label><br /><input type="text" name="usuario" placeholder="Introduce tu segundo apellido" /></p>
+<div class="col_2_formulario">      
+<p><label for="apellido">Segundo apellido</label><br /><input type="text" name="usuario" placeholder="Introduce tu segundo apellido" /></p>
 </div>
-<div style="width:50%; float:left;">       
+<div class="col_2_formulario>       
 <p><label for="nombre">Fecha de nacimiento *</label><br /><input type="date" name="fecha" required="true" placeholder="Introduce tu feche de naciemiento" /></p>
 </div>
 <div style="width:50%; float:left;">     
