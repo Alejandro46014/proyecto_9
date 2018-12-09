@@ -3,7 +3,7 @@
 class valoracionesModelo{
 	
 	private $id_valoracion,$id_usuario,$id_producto,$valor_votacion,
-                $numero_votaciones,$fecha_valoracion,$comentario,$bloqueada;
+                $numero_votaciones,$fecha_valoracion,$comentario,$bloqueada,$votos;
 	
 	public function __construct(){
 		
@@ -50,6 +50,11 @@ class valoracionesModelo{
 		
 		return($this->bloqueada);
 	}
+        
+        public function getVotos(){
+		
+		return($this->votos);
+	}
 	
 	/*-------------------------SETTERS-----------------------------*/
 	
@@ -88,7 +93,12 @@ class valoracionesModelo{
             $this->fecha_valoracion=$fecha_valoracion;
         }
 
-                public function setBloqueada($bloqueada){
+                public function setVotos($votos){
+		
+		$this->votos=$votos;
+	}
+        
+        public function setBloqueada($bloqueada){
 		
 		$this->bloqueada=$bloqueada;
 	}
@@ -306,7 +316,71 @@ class valoracionesModelo{
 		
 		$resultado=$consulta->execute();
                 
+		if($resultado){
+				
+				echo '<script type="text/javascript">
+				alert("La valoración sé bloqueó correctamente");
+				</script>';
+			
+				
+			}else{
+				
+				echo '<script type="text/javascript">
+				alert("La valoración sé pudo bloquear");
+				</script>';
+			
+				
+			}
+		$consulta->closeCursor();
 		
+		
+		
+	}catch(PDOException $e){
+		
+		die ("Error ".$e->getMessage());
+			echo("Linea de error ".$e->getLine());
+	}
+		$conexion=null;
+		
+		return($resultado);
+		
+	
+        }
+        
+        public function desbloquear($id){
+            
+            require_once("ConectarModelo.php");
+		
+            $bloqueada='No';
+		
+	try{	
+		$conexion= ConectarModelo::conexion();
+			
+		$sql="UPDATE valoraciones SET bloqueada=:bloqueada WHERE id_valoracion=:id";
+		
+		$consulta=$conexion->prepare($sql);
+		
+		$consulta->bindParam(':id',$id,PDO::PARAM_INT);
+                $consulta->bindParam(':bloqueada',$bloqueada,PDO::PARAM_STR);
+		
+		
+		$resultado=$consulta->execute();
+                
+		if($resultado){
+				
+				echo '<script type="text/javascript">
+				alert("La valoración sé desbloqueó correctamente");
+				</script>';
+			
+				
+			}else{
+				
+				echo '<script type="text/javascript">
+				alert("La valoración sé pudo desbloquear");
+				</script>';
+			
+				
+			}
 		$consulta->closeCursor();
 		
 		

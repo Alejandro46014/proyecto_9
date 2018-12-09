@@ -528,6 +528,7 @@ class ProductosModelo{
 				alert("El producto no se pudo eliminar");
 				</script>';
 			}
+                        $consulta->closeCursor();
 			
 		}catch(PDOException $e){
 			
@@ -722,6 +723,44 @@ class ProductosModelo{
             
             return $lista_productos;
         }
+        
+        public function getValoracionMedia(){
+            
+            require_once("ConectarModelo.php");
+		
+            $id= $this->id_producto;
+		
+		try{
+			$conexion=ConectarModelo::conexion();
+			$sql="SELECT sum(valor_votacion) as total_votaciones , sum(numero_votaciones) as total_numero , productos_id_producto, COUNT(id_valoracion) as votos FROM valoraciones WHERE productos_id_producto=:id";
+			
+			$consulta=$conexion->prepare($sql);
+			
+			$consulta->bindParam(':id',$id,PDO::PARAM_INT);
+			
+			$consulta->execute();
+			
+                        $resultado=$consulta->fetch(PDO::FETCH_ASSOC);
+                        
+                        $valoracion_media=new valoracionesModelo();
+                        $valoracion_media->setIdProducto($resultado['productos_id_producto']);
+                        $valoracion_media->setValorVotacion($resultado['total_votaciones']);
+                        $valoracion_media->setNumeroVotaciones($resultado['total_numero']);
+                        $valoracion_media->setVotos($resultado['votos']);
+		
+			$consulta->closeCursor();
+                        
+		}catch(PDOException $e){
+			
+			die("No se pudo conectar con la BBDD ".$e->getMessage());
+			echo("Linea de error ".$e->getLine());
+		}
+		
+		$conexion=null;
+		
+		return$valoracion_media;
+	}
+        
 	
 }
 ?>

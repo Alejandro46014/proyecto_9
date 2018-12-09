@@ -43,7 +43,7 @@ class ValoracionesControlador{
         $_SESSION['valorado']=serialize($valorado);
         $_SESSION['producto']=serialize($producto);
         $_SESSION['usuario']=serialize($usuario);
-        header("Location:?controller=Productos&action=index");
+        header("Location:?controller=Productos&action=index&id=1");
         
      
     }
@@ -78,9 +78,7 @@ class ValoracionesControlador{
     }
     
     public function bloquearValoracion(){
-        echo('<script type="text/javascript">
-				alert("La valoración fué bloqueada ");
-				</script>');
+       
        if(isset($_GET['id'])){
            
             $id=$_GET['id'];
@@ -93,12 +91,39 @@ class ValoracionesControlador{
 				alert("La valoración fué bloqueada ");
 				</script>');
                 
-                 header("Location:?controller=Valoraciones&action=listarValoraciones");
+                  $controller=new ValoracionesControlador();
+                 $controller->listarValoraciones();
                  
 			}else{
 				echo('<script type="text/javascript">
 				alert("No se pudo bloquear la valoración ");
 				</script>');
+			}
+            }
+        
+    }
+    
+     public function desbloquearValoracion(){
+       
+       if(isset($_GET['id'])){
+           
+            $id=$_GET['id'];
+            
+            $valoracion=new valoracionesModelo();
+            
+            if ($valoracion->desbloquear($id)){
+               
+                echo('<script type="text/javascript">
+		alert("La valoración fué desbloqueada ");
+				</script>');
+                
+                 $controller=new ValoracionesControlador();
+                 $controller->listarValoraciones();
+                 
+			}else{
+		echo('<script type="text/javascript">
+		alert("No se pudo desbloquear la valoración ");
+		</script>');
 			}
             }
         

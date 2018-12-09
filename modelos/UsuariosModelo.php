@@ -267,16 +267,7 @@ class UsuariosModelo {
 		$tipo_usuario= $this->tipo_usuario->getIdTipoUsuario();
 		$password=$this->password_usuario;
 		
-		echo $nombre."<br>";
-                echo $apellidos."<br>";
-                echo $fecha_nacimiento."<br>";
-                echo $fecha_alta."<br>";
-                echo $anys."<br>";
-                echo $pais."<br>";
-                echo $activo."<br>";
-                echo $tipo_usuario."<br>";
-                echo $password."<br>";
-                echo $rpassword."<br>";
+		
 		
 		
 		
@@ -650,7 +641,7 @@ class UsuariosModelo {
 				
 				
 
-				$sql="SELECT * FROM usuarios WHERE email_usuario=:email AND password_usuario=:password";
+				$sql="SELECT * FROM usuarios WHERE email_usuario=:email AND password_usuario=:password AND activo_usuario='Si'";
 				
 				$consulta=$conexion->prepare($sql);
 				
@@ -701,8 +692,7 @@ class UsuariosModelo {
 						
 						if($tipo_usuario->actualizarTipoUsuario(3,$usuario)){
 						$usuario->setTipoUsuario(3);
-                                                session_start();
-						$_SESSION['usuario']= serialize($usuario);	
+                                                	
 							
 						
 						echo('<script type="text/javascript">
@@ -718,9 +708,7 @@ class UsuariosModelo {
 						
 						if($tipo_usuario->actualizarTipoUsuario(4,$usuario)){
 						$usuario->setTipoUsuario(4);
-						session_start();
-                                                $_SESSION['usuario']= serialize($usuario);
-							
+						
 							
 						echo('<script type="text/javascript">
 								alert("Su perfil se actualizó, ahora es usted un usuario profesional");
@@ -732,13 +720,9 @@ class UsuariosModelo {
 							
 						}
 					}elseif($usuario->tipo_usuario->getIdTipoUsuario()==1){
-						session_start();
-						$_SESSION['usuario']= serialize($usuario);
+						
 						
 						require_once("vistas/administrador/administradorVista.php");
-                                        }else{
-                                            session_start();
-                                            $_SESSION['usuario']= serialize($usuario);
                                         }
 					
 				

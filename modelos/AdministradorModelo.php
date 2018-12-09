@@ -38,27 +38,26 @@ class AdministradorModelo extends UsuariosModelo{
 	
 	/*---------------------------BLOQUEAR USUARIO ADMINISTRADOR---------------------*/
 	
-	public function bloquearUsuario($usuario){
+	public function bloquearUsuario($id){
+            
+            require_once("ConectarModelo.php");
 		
-		require_once("ConectarModelo.php");
-		try{
+            $activo='No';
+		
+	try{	
+		$conexion= ConectarModelo::conexion();
 			
-			$id= $usuario->id;
-                        $activo= $usuario->activo_usuario;
-                        
-			$conexion=ConectarModelo::conexion();
-			$sql="UPDATE usuarios SET activo_usuario=:activo WHERE id_usuario=:id";
-			
-			$consulta=$conexion->prepare($sql);
-			
-                        $consulta->bindParam(':id',$id,PDO::PARAM_INT);
-			$consulta->bindParam(':activo',$activo,PDO::PARAM_STR);
-			
-			$resultado=$consulta->execute();
-			
-			$consulta->closeCursor();
-			
-			if($resultado){
+		$sql="UPDATE usuarios SET activo_usuario=:activo WHERE id_usuario=:id";
+		
+		$consulta=$conexion->prepare($sql);
+		
+		$consulta->bindParam(':id',$id,PDO::PARAM_INT);
+                $consulta->bindParam(':activo',$activo,PDO::PARAM_STR);
+		
+		
+		$resultado=$consulta->execute();
+                
+		if($resultado){
 				
 				echo '<script type="text/javascript">
 				alert("El usuario se desactivó correctamente");
@@ -73,17 +72,74 @@ class AdministradorModelo extends UsuariosModelo{
 			
 				
 			}
-			
-		}catch(PDOException $e){
-			
-			die("No se pudo conectar con la BBDD ".$e->getMessage());
-			echo("Linea de error ".$e->getLine());
-		}
+		$consulta->closeCursor();
 		
+		
+		
+	}catch(PDOException $e){
+		
+		die ("Error ".$e->getMessage());
+			echo("Linea de error ".$e->getLine());
+	}
 		$conexion=null;
 		
 		return($resultado);
+		
+	
+        }
+        
+        public function desbloquearUsuario($id){
+            
+            require_once("ConectarModelo.php");
+		
+            $activo='Si';
+		
+	try{	
+		$conexion= ConectarModelo::conexion();
+			
+		$sql="UPDATE usuarios SET activo_usuario=:activo WHERE id_usuario=:id";
+		
+		$consulta=$conexion->prepare($sql);
+		
+		$consulta->bindParam(':id',$id,PDO::PARAM_INT);
+                $consulta->bindParam(':activo',$activo,PDO::PARAM_STR);
+		
+		
+		$resultado=$consulta->execute();
+                
+		if($resultado){
+				
+				echo '<script type="text/javascript">
+				alert("El usuario se activó correctamente");
+				</script>';
+			
+				
+			}else{
+				
+				echo '<script type="text/javascript">
+				alert("El usuario no se pudo activar");
+				</script>';
+			
+				
+			}
+		$consulta->closeCursor();
+		
+		
+		
+	}catch(PDOException $e){
+		
+		die ("Error ".$e->getMessage());
+			echo("Linea de error ".$e->getLine());
 	}
+		$conexion=null;
+		
+		return($resultado);
+		
+	
+        }
+	
+	
+
         
         public function buscarUsuarios($id,$tipo_usuario,$activo){
             

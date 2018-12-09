@@ -1,5 +1,5 @@
 <?php
-
+ 
 class UsuariosControlador
 
 	{	
@@ -73,7 +73,7 @@ class UsuariosControlador
                     
                     require_once 'modelos/UsuariosModelo.php';
                     
-                 $apellidos=$_POST['apellidos_usuario'];//." ".$_POST['apellido2_usuario'];
+                 $apellidos=$_POST['apellido1_usuario'] ." ".$_POST['apellido2_usuario'];
                 
 		
                 $usuario->setNombreUsuario($_POST['nombre_usuario']);
@@ -118,7 +118,7 @@ class UsuariosControlador
                 
                 public function  login(){
                     
-                    require_once 'vistas/usuario/login.php';
+                    require_once 'vistas/usuario/loginVista.php';
                 }
                 
                 public function loguearse(){
@@ -128,10 +128,18 @@ class UsuariosControlador
                     $usuarioAccion->setEmailUsuario($_POST['email_usuario']);
                     $usuarioAccion->setPasswordUsuario($_POST['password_usuario']);
                     $usuario=$usuarioAccion->login();
-                    
+                   if(isset($usuario)){ 
+                       
+                    session_start();
+                $_SESSION['login']=TRUE;   
+		$_SESSION['usuario']= $usuario->getIdUsuario();
+                header("Location:index.php");
+                  
                     $_GET['id']=1;
                     $controller=new ProductosControlador();
                     $controller->index();
+                    
+                   }
                 }
                 
                 public function bajaVista(){
@@ -150,11 +158,6 @@ class UsuariosControlador
                                 require_once 'index.php';
                 }
 
-                public function buscarUsuarios(){
-                    
-                    
-                }
-
                 
 
 
@@ -163,6 +166,19 @@ class UsuariosControlador
 			require_once('vistas/usuario/error.php');
 
 		} 
+                public function cerrarSesion(){
+                    session_start();
+                    $_SESSION['usuario']="";
+                    $_SESSION['login']=FALSE;
+                    session_destroy();
+                    $_SESSION['usuario']="";
+                    $_SESSION['login']=FALSE;
+                    
+                    require_once 'ProductosControlador.php';
+                    $_GET['id']=1;
+                    $controller=new ProductosControlador();
+                    $controller->index();
+                }
 
 	}
 

@@ -70,11 +70,11 @@
 
 	$controllers= array(
 
-						'Usuarios'=>['index','registrar','actualizarUsuario','listarUsuarios','listarUsuarioId','modificarUsuario','darseBajaUsuario','crearUsuario','login','loguearse','bajaVista'],
-                                                'Administrador'=>['index','listarUsuarios','listarUsuarioId','actualizarUsuario','modificarUsuario','bloquearUsuario','buscarUsuarios'],
+						'Usuarios'=>['cerrarSesion','index','registrar','actualizarUsuario','listarUsuarios','listarUsuarioId','modificarUsuario','darseBajaUsuario','crearUsuario','login','loguearse','bajaVista'],
+                                                'Administrador'=>['index','listarUsuarios','listarUsuarioId','actualizarUsuario','modificarUsuario','bloquearUsuario','desbloquearUsuario','buscarUsuarios'],
                                                 'Productos'=>['index','listarProductos','listarProductoId','nuevoProducto','guardarProducto','modificarProducto','actualizarProducto','eliminarProducto','buscarProductos'],
                                                 'Imagenes'=>['guardarImagen','eliminarImagen','actualizarImagen','nuevaImagen','modificarImagen'],
-                                                'Valoraciones'=>['listarValoraciones','listarValoracionId','nuevaValoracion','modificarValoracion','bloquearValoracion','guardarValoracion','buscarValoraciones']
+                                                'Valoraciones'=>['listarValoraciones','listarValoracionId','nuevaValoracion','modificarValoracion','bloquearValoracion','desbloquearValoracion','guardarValoracion','buscarValoraciones']
 
 						);
 
@@ -98,7 +98,7 @@
 
 	}else{// le pasa el nombre del controlador y la pagina de error
 
-		call('Usuarios', 'error');
+		call('Administrador', 'index');
 
 	}
 

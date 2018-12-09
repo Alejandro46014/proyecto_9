@@ -6,7 +6,12 @@ class AdministradorControlador{
         
     }
     
-    public function listarUsuarios(){
+    public function index(){
+        
+        require_once 'vistas/administrador/administradorVista.php';
+    }
+
+        public function listarUsuarios(){
 			
 			require_once("modelos/AdministradorModelo.php");
 			
@@ -21,20 +26,28 @@ class AdministradorControlador{
                 public function bloquearUsuario(){
                     
                     if(isset($_GET['id'])){
-                    require_once 'modelos/UsuariosModelo.php'; 
+                   
             $id=$_GET['id'];
-            $activo="No";
-            $usuario=new UsuariosModelo();
             
-            $usuario=$usuario->getById($id);
-            $usuario->setActivoUsuario($activo);
+           
              $usuarioAd=new AdministradorModelo();
-             $usuarioAd->bloquearUsuario($usuario);       
-                   /* require_once("modelos/AdministradorModelo.php");
+             $usuarioAd->bloquearUsuario($id);       
+                   
+                        $adminController=new AdministradorControlador();
+                        $adminController->listarUsuarios();
+                    }   
+                }
+                
+                 public function desbloquearUsuario(){
                     
-                    $usuarioAd=new AdministradorModelo();
-                    $usuarioAd->bloquearUsuario($usuario);
-                require_once("vistas/administrador/gestionarUsuariosVista.php");*/
+                    if(isset($_GET['id'])){
+                   
+            $id=$_GET['id'];
+            
+           
+             $usuarioAd=new AdministradorModelo();
+             $usuarioAd->desbloquearUsuario($id);       
+                   
                         $adminController=new AdministradorControlador();
                         $adminController->listarUsuarios();
                     }   
