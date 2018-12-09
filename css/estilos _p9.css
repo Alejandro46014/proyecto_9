@@ -15,7 +15,10 @@ body{
 
 /*----------------GENERALES------------------*/
 
-
+.activo{
+    color: #ffffff;
+    background-color: #9900cc;
+}
 /*clearfix*/
 
 .clearfix:before,
@@ -118,7 +121,7 @@ ul{
 @media only screen and (min-width:768px){
 	
 	.barra_contenedor{
-		width: 95%;
+		width: 90%;
 		margin-left: 30px;
 	}
 	
@@ -235,16 +238,17 @@ nav.navegacion-principal a:hover{
 	
 	
 }
+
+
 	
 	
-nav.navegacion-principal a:last-child{
-		
+
+	
+	
+nav.navegacion-principal a.enlace_usuarios{
+    
     float: right;
-		
-	
-	}
-	
-	
+}
 	
 	
 	nav.navegacion-principal a:last-child i{
@@ -303,6 +307,23 @@ div.extendido-usuarios a{
 	
 }
 
+div.registro_inicio a.registrar{
+    
+    font-family: 'asap', sans-serif;
+	color: #9900cc;
+	background-color: #ffffff;
+	border:  2px solid #9900cc;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	transition: all .6s ease;
+	
+	padding: 10px;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+}
+
 div.extendido-usuarios a:hover{
 	
 	background-color: #9900cc;
@@ -313,21 +334,37 @@ div.extendido-usuarios a:hover{
 
 @media only screen and (min-width:768px){
 	
-	
+div.registro_inicio a.registrar{
+    
+    font-family: oswald, sans-serif;
+	color: #9900cc;
+	border-radius: 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	transition: all .6s ease;
+	/*margin-right: 10px;*/
+	padding: 10px;
+	display: inline-block;
+	width: 170px;
+        margin-top: 5px;
+}
+    
 div.extendido-usuarios{
-	width: 9%;
+	width: 150px;
 	border-top-right-radius: 5px; 
 	border-top-left-radius: 5px;
 	position: relative;
-	left:91%;
+	left:90%;
 	top:57px;
 	
 }
 	div.registro_inicio{
-		
-		width:  15%;
-		
-		margin-left: 100px;
+		text-align: center;
+		width:  7%;
+                margin-top: 0;
+		margin-right: 300px;
+		float: right;
 	}
 	
 	
@@ -350,13 +387,13 @@ div.extendido-usuarios{
 
 #box{
   text-align: center;
-	margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 
 .item_box{
  margin-top: 30px;
   height: 560px;
-  display: inline-block;
+  
   
 }
 
@@ -365,12 +402,29 @@ div.extendido-usuarios{
 	.item_box{
 		margin: 30px 15px;
 		width: 25%;
+                display: inline-block;
 		
 	}
+        
+        div.foto_miniatura {
+            
+            width: 50%;
+        }
+        
+        div.foto{
+            
+            width: 100%;
+            float: left;
+        }
+        
+        div.foto img{
+            
+           width:  100%;
+        }
 }
 .item_box img{
   width: 50%;
-	margin: auto;
+margin: auto;
 
 }
 
@@ -593,7 +647,9 @@ div.col_3_formulario label{
 }
 
 /*----------------------------------GESTIONAR USUARIOS Y TABLAS---------------------*/
-
+div.tabla a{
+    text-decoration: none;
+}
     
 div.tabla{
 	overflow-x:auto;

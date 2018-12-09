@@ -21,17 +21,8 @@
 	
 	
 	<?php
-        echo $archivo=$_GET['action'];
-	$archivo=basename($_SERVER['PHP_SELF']);
-	$pagina=str_replace(".php","",$archivo);
+         $pagina=$_GET['controller'].$_GET['action'].$_GET['id'];
 	
-	if($pagina==='invitados' || $pagina==='index'){
-		
-		echo('<link rel="stylesheet" href="css/colorbox.css">');
-	}elseif($pagina==='conferencias'){
-		
-		echo('<link rel="stylesheet" href="css/lightbox.css">');
-	}
 	?>
 </head>
 
