@@ -658,113 +658,67 @@ class ProductosModelo{
 	
 	public function getByCategoria($id_categoria){
             
-		require_once("ConectarModelo.php");
-		
-		try{
-			
-			$conexion=ConectarModelo::conexion();
-			 
-			
-			$sql="SELECT * FROM productos INNER JOIN imagenes ON id_producto=imagenes.productos_id_producto "
-                                . "INNER JOIN valoraciones ON id_producto=valoraciones.productos_id_producto WHERE categorias_productos_id_categoria=:id_categoria";
-			
-			$consulta=$conexion->prepare($sql);
-			
-			$consulta->bindParam(':id_categoria',$id_categoria,PDO::PARAM_STR);
-			
-			$consulta->execute();
-			$resultado=$consulta->fetchAll();
-                        $num_filas=$consulta->rowCount();
-			$producto=new ProductosModelo();
-                        $producto->setIdProducto(0);
-			$consulta->closeCursor();
-			foreach ($resultado as $fila){
-                           
-                            if ($producto->id_producto != $fila['id_producto']){
-                             
-                                $productos[]=$producto;
-                                $valoraciones=NULL;
-                                $imagenes=NULL;
-                                
-                                $producto=new ProductosModelo();
-                                $producto->id_producto=$fila['id_producto'];
-                                $producto->nombre_producto=$fila['nombre_producto'];
-                                $producto->nombre_original_producto=$fila['nombre_original_producto'];
-                                $categoria=new CategoriasProductosModelo($fila['categorias_productos_id_categoria']);
-                                $producto->categoria=$categoria;
-                                $producto->anio_lanzamiento=$fila['anio_lanzamiento'];
-                                $producto->sinopsis=$fila['sinopsis'];
-                                $producto->director=$fila['director'];
-                                $producto->reparto=$fila['reparto'];
-                                
-                                    $imagen=new ImagenesModelo($fila['nombre_imagen'],$fila['directorio_imagen'],$fila['productos_id_producto']);
-                                    $imagen->setIdImagen($fila['id_imagen']);
-                                    $imagenes[]=$imagen;
-                                    $producto->setImagenes($imagenes);
-                                    
-                                $valoracion=new valoracionesModelo();
-                                $valoracion->setIdValoracion($fila['id_valoracion']);
-                                $valoracion->setIdProducto($fila['productos_id_producto']);
-                                $valoracion->setIdUsuario($fila['usuarios_id_usuario']);
-                                $valoracion->setNumeroVotaciones($fila['numero_votaciones']);
-                                $valoracion->setValorVotacion($fila['valor_votacion']);
-                                $valoracion->setFechaValoracion($fila['fecha_valoracion']);
-                                $valoracion->setComentario($fila['comentario']);
-                               
-                                $valoraciones[]=$valoracion;
-                                
-                                $producto->setValoraciones($valoraciones);
-                                
-                            }
-                            
-                            if ($producto->id_producto == $fila['id_producto']){
-                                
-                                
-                                    
-                                if( $fila['id_imagen'] != $imagen->getIdImagen() && $fila['productos_id_producto'] == $producto->id_producto){
-                                  
-                                   
-                                    $imagen=new ImagenesModelo($fila['nombre_imagen'],$fila['directorio_imagen'],$fila['productos_id_producto']);
-                                    $imagen->setIdImagen($fila['id_imagen']);
-                                    $imagenes[]=$imagen;
-                                    $producto->setImagenes($imagenes);
-                                }
-                                
-                            
-                             if (($valoracion->getIdValoracion() != $fila['id_valoracion']) && ($producto->id_producto == $fila['productos_id_producto'])){  
-                                    
-                                    
-                                    if ($fila['id_imagen'] % 3 == 0){
-                                        
-                                $valoracion=new valoracionesModelo();
-                                $valoracion->setIdValoracion($fila['id_valoracion']);
-                                $valoracion->setIdProducto($fila['productos_id_producto']);
-                                $valoracion->setIdUsuario($fila['usuarios_id_usuario']);
-                                $valoracion->setNumeroVotaciones($fila['numero_votaciones']);
-                                $valoracion->setValorVotacion($fila['valor_votacion']);
-                                $valoracion->setFechaValoracion($fila['fecha_valoracion']);
-                                $valoracion->setComentario($fila['comentario']);
-                               
-                                
-                                 $valoraciones[]=$valoracion;
-                                 $producto->setValoraciones($valoraciones);
-                                 
-                                    }   
-                                
-                                }
-                                
-                            }
-                        
-                           
-                        }
-		}catch(PDOException $e){
-			
-			die("No se pudo conectar con la BBDD ".$e->getMessage());
-			echo("Linea de error ".$e->getLine());
-		}
-		
-		
-		return($productos);
+        try{
+        $imagenes=[];
+        $lista_productos=[];
+        $conexion=ConectarModelo::conexion();
+        
+        $i=0;
+        
+        $sql="SELECT * FROM `productos` INNER JOIN imagenes ON productos.id_producto=imagenes.productos_id_producto WHERE categorias_productos_id_categoria=:categoria ORDER BY id_producto";
+        $consulta=$conexion->prepare($sql);
+        $consulta->execute();
+        $resultado=$consulta->fetchAll();
+        
+      
+        if ($resultado){
+            $i =0;
+            foreach ($resultado as $fila){
+                    if($i == 3){
+                        $i=0;
+                    }
+                    
+            $producto=new ProductosModelo();
+            $producto->id_producto=$fila['id_producto'];
+            $producto->categoria=new CategoriasProductosModelo($fila['categorias_productos_id_categoria']);
+            $producto->nombre_producto=$fila['nombre_producto'];
+            $producto->nombre_original_producto=$fila['nombre_original_producto'];
+            $producto->anio_lanzamiento=$fila['anio_lanzamiento'];
+            $producto->director=$fila['director'];
+            $producto->reparto=$fila['reparto'];
+            $producto->sinopsis=$fila['sinopsis'];
+            
+             if ($fila['id_producto'] == $fila['productos_id_producto']){
+            $imagen=new ImagenesModelo($fila['nombre_imagen'],$fila['directorio_imagen'],$fila['id_producto']);
+            $imagen->setIdImagen($fila['id_imagen']);
+            $imagenes[]=$imagen;
+             
+              }
+              if($i == 2){
+                  $producto->setImagenes($imagenes);
+                  $imagenes=NULL;
+              $lista_productos[]=$producto;
+              }
+               
+               $i++;
+                }
+       
+            }
+               
+               
+        $consulta->closeCursor();
+        
+        
+        
+    }catch(PDOException $e){
+        
+        die("No se pudo conectar con la BBDD ".$e->getMessage());
+        echo("Linea de error ".$e->getLine());
+    }
+    
+    $conexion=null;
+    
+    return($lista_productos);
     }
     
     
@@ -906,7 +860,7 @@ class ProductosModelo{
                     $valoracion->setValorVotacion($fila['valor_votacion']);
                     $valoracion->setNumeroVotaciones($fila['numero_votaciones']);
                     $valoracion->setIdUsuario($fila['usuarios_id_usuario']);
-                    $valoracion->setFechaValoracion($fila("fecha_valoracion");
+                    $valoracion->setFechaValoracion($fila["fecha_valoracion"]);
                     $valoracion->setComentario($fila['comentario']);
                     $valoracion->setIdUsuario($fila['bloqueada']);
                     
