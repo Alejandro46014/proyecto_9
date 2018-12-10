@@ -841,7 +841,7 @@ class ProductosModelo{
         $bloqueada="No";
     try{
         $conexion=ConectarModelo::conexion();
-        $sql="SELECT * FROM valoraciones WHERE productos_id_producto=:id AND bloqueada=:bloqueada";
+        $sql="SELECT * FROM valoraciones WHERE productos_id_producto=:id AND bloqueada=:bloqueada ORDER BY fecha_valoracion DESC LIMIT 5";
         
         $consulta=$conexion->prepare($sql);
         

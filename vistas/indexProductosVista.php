@@ -3,9 +3,10 @@
 
         
         <?php
-        session_start();
+        if(isset($valorado)){
+       session_start();
      $valorado=unserialize($_SESSION['valorado']);
-                
+        }       
       ?>
     
 <section class="seccion clearfix">
