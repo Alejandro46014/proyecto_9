@@ -668,6 +668,7 @@ class ProductosModelo{
         $sql="SELECT * FROM `productos` INNER JOIN imagenes ON productos.id_producto=imagenes.productos_id_producto WHERE categorias_productos_id_categoria=:categoria ORDER BY id_producto";
         $consulta=$conexion->prepare($sql);
         $consulta->execute();
+        $consulta->bindParam(':categoria',$id_categoria,PDO::PARAM_STR);
         $resultado=$consulta->fetchAll();
         
       
