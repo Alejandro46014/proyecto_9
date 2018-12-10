@@ -44,7 +44,7 @@ class UsuariosControlador
 		//guardar
 
 		public function crearUsuario(){
-                    require_once 'modelos/UsuariosModelo.php';
+                    
                     $apellidos=$_POST['apellido1_usuario']." ".$_POST['apellido2_usuario'];
                 
 		$usuario=new UsuariosModelo();
@@ -62,33 +62,33 @@ class UsuariosControlador
                 
                 $usuario->guardar();
                         
-                            require_once('vistas/usuario/error.php');
-			//require_once(' vistas/indexVista.php');
+                echo '<script type="text/javascript">
+                window.location.assign("../index.php");
+                    </script>';
+			
 
 		}
 
 
 
-		public function actualizarUsuario($usuario){
+		public function actualizarUsuario(){
                     
                     require_once 'modelos/UsuariosModelo.php';
                     
                  $apellidos=$_POST['apellido1_usuario'] ." ".$_POST['apellido2_usuario'];
                 
 		
-                $usuario->setNombreUsuario($_POST['nombre_usuario']);
-                $usuario->setApellidosUsuario($apellidos);
-                $usuario->setEmailUsuario($_POST['email_usuario']);
-                $usuario->setFechaNacimientoUsuario($_POST['fecha_nacimiento_usuario']);
+                $this->setNombreUsuario($_POST['nombre_usuario']);
+                $this->setApellidosUsuario($apellidos);
+                $this->setEmailUsuario($_POST['email_usuario']);
+                $this->setFechaNacimientoUsuario($_POST['fecha_nacimiento_usuario']);
+                
+                $this->setPaisUsuario($_POST['pais_usuario']);
+                $this->setPasswordUsuario($_POST['password_usuario']);
                 
                 
                 
-                $usuario->setPaisUsuario($_POST['pais_usuario']);
-                $usuario->setPasswordUsuario($_POST['password_usuario']);
-                
-                
-                
-                $usuario->actualizar($usuario);
+                $usuario->actualizar();
                         
                             require_once('vistas/usuario/error.php');
 					
@@ -204,63 +204,9 @@ class UsuariosControlador
 
 
 
-		if ($_POST['action']=='borrar') {
-
-			
-
-		}elseif ($_POST['action']=='actualizar') {
-
-			$usuario= new UsuariosModelo();
-                        $usuario->setIdUsuario($_POST['id']);
-			$usuarioController->actualizarUsuario($usuario->getIdUsuario());
-
-		}		
-
 	}
 
 
 
-	//se verifica que action esté definida
-
-	if (isset($_GET['action'])) {
-
-		if ($_GET['action']!='registrar' & $_GET['action']!='index') {
-
-			require_once('modelos/ConectarModelo.php');
-
-			$usuarioController=new UsuariosControlador();
-
-			//para eliminar
-
-			/*if($_GET['action']=='darseBajaUsuario') {		
-                            
-                            require_once('modelos/UsuariosModelo.php');
-                            
-                                $id=$_GET['id'];
-                                
-                                $usuario=new UsuariosModelo();
-                                $usuario->getById($id);
-                                $usuarioController->darseBajaUsuario($usuario);
-
-                        }else*/if ($_GET['action']=='actualizarUsuario') {//mostrar la vista update con los datos del registro actualizar
-
-				require_once('modelos/UsuariosModelo.php');				
-
-				$id=$_GET['id'];
-                                
-                                $usuario=new UsuariosModelo();
-                               $usuario->getById($id);
-                                $usuarioController->actualizarUsuario($usuario);
-				//var_dump($usuario);
-
-				//$usuarioController->actualizar();
-
-				//require_once('vistas/usuario/error.php');
-
-			}	
-
-		}	
-
-	}
-
+	
 
