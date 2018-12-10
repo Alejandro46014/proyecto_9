@@ -66,7 +66,8 @@
   </h2>
 </form>
       </div>
-      <?php foreach ($producto->getValoraciones() as $valoracion){  
+      <?php $valoraciones=$producto->getValoracionesBBDD($producto->getIdProducto()); ?>
+      <?php foreach ($valoraciones as $valoracion){  
                     $usuario=new UsuariosModelo();
                     $usuario=$usuario->getById($valoracion->getIdUsuario());
                     
