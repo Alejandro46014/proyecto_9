@@ -73,7 +73,7 @@ class UsuariosControlador
 
 		public function actualizarUsuario(){
                     
-                    require_once 'modelos/UsuariosModelo.php';
+                    
                     
                  $apellidos=$_POST['apellido1_usuario'] ." ".$_POST['apellido2_usuario'];
                 
@@ -88,7 +88,7 @@ class UsuariosControlador
                 
                 
                 
-                $usuario->actualizar();
+                $this->actualizar();
                         
                             require_once('vistas/usuario/error.php');
 					

@@ -246,7 +246,7 @@ class UsuariosModelo {
 		require_once("ConectarModelo.php");
 		
 
-		$rpassword=$_POST['rpassword']; 
+		$rpassword=$_POST['rpassword_usuario']; 
 		$nombre=$this->nombre_usuario;
 		$apellidos=$this->apellidos_usuario;
 		
@@ -406,27 +406,24 @@ class UsuariosModelo {
 	}
 	
 	/*--------------------ACTUALIZAR USUARIO---------------------*/
-	public function actualizar($usuario){
+	public function actualizar(){
             
             require_once("ConectarModelo.php");
 		
-                $id= $usuario->id;
-		$rpassword=$_POST['rpassword']; 
-		$nombre=$usuario->nombre_usuario;
-		$apellidos=$usuario->apellidos_usuario;
+        $id= $this->id;
+		$rpassword=$_POST['rpassword_usuario']; 
+		$nombre=$this->nombre_usuario;
+		$apellidos=$this->apellidos_usuario;
+		$fecha_nacimiento=$this->fecha_nacimiento_usuario;
 		
-		
-		
-		$fecha_nacimiento=$usuario->fecha_nacimiento_usuario;
-		//$fecha_alta=$this->fecha_alta_usuario;
 		
 		/*----------------MAYOR DE EDAD----------------------------*/
 		
 		$diff=strtotime(date("Y-m-d"))-strtotime($fecha_nacimiento);
 		$anys = floor($diff / (365*60*60*24));
 		
-		$pais=$usuario->pais_usuario;
-		$email=$usuario->email_usuario;
+		$pais=$this->pais_usuario;
+		$email=$this->email_usuario;
 		
 		
 		$password=$usuario->password_usuario;
@@ -719,11 +716,7 @@ class UsuariosModelo {
 							
 							
 						}
-					}elseif($usuario->tipo_usuario->getIdTipoUsuario()==1){
-						
-						
-						require_once("vistas/administrador/administradorVista.php");
-                                        }
+					}
 					
 				
 					

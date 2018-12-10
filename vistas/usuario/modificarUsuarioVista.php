@@ -1,4 +1,4 @@
-
+<?php $apellidos= explode(" ",$usuario->getApellidosUsuario()); ?>
 <section class="seccion">
 <div class="formulario clearfix">
 	<div class="cabecera_formularios">
@@ -11,11 +11,11 @@
 	</div>
 	<div class="col_2_formulario">
 	
-             <label for="apellidos"> * Primer apellido: <input type="text" name="apellido1" id="apellidouno" value="<?php echo $usuario->getApellidosUsuario(); ?>"/></label>
+             <label for="apellidos"> * Primer apellido: <input type="text" name="apellido1" id="apellidouno" value="<?php echo $apellidos[0]; ?>"/></label>
     </div>
     <div class="col_2_formulario">
 	
-             <label for="apellidos"> Segundo apellido: <input type="text" name="apellido2" id="apellidodos" value="<?php echo $usuario->getApellidosUsuario(); ?>"/></label>
+             <label for="apellidos"> Segundo apellido: <input type="text" name="apellido2" id="apellidodos" value="<?php echo $apellidos[1]; ?>"/></label>
 	</div>
 		<div class="col_2_formulario">
 	
