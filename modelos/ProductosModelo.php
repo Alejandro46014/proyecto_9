@@ -11,7 +11,7 @@ class ProductosModelo{
 
 
         public function __construct(){
-            //$this->categoria=new CategoriasProductosModelo($id_categoria);
+            
 	}
         
         
