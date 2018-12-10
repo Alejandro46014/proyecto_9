@@ -73,14 +73,17 @@ require_once('modelos/ConectarModelo.php');
         
 	
 ?>
-<?php if(isset($_SESSION['usuario']))
+<?php 
+if(isset($_SESSION['usuario'])){
 if($usuario->getTipoUsuario()->getTipoUsuario()=="Administrador"){
     
 require_once 'vistas/plantillas/footer_administrador.php';
 
-} 
-}else {
+}
+}else{
     
     require_once 'vistas/plantillas/footer.php';
-    
-}?>
+   
+
+}
+?>
