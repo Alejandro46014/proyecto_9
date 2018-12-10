@@ -3,7 +3,7 @@
 <div class="formulario clearfix">
 	<div class="cabecera_formularios">
 		<h3>Formulario modificacion usuario</h3>
-	<form method="post" action="?controller=Usuario&action=actualizarUsuario&id=<?php echo $usuario->getIdUsuario(); ?>">>
+	<form method="post" action="?controller=Usuario&action=actualizarUsuario">
 		</div>
 	<div class="col_2_formulario">
 	

@@ -29,16 +29,20 @@ require_once('modelos/ConectarModelo.php');
 	} else{
             if($usuario->getTipoUsuario()->getTipoUsuario()=="Administrador"){
                 
-               header("Location:?controller=Administrador&action=index");
+              $controller="Administrador";
+              $action="index";
                
-            }
-            header("Location:?controller=Productos&action=index&id=1");
+            }else{
+                $_GET['id']=1;
+           $controller="Productos";
+           $action="index";
         }
+    }
          
             
 
              $usuarioAc= new UsuariosModelo();
-                $usuario=$usuarioAc->getById($id);
+             $usuario=$usuarioAc->getById($id);
         require_once 'vistas/plantillas/header.php';
         
        
@@ -69,11 +73,13 @@ require_once('modelos/ConectarModelo.php');
         
 	
 ?>
-<?php if($usuario->getTipoUsuario()->getTipoUsuario()=="Administrador"){
+<?php if(isset($_SESSION['usuario']))
+if($usuario->getTipoUsuario()->getTipoUsuario()=="Administrador"){
     
 require_once 'vistas/plantillas/footer_administrador.php';
 
-} else {
+} 
+}else {
     
     require_once 'vistas/plantillas/footer.php';
     
