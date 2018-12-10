@@ -12,7 +12,7 @@ require_once 'modelos/UsuariosModelo.php';
                 $usuario=$usuarioAc->getById($id);
                 }
 
-require_once 'modelos/UsuariosModelo.php';
+require_once ('modelos/UsuariosModelo.php');
 require_once('modelos/ConectarModelo.php');
 
 
