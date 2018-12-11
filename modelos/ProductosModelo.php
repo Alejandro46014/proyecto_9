@@ -667,8 +667,9 @@ class ProductosModelo{
         
         $sql="SELECT * FROM `productos` INNER JOIN imagenes ON productos.id_producto=imagenes.productos_id_producto WHERE categorias_productos_id_categoria=:categoria ORDER BY id_producto";
         $consulta=$conexion->prepare($sql);
-        $consulta->execute();
+        
         $consulta->bindParam(':categoria',$id_categoria,PDO::PARAM_STR);
+        $consulta->execute();
         $resultado=$consulta->fetchAll();
         
       
@@ -721,8 +722,7 @@ class ProductosModelo{
     
     return($lista_productos);
     }
-    
-    
+        
         /*---------------------------Buscar productos------------------------------*/
         
         public function buscar($nombre,$categoria,$anio_lanzamiento){
@@ -829,12 +829,12 @@ class ProductosModelo{
 		$conexion=null;
 		
 		return$valoracion_media;
-    }
-    
-    /*--------------------------getValoracionesBBDD---------------- */
+	}
+        
+         /*--------------------------getValoracionesBBDD---------------- */
 
 
-    public function getValocionesBBDD(){
+    public function getValoracionesBBDD(){
         require_once("ConectarModelo.php");
         
         $valoraciones=[];

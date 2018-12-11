@@ -73,31 +73,28 @@ class UsuariosControlador
 
 		public function actualizarUsuario(){
                     
-                    
-                    
-                 $apellidos=$_POST['apellido1_usuario'] ." ".$_POST['apellido2_usuario'];
-                
-		
-                $this->setNombreUsuario($_POST['nombre_usuario']);
-                $this->setApellidosUsuario($apellidos);
-                $this->setEmailUsuario($_POST['email_usuario']);
-                $this->setFechaNacimientoUsuario($_POST['fecha_nacimiento_usuario']);
-                
-                $this->setPaisUsuario($_POST['pais_usuario']);
-                $this->setPasswordUsuario($_POST['password_usuario']);
-                
-                
-                
-                $this->actualizar();
-                        
-                            require_once('vistas/usuario/error.php');
-					
-			
+            $usuario=new UsuariosModelo();
 
-			//header('Location: vistas/usuario/indexVista.php');
+         $apellidos=$_POST['apellido1_usuario'] ." ".$_POST['apellido2_usuario'];
+        
 
-		}
-
+        $usuario->setNombreUsuario($_POST['nombre_usuario']);
+        $usuario->setApellidosUsuario($apellidos);
+        $usuario->setEmailUsuario($_POST['email_usuario']);
+        $usuario->setFechaNacimientoUsuario($_POST['fecha_nacimiento_usuario']);
+        
+        $usuario->setPaisUsuario($_POST['pais_usuario']);
+        $usuario->setPasswordUsuario($_POST['password_usuario']);
+        
+        
+        
+        $usuario=$usuario->actualizar();
+        if(isset($usuario)){
+        $_GET['id']=1;
+        $controller=new ProductosControlador();
+        $controller->index();
+                
+        }
 
 
 		public function modificarUsuario(){
@@ -133,7 +130,7 @@ class UsuariosControlador
                     session_start();
                 $_SESSION['login']=TRUE;   
 		$_SESSION['usuario']= $usuario->getIdUsuario();
-                header("Location:index.php");
+                
                   
                     $_GET['id']=1;
                     $controller=new ProductosControlador();

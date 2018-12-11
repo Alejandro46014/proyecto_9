@@ -1,8 +1,10 @@
-
-
-
-        
-        <?php
+<?php
+      if(isset($_SESSION['usuario'])){
+          session_start();
+          $id=$_SESSION['usuario'];
+          $usuario=new UsuariosModelo();
+          $usuario=$usuario->getById($id);
+      }
         if(isset($valorado)){
        session_start();
      $valorado=unserialize($_SESSION['valorado']);
@@ -11,6 +13,7 @@
     
 <section class="seccion clearfix">
 	<h1>Ultimas peliculas valoradas</h1>
+       
 <div id="box">
 
     <?php
@@ -37,7 +40,16 @@
       
         
       <div class="item_title">
-        <span><?php echo $producto->getNombreProducto();  ?></span>
+      
+      <?php if($_SESSION['login']==true){ ?>
+      
+                <a href="?controller=Valoraciones&action=nuevaValoracion&id=<?php echo $producto->getIdProducto();?>"> 
+                <span><?php echo $producto->getNombreProducto();  ?></span>
+        </a>
+        <?php }else{ ?>
+                <span><?php echo $producto->getNombreProducto();  ?></span>
+        
+        <?php } ?>
       </div>
 
       <div class="item_desc">
@@ -84,15 +96,15 @@
 			<div class="valor_valoracion">
 				<form>
   <p class="clasificacion">Valor votación:<?php echo $valoracion->getValorVotacion(); ?>
-    <input id="radio1" type="radio" name="estrellas" value="5"><!--
+    <input id="radio1" type="radio" name="estrellas" value="5"/><!--
     --><label for="radio1">★</label><!--
-    --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+    --><input id="radio2" type="radio" name="estrellas" value="4"/><!--
     --><label for="radio2">★</label><!--
-    --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+    --><input id="radio3" type="radio" name="estrellas" value="3"/><!--
     --><label for="radio3">★</label><!--
-    --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+    --><input id="radio4" type="radio" name="estrellas" value="2"/><!--
     --><label for="radio4">★</label><!--
-    --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+    --><input id="radio5" type="radio" name="estrellas" value="1"/><!--
     --><label for="radio5">★</label>
   </p>
 </form>

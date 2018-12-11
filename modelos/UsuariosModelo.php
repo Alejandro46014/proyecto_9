@@ -1,5 +1,4 @@
 <?php
-
 require_once 'TipoUsuariosModelo.php';
 
 class UsuariosModelo {
@@ -401,7 +400,7 @@ class UsuariosModelo {
 		}
 		$conexion=null;
 		
-		return($usuario);
+		return($resultado);
 	}
 	}
 	
@@ -410,7 +409,7 @@ class UsuariosModelo {
             
             require_once("ConectarModelo.php");
 		
-        $id= $this->id;
+                $id= $this->id;
 		$rpassword=$_POST['rpassword_usuario']; 
 		$nombre=$this->nombre_usuario;
 		$apellidos=$this->apellidos_usuario;
@@ -426,7 +425,7 @@ class UsuariosModelo {
 		$email=$this->email_usuario;
 		
 		
-		$password=$usuario->password_usuario;
+		$password=$this->password_usuario;
 		
 	
 		
@@ -717,7 +716,6 @@ class UsuariosModelo {
 							
 						}
 					}
-					
 				
 					
 				}
@@ -735,5 +733,5 @@ class UsuariosModelo {
 	}
 	
 }
-
+?>
 
