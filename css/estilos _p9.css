@@ -362,7 +362,7 @@ div.extendido-usuarios{
 	div.registro_inicio{
 		text-align: center;
 		width:  7%;
-        margin-top: 0;
+                margin-top: 0;
 		margin-right: 300px;
 		float: right;
 	}
@@ -392,28 +392,41 @@ div.extendido-usuarios{
 
 .item_box{
  margin-top: 30px;
-  height: 560px;
-  
+  height: auto;
+  overflow: hidden;
   
 }
 
 @media only screen and (min-width:768px){
 	
+        .item_producto{
+        
+        width:50%;
+        margin:20px auto;
+        }
+        .item_producto img{
+        
+        width:50%;
+        }
+        
 	.item_box{
-		margin: 30px 15px;
+		margin: 50px 15px;
 		width: 25%;
                 display: inline-block;
+                height:1500px:
+                
+                
 		
 	}
         
         div.foto_miniatura {
             
-            width: 50%;
+            width: 100%;
         }
         
         div.foto{
             
-            width: 100%;
+            width: 50%;
             float: left;
         }
         
@@ -460,6 +473,14 @@ h2.clasificacion{
     direction: rtl;/* right to left */
     unicode-bidi: bidi-override;/* bidi de bidireccional */
   }
+  
+span.estrella_fija{
+        color: green;
+        font-size: 1.5em;
+        text-overflow: ellipsis;
+        white-space: normal;
+}
+
 label{ 
 	
 	color:#F90005;
