@@ -133,7 +133,7 @@ class UsuariosControlador
                     session_start();
                 $_SESSION['login']=TRUE;   
 		$_SESSION['usuario']= $usuario->getIdUsuario();
-                header("Location:index.php");
+               
                   
                     $_GET['id']=1;
                     $controller=new ProductosControlador();
