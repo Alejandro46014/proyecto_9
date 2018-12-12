@@ -6,7 +6,7 @@
           $usuario=$usuario->getById($id);
         ?>
         <div class="formulario_small clearfix">
-        <h3>Introduce tu valoración</h3> 
+        <h2>Introduce tu valoración</h2> 
         <form method="post" action="?controller=Valoraciones&action=guardarValoracion&id=<?php  echo $producto->getIdProducto();?>">
            <div class="col_formulario">
            <input type="hidden" name="id_usuario" value="<?php echo $usuario->getIdUsuario();  ?>"/>

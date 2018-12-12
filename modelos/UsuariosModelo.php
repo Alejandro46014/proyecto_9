@@ -406,11 +406,11 @@ class UsuariosModelo {
 	}
 	
 	/*--------------------ACTUALIZAR USUARIO---------------------*/
-	public function actualizar(){
+	public function actualizar($id){
             
             require_once("ConectarModelo.php");
 		
-                $id= $this->id;
+          
 		$rpassword=$_POST['rpassword_usuario']; 
 		$nombre=$this->nombre_usuario;
 		$apellidos=$this->apellidos_usuario;
@@ -518,7 +518,7 @@ class UsuariosModelo {
 			echo '<script type="text/javascript">
 				alert("Verifique los campos he intentelo de nuevo");
 				</script>';
-                        exit();
+                        
 			
                 }else{
                 
@@ -546,11 +546,11 @@ class UsuariosModelo {
 			if($resultado){
 				
 				echo('<script type="text/javascript">
-				alert("Sus datos se modificaron correctamente correctamente ");
+				alert("Sus datos se modificaron correctamente ");
 				</script>');
 			}else{
 				echo('<script type="text/javascript">
-				alert("Hubo un error durante el proceso de alta, contacte con el administrador ");
+				alert("Hubo un error durante el proceso de modificación, contacte con el administrador ");
 				</script>');
 			}
 			

@@ -69,10 +69,12 @@ class UsuariosControlador
 
 
 
-		public function actualizarUsuario(){
-                    
-            $usuario=new UsuariosModelo();
+	public function actualizarUsuario(){
+        if(isset($_GET['id'])){    
 
+            $id=$_GET['id'];
+        
+            $usuario=new UsuariosModelo();
          $apellidos=$_POST['apellido1_usuario'] ." ".$_POST['apellido2_usuario'];
         
 
@@ -86,12 +88,10 @@ class UsuariosControlador
         
         
         
-        $usuario=$usuario->actualizar();
+        $usuario=$usuario->actualizar($id);
         
-        if(isset($usuario)){
-        $_GET['id']=1;
-        $controller=new ProductosControlador();
-        $controller->index();
+        $controller=new UsuariosControlador();
+        $controller->modificarUsuario();
                 
         }
     }

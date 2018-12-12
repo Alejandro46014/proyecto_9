@@ -100,7 +100,7 @@ class ProductosControlador{
             
             $controller=new ProductosControlador();
             $controller->modificarProducto();
-           // header("Location:?controller=Productos&action=modificarProducto");
+           
 
             }
         }
