@@ -95,7 +95,7 @@ class UsuariosControlador
         $controller->index();
                 
         }
-
+    }
 
 		public function modificarUsuario(){
                        
@@ -163,19 +163,25 @@ class UsuariosControlador
 			require_once('vistas/usuario/error.php');
 
 		} 
-                public function cerrarSesion(){
-                    session_start();
-                    $_SESSION['usuario']="";
-                    $_SESSION['login']=FALSE;
-                    session_destroy();
-                    $_SESSION['usuario']="";
-                    $_SESSION['login']=FALSE;
-                    
-                    require_once 'ProductosControlador.php';
-                    $_GET['id']=1;
-                    $controller=new ProductosControlador();
-                    $controller->index();
-                }
+        public function cerrarSesion(){
+            session_start();
+            $_SESSION['usuario']="";
+            $_SESSION['login']=FALSE;
+            session_destroy();
+            $_SESSION['usuario']="";
+            $_SESSION['login']=FALSE;
+            
+            echo '<script type="text/javascript">
+    window.location.assign("index.php");
+    </script>';
+                                        
+            require_once 'ProductosControlador.php';
+            $_GET['id']=1;
+            $controller=new ProductosControlador();
+            $controller->index();
+        }
+
+
 
 	}
 

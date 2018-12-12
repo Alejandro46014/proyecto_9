@@ -8,7 +8,7 @@ class ConectarModelo{
 			
 			$conexion=new PDO("mysql:host=localhost;dbname=evaluaweb","alejandro","3424");
 			$conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-			
+			$conexion->exec("set names utf8");
 		}catch(Exception $e){
 				
 			die ("Error ".$e->getMessage());
