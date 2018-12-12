@@ -457,6 +457,12 @@ margin: auto;
   white-space: normal;
 }
 
+.item_desc a{
+  width: 100%;
+  text-align:center;
+  
+}
+
 .item_price{
   text-align: center;
   font-weight: bold;
