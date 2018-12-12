@@ -8,12 +8,12 @@
         if(isset($valorado)){
        session_start();
      $valorado=unserialize($_SESSION['valorado']);
-        }       
+        }
       ?>
-    
+
 <section class="seccion clearfix">
 	<h1>Ultimas peliculas valoradas</h1>
-       
+
 <div id="box">
 
     <?php
@@ -21,34 +21,34 @@
        if($producto->getIdProducto() != 0){ ?>
 
     <div class="item_box">
-        <?php foreach($producto->getImagenes() as $imagen) { 
+        <?php foreach($producto->getImagenes() as $imagen) {
             if($imagen->getNombreImagen() == "Portada"){
             ?>
         <img src="<?php echo $imagen->getDirectorioImagen();  ?>" alt="Portada"/>
-        
-            <?php } }?> 
+
+            <?php } }?>
             <div class="foto_miniatura clearfix">
-            <?php foreach($producto->getImagenes() as $imagen) {  
+            <?php foreach($producto->getImagenes() as $imagen) {
             if($imagen->getNombreImagen()=="Escena") { ?>
-        
+
           <div class="foto">
           <img src="<?php echo $imagen->getDirectorioImagen();  ?>" alt="Escena"/>
-          
+
           </div><!--div .foto-->
             <?php } }  ?>
       </div><!--div .foto_miniatura-->
-      
-        
+
+
       <div class="item_title">
-      
+
       <?php if($_SESSION['login']==true){ ?>
-      
-                <a href="?controller=Valoraciones&action=nuevaValoracion&id=<?php echo $producto->getIdProducto();?>"> 
+
+                <a href="?controller=Valoraciones&action=nuevaValoracion&id=<?php echo $producto->getIdProducto();?>">
                 <span><?php echo $producto->getNombreProducto();  ?></span>
         </a>
         <?php }else{ ?>
                 <span><?php echo $producto->getNombreProducto();  ?></span>
-        
+
         <?php } ?>
       </div>
 
@@ -58,32 +58,30 @@
 
       <div class="item_valoracion">
         <form>
-            <?php 
+            <?php
             $valoracion_media=$producto->getValoracionMedia();
             $media= round($valoracion_media->getValorVotacion() / $valoracion_media->getNumeroVotaciones());
-            
+
             ?>
 			<h4>Valoración media <?php echo $media;  ?></h4>
                         <p><?php echo $valoracion_media->getVotos();  ?></p>
   <h2 class="clasificacion">
-    <input id="radio1" type="radio" name="estrellas" value="5"><!--
-    --><label for="radio1">★</label><!--
-    --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-    --><label for="radio2">★</label><!--
-    --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-    --><label for="radio3">★</label><!--
-    --><input id="radio4" type="radio" name="estrellas" value="2" selected><!--
-    --><label for="radio4">★</label><!--
-    --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-    --><label for="radio5">★</label>
+    <?php
+    $cont=0;
+
+    while($cont<$media){
+    echo "<label>★</label>";
+    $cont ++;
+    }
+   ?>
   </h2>
 </form>
       </div>
       <?php $valoraciones=$producto->getValoracionesBBDD($producto->getIdProducto()); ?>
-      <?php foreach ($valoraciones as $valoracion){  
+      <?php foreach ($valoraciones as $valoracion){
                     $usuario=new UsuariosModelo();
                     $usuario=$usuario->getById($valoracion->getIdUsuario());
-                    
+
                     ?>
 		<div class="item_comentarios clearfix">
 		<div class="autor_comentario">
@@ -96,16 +94,14 @@
 			<div class="valor_valoracion">
 				<form>
   <p class="clasificacion">Valor votación:<?php echo $valoracion->getValorVotacion(); ?>
-    <input id="radio1" type="radio" name="estrellas" value="5"/><!--
-    --><label for="radio1">★</label><!--
-    --><input id="radio2" type="radio" name="estrellas" value="4"/><!--
-    --><label for="radio2">★</label><!--
-    --><input id="radio3" type="radio" name="estrellas" value="3"/><!--
-    --><label for="radio3">★</label><!--
-    --><input id="radio4" type="radio" name="estrellas" value="2"/><!--
-    --><label for="radio4">★</label><!--
-    --><input id="radio5" type="radio" name="estrellas" value="1"/><!--
-    --><label for="radio5">★</label>
+    <?php
+    $cont=0;
+    while($valoracion->getValorVotacion()>$cont){
+      echo "<label>★</label>";
+      $cont ++;
+    }
+
+    ?>
   </p>
 </form>
 				</div>
@@ -113,13 +109,13 @@
 				<p> <?php echo $valoracion->getFechaValoracion();  ?></p>
 				</div>
 			</div>
-      
+
 		</div>
       <?php } ?>
     </div><!--.item_box-->
 
-      
-      
+
+
    <?php } }  ?>
 </div><!--#BOX-->
 </section>
