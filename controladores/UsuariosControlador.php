@@ -44,7 +44,7 @@ class UsuariosControlador
 		//guardar
 
 		public function crearUsuario(){
-                    
+                    require_once 'modelos/UsuariosModelo.php';
                     $apellidos=$_POST['apellido1_usuario']." ".$_POST['apellido2_usuario'];
                 
 		$usuario=new UsuariosModelo();
@@ -62,10 +62,8 @@ class UsuariosControlador
                 
                 $usuario->guardar();
                         
-                echo '<script type="text/javascript">
-                window.location.assign("../index.php");
-                    </script>';
-			
+                            require_once('vistas/usuario/error.php');
+			//require_once(' vistas/indexVista.php');
 
 		}
 
@@ -89,6 +87,7 @@ class UsuariosControlador
         
         
         $usuario=$usuario->actualizar();
+        
         if(isset($usuario)){
         $_GET['id']=1;
         $controller=new ProductosControlador();
@@ -96,6 +95,8 @@ class UsuariosControlador
                 
         }
     }
+
+
 
 		public function modificarUsuario(){
                        
@@ -130,7 +131,7 @@ class UsuariosControlador
                     session_start();
                 $_SESSION['login']=TRUE;   
 		$_SESSION['usuario']= $usuario->getIdUsuario();
-                
+                header("Location:index.php");
                   
                     $_GET['id']=1;
                     $controller=new ProductosControlador();
@@ -163,25 +164,25 @@ class UsuariosControlador
 			require_once('vistas/usuario/error.php');
 
 		} 
-        public function cerrarSesion(){
-            session_start();
-            $_SESSION['usuario']="";
-            $_SESSION['login']=FALSE;
-            session_destroy();
-            $_SESSION['usuario']="";
-            $_SESSION['login']=FALSE;
-            
-            echo '<script type="text/javascript">
-    window.location.assign("index.php");
-    </script>';
-                                        
-            require_once 'ProductosControlador.php';
-            $_GET['id']=1;
-            $controller=new ProductosControlador();
-            $controller->index();
-        }
+                public function cerrarSesion(){
+                    session_start();
+                    $_SESSION['usuario']="";
+                    $_SESSION['login']=FALSE;
+                    session_destroy();
+                    $_SESSION['usuario']="";
+                    $_SESSION['login']=FALSE;
+                    
+                    echo '<script type="text/javascript">
+			window.location.assign("index.php");
+			</script>';
+                                                
+                    require_once 'ProductosControlador.php';
+                    $_GET['id']=1;
+                    $controller=new ProductosControlador();
+                    $controller->index();
+                }
 
-
+	
 
 	}
 
@@ -197,19 +198,48 @@ class UsuariosControlador
 
 		//se añade el archivo usuario.php
 
-		require_once('../modelos/UsuariosModelo.php');
+		require_once('modelos/UsuariosModelo.php');
 
 		
 
 		//se añade el archivo para la conexion
 
-		require_once('../modelos/ConectarModelo.php');
+		require_once('modelos/ConectarModelo.php');
 
 
+
+		
 
 	}
 
 
 
-	
+	//se verifica que action esté definida
+
+	if (isset($_GET['action'])) {
+
+		if ($_GET['action']!='registrar' & $_GET['action']!='index') {
+
+			require_once('modelos/ConectarModelo.php');
+
+			$usuarioController=new UsuariosControlador();
+
+			//para eliminar
+
+			/*if($_GET['action']=='darseBajaUsuario') {		
+                            
+                            require_once('modelos/UsuariosModelo.php');
+                            
+                                $id=$_GET['id'];
+                                
+                                $usuario=new UsuariosModelo();
+                                $usuario->getById($id);
+                                $usuarioController->darseBajaUsuario($usuario);
+
+                        }else*/
+
+		}	
+
+	}
+
 

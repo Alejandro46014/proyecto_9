@@ -1,4 +1,5 @@
 <?php
+
 require_once 'TipoUsuariosModelo.php';
 
 class UsuariosModelo {
@@ -245,7 +246,7 @@ class UsuariosModelo {
 		require_once("ConectarModelo.php");
 		
 
-		$rpassword=$_POST['rpassword_usuario']; 
+		$rpassword=$_POST['rpassword']; 
 		$nombre=$this->nombre_usuario;
 		$apellidos=$this->apellidos_usuario;
 		
@@ -400,7 +401,7 @@ class UsuariosModelo {
 		}
 		$conexion=null;
 		
-		return($resultado);
+		return($usuario);
 	}
 	}
 	
@@ -413,8 +414,11 @@ class UsuariosModelo {
 		$rpassword=$_POST['rpassword_usuario']; 
 		$nombre=$this->nombre_usuario;
 		$apellidos=$this->apellidos_usuario;
-		$fecha_nacimiento=$this->fecha_nacimiento_usuario;
 		
+		
+		
+		$fecha_nacimiento=$this->fecha_nacimiento_usuario;
+		//$fecha_alta=$this->fecha_alta_usuario;
 		
 		/*----------------MAYOR DE EDAD----------------------------*/
 		
@@ -514,6 +518,7 @@ class UsuariosModelo {
 			echo '<script type="text/javascript">
 				alert("Verifique los campos he intentelo de nuevo");
 				</script>';
+                        exit();
 			
                 }else{
                 
@@ -531,7 +536,7 @@ class UsuariosModelo {
 			
 			$consulta->bindParam(':password',$password,PDO::PARAM_STR);
 			$consulta->bindParam(':email',$email,PDO::PARAM_STR);
-                        $consulta->bindParam(':id',$id,PDO::PARAM_STR);
+                        $consulta->bindParam(':id',$id,PDO::PARAM_INT);
 			
 			
 			$resultado=$consulta->execute();
@@ -715,7 +720,12 @@ class UsuariosModelo {
 							
 							
 						}
-					}
+					}elseif($usuario->tipo_usuario->getIdTipoUsuario()==1){
+						
+						
+						require_once("vistas/administrador/administradorVista.php");
+                                        }
+					
 				
 					
 				}
@@ -733,5 +743,5 @@ class UsuariosModelo {
 	}
 	
 }
-?>
+
 

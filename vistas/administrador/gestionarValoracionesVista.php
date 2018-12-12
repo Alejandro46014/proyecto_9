@@ -1,25 +1,26 @@
 
-	<!--contenido principal-->
-	
+
+
 <section class="seccion">
 	<div class="formulario clearfix">
-		<form action="?controller=Valoraciones&action=buscarValoraciones" method="post">
+		<form action="?controller=Administrador&action=buscarUsuarios" method="post">
 		<div class="col_3_formulario">
 			<label for="id_usuario">Id usuario:<br> <input type="number" id="id_usuario" name="id_usuario"/></label>
 		</div>
 		<div class="col_3_formulario">
-			<label for="estado_valoracion">Estado valoración:<br>
-                <select name="estado_valoracion">
-                    <option value="">--Estado valoracion--</option>
-                    <option value="Si">Bloqueada</option>
-                    <option value="No">Activa</option>
-                    
+			<label for="tipo_usuario" >Tipo Usuario:<br>
+                <select name="tipo_usuario" class="tipo_usuario">
+                    <option value="">--Tipo usuario--</option>
+                    <option value="2">Usuario novel</option>
+                    <option value="3">Usuario experto</option>
+                    <option value="4">Usuario profesional</option>
                     
                 </select>
             </label>
 		</div>
-		<div class="col_3_formulario">
-			<label for="id_producto">Id Producto:<br><input type="number" id="id_producto" name="id_producto"/></label>
+		<div class="col_3_formulario ">
+			<label for="activo_usuario">Estado usuario:<input type="checkbox" id="activo_usuario" name="activo_usuario" value="Si" class="activo_usuario"/>Activo
+				<input type="checkbox" id="activo_usuario" name="activo_usuario" value="No"/>Inactivo</label>
 		</div>
 			<div class="col_formulario">
 				<input type="submit" name="buscar" value="Buscar" class="buttom_green"/>
@@ -32,29 +33,40 @@
 		<table class="tabla">
 	
 	<tr>
-		<th>Id valoración</th>
-                <th>Id usuario</th>
-                <th>Id producto</th>
-		<th>Comentario</th>
-		<th>Valor votación</th>
-		<th>Numero votaciones</th>
-                <th>Bloqueada</th>
-		
+		<th>Id</th>
+		<th>Nombre</th>
+		<th>Apellidos</th>
+		<th>Email</th>
+		<th>Fecha nacimiento</td>
+		<th>País</th>
+		<th>Fecha alta</th>
+		<th>Activo</th>
+		<th>Tipo usuario</th>
 		
 		<th colspan=2 >Acciones</th>
 	</tr>
-<?php foreach ($valoraciones as $valoracion) { ?>
+<?php foreach ($usuarios as $usuario) { ?>
 		
 			<tr>
-                                <td><?php echo $valoracion->getIdvaloracion(); ?></td>
-				<td><?php echo $valoracion->getIdUsuario(); ?></td>
-				<td><?php echo $valoracion->getIdProducto(); ?></td>
-				<td><?php echo $valoracion->getComentario();?></td>
-				<td><?php echo $valoracion->getValorVotacion();?></td>
-                                <td><?php echo $valoracion->getNumeroVotaciones();?></td>
-                                <td><?php echo $valoracion->getBloqueada();?></td>
-			
-				<td><a href="?controller=Valoraciones&action=bloquearValoracion&id=<?php echo $valoracion->getIdValoracion();  ?>">Bloquear</a> </td>
+				<td><?php echo $usuario->getIdUsuario(); ?></td>
+				<td><?php echo $usuario->getNombreUsuario(); ?></td>
+				<td><?php echo $usuario->getApellidosUsuario(); ?></td>
+				<td><?php echo $usuario->getEmailUsuario();?></td>
+				<td><?php echo $usuario->getFechaNacimientoUsuario();?></td>
+				<td><?php echo $usuario->getPaisUsuario();?></td>
+				<td><?php echo $usuario->getFechaAltaUsuario();?></td>
+				<td><?php echo $usuario->getActivoUsuario();?></td>
+				<td><?php echo $usuario->getTipoUsuario()->getTipoUsuario;?></td>
+				
+				<?php if($usuario->getActivoUsuario()=="Si") { ?>
+                                
+				<td><a href="?controller=Administrador&action=bloquearUsuario&id=<?php echo $usuario->getIdUsuario(); ?>">Bloquear</a> </td>	
+                                   
+                                <?php }elseif($usuario->getActivoUsuario()=="No"){  ?>
+                                
+                                <td><a href="?controller=Administrador&action=desbloquearUsuario&id=<?php echo $usuario->getIdUsuario(); ?>">Desbloquear</a> </td>
+                                
+                                <?php } ?>
 			</tr>
 			
 	<?php } ?>
@@ -62,7 +74,7 @@
 		</div>
 	</div>
 	
-	</section>
+	</section><!--fin contenido-->
 	
 	
 	

@@ -9,6 +9,13 @@ class ValoracionesControlador{
     public function nuevaValoracion(){
         if (isset($_GET['id'])){
             $id_producto=$_GET['id'];
+            $id_usuario=$_GET['id_usuario']
+;            
+            require_once("modelos/ProductosModelo.php");
+            require_once("modelos/UsuariosModelo.php");
+            
+            $usuario=new UsuariosModelo();
+            $usuario=$usuario->getById("id_usuario");
             
             $producto=new ProductosModelo();
             $producto=$producto->getById($id_producto);
@@ -17,14 +24,22 @@ class ValoracionesControlador{
         }
     }
     public function guardarValoracion(){
-        require_once 'controladores/ProductosControlador.php';
+    
+    require_once("controladores/ProductosControlador.php");
+     require_once("modelos/ProductosModelo.php");
+      require_once("modelos/UsuariosModelo.php");
+        
         if (isset($_GET['id'])){
             if (isset($_POST['valorar'])){
-       $id_producto=$_GET['id'];
+            
+          $id_producto=$_GET['id'];
         
        $id_usuario=$_POST['id_usuario'];
        $usuario=new UsuariosModelo();
        $usuario=$usuario->getById($id_usuario);
+       
+       echo $usuario->getNombreUsuario();
+       
        $producto=new ProductosModelo();
        $producto=$producto->getById($id_producto);
        $valoracion=new valoracionesModelo();
@@ -35,17 +50,26 @@ class ValoracionesControlador{
        $valoracion->setFechaValoracion($fecha_valoracion);
        
        
+       
       $valorado= $valoracion->valorar($usuario,$producto,$valoracion);
+      
+      
+      
+      
         }
         }
-        session_start();
-        //$valorado= serialize($valorado);
-        $_SESSION['valorado']=serialize($valorado);
-        $_SESSION['producto']=serialize($producto);
-        $_SESSION['usuario']=serialize($usuario);
-        header("Location:?controller=Productos&action=index&id=1");
         
-     
+        if(isset($valorado)){
+       session_start();
+        
+        $_SESSION['valorado']=serialize($valorado);
+        
+        
+        $_GET['id']=$producto->getCategoria()->getIdCategoria();
+        $controller=new ProductosControlador();
+        $controller->index();
+        
+     }
     }
     public function listarValoraciones(){
         

@@ -58,9 +58,15 @@
 				<td><?php echo $usuario->getActivoUsuario();?></td>
 				<td><?php echo $usuario->getTipoUsuario()->getTipoUsuario;?></td>
 				
-				
-				<td><a href="?controller=Usuarios&action=modificarUsuario&id=<?php echo $usuario->getIdUsuario(); ?>">Actualizar</a> </td>
-				<td><a href="?controller=Administrador&action=bloquearUsuario&id=<?php echo $usuario->getIdUsuario(); ?>">Bloquear</a> </td>
+				<?php if($usuario->getActivoUsuario()=="Si") { ?>
+                                
+				<td><a href="?controller=Administrador&action=bloquearUsuario&id=<?php echo $usuario->getIdUsuario(); ?>">Bloquear</a> </td>	
+                                   
+                                <?php }elseif($usuario->getActivoUsuario()=="No"){  ?>
+                                
+                                <td><a href="?controller=Administrador&action=desbloquearUsuario&id=<?php echo $usuario->getIdUsuario(); ?>">Desbloquear</a> </td>
+                                
+                                <?php } ?>
 			</tr>
 			
 	<?php } ?>
