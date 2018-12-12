@@ -863,7 +863,7 @@ class ProductosModelo{
                     $valoracion->setIdUsuario($fila['usuarios_id_usuario']);
                     $valoracion->setFechaValoracion($fila["fecha_valoracion"]);
                     $valoracion->setComentario($fila['comentario']);
-                    $valoracion->setIdUsuario($fila['bloqueada']);
+                  
                     
                 $valoraciones[]=$valoracion;    
                 }

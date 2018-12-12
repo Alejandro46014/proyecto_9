@@ -3,7 +3,7 @@
 <div class="formulario clearfix">
 	<div class="cabecera_formularios">
 		<h3>Formulario modificacion usuario</h3>
-	<form method="post" action="?controller=Usuario&action=actualizarUsuario">
+	<form method="post" action="?controller=Usuarios&action=actualizarUsuario&id=<?php echo $usuario->getIdUsuario();  ?>">
 		</div>
 	<div class="col_2_formulario">
 	
@@ -11,11 +11,11 @@
 	</div>
 	<div class="col_2_formulario">
 	
-             <label for="apellidos"> * Primer apellido: <input type="text" name="apellido1" id="apellidouno" value="<?php echo $apellidos[0]; ?>"/></label>
+             <label for="apellidos"> * Primer apellido: <input type="text" name="apellido1_usuario" id="apellidouno" value="<?php echo $apellidos[0]; ?>"/></label>
     </div>
     <div class="col_2_formulario">
 	
-             <label for="apellidos"> Segundo apellido: <input type="text" name="apellido2" id="apellidodos" value="<?php echo $apellidos[1]; ?>"/></label>
+             <label for="apellidos"> Segundo apellido: <input type="text" name="apellido2_usuario" id="apellidodos" value="<?php echo $apellidos[1]; ?>"/></label>
 	</div>
 		<div class="col_2_formulario">
 	

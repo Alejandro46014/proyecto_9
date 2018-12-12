@@ -9,13 +9,13 @@ class ValoracionesControlador{
     public function nuevaValoracion(){
         if (isset($_GET['id'])){
             $id_producto=$_GET['id'];
-            $id_usuario=$_GET['id_usuario']
+            //$id_usuario=$_POST['id_usuario']
 ;            
             require_once("modelos/ProductosModelo.php");
             require_once("modelos/UsuariosModelo.php");
             
-            $usuario=new UsuariosModelo();
-            $usuario=$usuario->getById("id_usuario");
+           // $usuario=new UsuariosModelo();
+            //$usuario=$usuario->getById($id_usuario);
             
             $producto=new ProductosModelo();
             $producto=$producto->getById($id_producto);
@@ -38,14 +38,15 @@ class ValoracionesControlador{
        $usuario=new UsuariosModelo();
        $usuario=$usuario->getById($id_usuario);
        
-       echo $usuario->getNombreUsuario();
+       
        
        $producto=new ProductosModelo();
        $producto=$producto->getById($id_producto);
        $valoracion=new valoracionesModelo();
        $valoracion->setValorVotacion($_POST['valor_votacion']);
        $valoracion->setComentario($_POST['comentario']);
-       //$valoracion->setIdProducto($producto->getIdProducto());
+       $valoracion->setIdProducto($producto->getIdProducto());
+       $valoracion->setIdUsuario($usuario->getIdUsuario());
        $fecha_valoracion=new DateTime();
        $valoracion->setFechaValoracion($fecha_valoracion);
        

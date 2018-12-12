@@ -215,7 +215,7 @@ class valoracionesModelo{
 		
 		$id_usuario=$usuario->getIdUsuario();
 		$tipo_usuario=$usuario->getTipoUsuario()->getTipoUsuario();
-		$id_producto=$valoracion->id_producto=$producto->getIdProducto();
+		$id_producto=$producto->getIdProducto();
 		$voto= $valoracion->valor_votacion;
 		$comentario=$valoracion->comentario;
                 $fecha_valoracion=$valoracion->fecha_valoracion->format("Y-m-d H:i:s");
@@ -234,7 +234,7 @@ class valoracionesModelo{
                  
                  
                     require_once 'vistas/usuario/nuevaValoracionVista.php';
-                    exit();
+                   
                 }
 		
 		if($tipo_usuario=="Usuario_novel"){
@@ -279,7 +279,7 @@ class valoracionesModelo{
 			}else{
                             
                             echo('<script type="text/javascript">
-				alert("Enorabuena melón");
+				alert("Enhorabuena melón");
 				</script>');
                         }
 		

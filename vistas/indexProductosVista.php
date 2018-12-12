@@ -41,15 +41,8 @@
         
       <div class="item_title">
       
-      <?php if($_SESSION['login']==true){ ?>
-      
-                 
-                <span><?php echo $producto->getNombreProducto();  ?></span>
-        
-        <?php }else{ ?>
-                <span><?php echo $producto->getNombreProducto();  ?></span>
-        
-        <?php } ?>
+          <span><?php echo $producto->getNombreProducto();  ?></span>
+
       </div>
 
       <div class="item_desc">
@@ -78,9 +71,13 @@
   </h2>              
 
       </div>
+      <?php if($_SESSION['login']==true){ ?>
       <div class='item_desc'>
+      
            <a href='?controller=Valoraciones&action=nuevaValoracion&id=<?php echo $producto->getIdProducto();?>' class='buttom_green'>Valorar</a>
     </div> 
+    <?php } ?>
+    
       <?php $valoraciones=$producto->getValoracionesBBDD($producto->getIdProducto()); ?>
       <?php foreach ($valoraciones as $valoracion){  
                     $usuario=new UsuariosModelo();
