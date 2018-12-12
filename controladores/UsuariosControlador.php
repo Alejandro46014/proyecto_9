@@ -60,10 +60,12 @@ class UsuariosControlador
                 $usuario->setFechaAltaUsuario(date("Y-m-d"));
                 
                 
-                $usuario->guardar();
-                        
-                            require_once('vistas/usuario/error.php');
-			//require_once(' vistas/indexVista.php');
+                $usuario=$usuario->guardar();
+              if(isset($usuario)){     
+                require_once 'vistas/usuario/loginVista.php';
+              }else{
+                  require_once 'vistas/usuario/registrarVista.php';
+              }
 
 		}
 
