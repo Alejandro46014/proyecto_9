@@ -577,12 +577,12 @@ $patron="/^(?=.*\d)(?=.*)(?=.*[A-Z])(?=.*[a-z])\S{8}$/";//contraseña longitud 8
 
         /*------------------DARSE DE BAJA-----------------*/
 	
-	public function darseBaja(){
+	public function darseBaja($id){
 		
 		require_once("ConectarModelo.php");
 		
-		$id=$this->id;
-		$activo= $this->activo_usuario;
+		
+		$activo= "No";
 	try{	
 		$conexion= ConectarModelo::conexion();
 			

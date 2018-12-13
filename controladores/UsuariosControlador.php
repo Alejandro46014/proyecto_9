@@ -170,12 +170,14 @@ class UsuariosControlador
 
                 public function darseBajaUsuario(){
                    $id=$_GET['id'];
-                                $activo='No';
-                                $usuario=new UsuariosModelo();
-                                $usuario->getById($id);  
-                                $usuario->setActivoUsuario($activo);
-                                $usuario->darseBaja();
                                 
+                                $usuario->darseBaja($id);
+                               
+                                session_start();
+                               $_SESSION['usuario']="";
+                               $_SESSION['login']=FALSE;
+                               session_destroy();
+
                                 echo '<script type="text/javascript">
                                 window.location.assign("index.php");
                                 </script>';
