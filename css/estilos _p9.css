@@ -434,6 +434,11 @@ div.extendido-usuarios{
 		
 	}
         
+        div.portada img{
+                box-shadow: 6px 4px 20px 0px black;
+        
+        }
+        
         div.foto_miniatura {
             
             width: 100%;
@@ -448,6 +453,8 @@ div.extendido-usuarios{
         div.foto img{
             
            width:  100%;
+           border-radius: 30px;
+           margin-top: 20px;
         }
 }
 .item_box img{
@@ -487,6 +494,8 @@ margin: auto;
 .item_reparto li{
   text-align: justify;
   padding: 15px 15px;
+  height: 120px;
+ 
 }
 /*-------------------VALORACION-----------------------*/
 
@@ -535,7 +544,7 @@ div.item_comentarios{
 	border-bottom: 3px solid #0200F9;
 }
 
-div.valor_valoracion{
+div.estrellas_valoracion{
         
         width: 50%;
         clear: both;
@@ -547,10 +556,8 @@ div.valor_valoracion{
 	
 	div.valor_valoracion{
 		width: 50%;
-                clear: both;
-                font-size: 2em;
-                margin: 0 auto;
-                margin-bottom: 25px;
+                float:left;
+                margin: 0;
 	}
 	div.autor_comentario{
 		width:20%;

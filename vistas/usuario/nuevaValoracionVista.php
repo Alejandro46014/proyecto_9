@@ -12,16 +12,8 @@
             
         <img src="<?php echo $imagen->getDirectorioImagen();  ?>" Alt="Portada"/>
         <?php }}?>
-        <div class="foto_miniatura clearfix">
-        <?php foreach ($producto->getImagenes() as $imagen){
-          if($imagen->getNombreImagen() == "Escena"){?>
         
-        <div class="foto">
-          <img src="<?php echo $imagen->getDirectorioImagen();  ?>" alt="Escena"/>
-          
-          </div><!--div .foto-->
-          <?php } } ?>
-        </div>
+        
         
         
         <div class="item_title">
@@ -31,20 +23,40 @@
         </div>
         </div>
         <div class="formulario_small clearfix">
-        <h2>Introduce tu valoración</h2> 
-        <form method="post" action="?controller=Valoraciones&action=guardarValoracion&id=<?php  echo $producto->getIdProducto();?>">
-           <div class="col_formulario">
-           <input type="hidden" name="id_usuario" value="<?php echo $usuario->getIdUsuario();  ?>"/>
-           <label for="valor_votacion">Valor Votación<input type="number" min="0" max="5" name="valor_votacion" id="valor_votacion"/></label>
-           </div>
+                <div class="cabecera_formularios">
+                <h3>Introduce tu valoración</h3> 
+                <form method="post" action="?controller=Valoraciones&action=guardarValoracion&id=<?php  echo $producto->getIdProducto();?>">
+                </div> 
+            
+           
+                   <div class="estrellas_valoracion">
+       <input id="radio5" type="radio" name="estrellas" value="5"><!--
+    --><input id="radio5" type="radio" name="estrellas" value="5"/><!--
+    --><label for="radio1">★</label><!--
+    --><input id="radio4" type="radio" name="estrellas" value="4"><!--
+    --><input id="radio4" type="radio" name="estrellas" value="4"/><!--
+    --><label for="radio2">★</label><!--
+    --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+    --><input id="radio3" type="radio" name="estrellas" value="3"/><!--
+    --><label for="radio3">★</label><!--
+    --><input id="radio2" type="radio" name="estrellas" value="2"><!--
+    --><input id="radio2" type="radio" name="estrellas" value="2"/><!--
+    --><label for="radio4">★</label><!--
+    --><input id="radio1" type="radio" name="estrellas" value="1"><!--
+    --><input id="radio1" type="radio" name="estrellas" value="1"/><!--
+    --><label for="radio5">★</label>
+
+                   </div>
+           
            <div class="col_formulario">
            <label for="comentario">Comentario:<textarea name="comentario" cols="9" rows="9"></textarea></label>
            </div>
            <div class=col_formulario>
-           <input class="buttom_green" type="submit" name="valorar" value="Nueva valoración">
+           <input class="buttom_green" type="submit" name="valorar" value="Introducir valoración">
            </div>
         </form>
         
+       </div>
        </div>
        
        

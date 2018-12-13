@@ -24,7 +24,7 @@
         <?php foreach($producto->getImagenes() as $imagen) { 
             if($imagen->getNombreImagen() == "Portada"){
             ?>
-        <img src="<?php echo $imagen->getDirectorioImagen();  ?>" alt="Portada"/>
+        <div class="portada"><img src="<?php echo $imagen->getDirectorioImagen();  ?>" alt="Portada"/></div>
         
             <?php } }?> 
             <div class="foto_miniatura clearfix">
@@ -55,8 +55,7 @@
       <li><b>Director:</b> <?php echo $producto->getDirector();  ?></li>
       <li><b>Reparto:</b> <?php echo $producto->getReparto();  ?></li>
       <li><b>Año lanzamiento:</b> <?php echo $producto->getAnioLanzamiento();  ?></li>
-      <li></li>
-      
+            
       </ul>
       </div>
 
