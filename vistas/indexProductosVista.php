@@ -32,7 +32,7 @@
             if($imagen->getNombreImagen()=="Escena") { ?>
         
           <div class="foto">
-          <img src="<?php echo $imagen->getDirectorioImagen();  ?>" alt="Escena"/>
+          <a href="<?php echo $imagen->getDirectorioImagen();  ?>"><img src="<?php echo $imagen->getDirectorioImagen();  ?>" alt="Escena"/></a>
           
           </div><!--div .foto-->
             <?php } }  ?>
