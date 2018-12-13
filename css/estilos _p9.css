@@ -501,7 +501,7 @@ h2.clasificacion{
   }
   
 span.estrella_fija{
-        color: green;
+        color: #24CB60;
         font-size: 1.5em;
         text-overflow: ellipsis;
         white-space: normal;
@@ -534,12 +534,23 @@ div.item_comentarios{
 	text-align: justify;
 	border-bottom: 3px solid #0200F9;
 }
+
+div.valor_valoracion{
+        
+        width: 50%;
+        clear: both;
+        font-size: 2em;
+        margin: 0 auto;
+        margin-bottom: 25px;
+}
 @media only screen and (min-width:768px){
 	
 	div.valor_valoracion{
 		width: 50%;
-		float: left;
-		margin: 0;
+                clear: both;
+                font-size: 2em;
+                margin: 0 auto;
+                margin-bottom: 25px;
 	}
 	div.autor_comentario{
 		width:20%;
