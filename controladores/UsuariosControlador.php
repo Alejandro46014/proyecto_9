@@ -71,33 +71,37 @@ class UsuariosControlador
 
 
 
-	public function actualizarUsuario(){
-        if(isset($_GET['id'])){    
-
-            $id=$_GET['id'];
-        
-            $usuario=new UsuariosModelo();
-         $apellidos=$_POST['apellido1_usuario'] ." ".$_POST['apellido2_usuario'];
-        
-
-        $usuario->setNombreUsuario($_POST['nombre_usuario']);
-        $usuario->setApellidosUsuario($apellidos);
-        $usuario->setEmailUsuario($_POST['email_usuario']);
-        $usuario->setFechaNacimientoUsuario($_POST['fecha_nacimiento_usuario']);
-        
-        $usuario->setPaisUsuario($_POST['pais_usuario']);
-        $usuario->setPasswordUsuario($_POST['password_usuario']);
-        
-        
-        
-        $usuario=$usuario->actualizar($id);
-        
-        $controller=new UsuariosControlador();
-        $controller->modificarUsuario();
-                
-        }
-    }
-
+        public function actualizarUsuario(){
+   
+            if(isset($_GET['id'])){
+                              
+                  $id=$_GET['id'];
+                  
+                  $usuario=new UsuariosModelo();
+                  
+               $apellidos=$_POST['apellido1_usuario'] ." ".$_POST['apellido2_usuario'];
+              
+              $usuario->setNombreUsuario($_POST['nombre_usuario']);
+              $usuario->setApellidosUsuario($apellidos);
+              $usuario->setEmailUsuario($_POST['email_usuario']);
+              $usuario->setFechaNacimientoUsuario($_POST['fecha_nacimiento_usuario']);
+              
+              $usuario->setPaisUsuario($_POST['pais_usuario']);
+              $usuario->setPasswordUsuario($_POST['password_usuario']);
+              
+              
+              
+             $usuario->actualizar($id);
+              
+              $controller=new UsuariosControlador();
+              $controller->modificarUsuario();
+                          }
+              
+          }
+      
+      
+      
+            
 
 
 		public function modificarUsuario(){
