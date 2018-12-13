@@ -40,13 +40,24 @@
       
         
       <div class="item_title">
-      
-          <span><?php echo $producto->getNombreProducto();  ?></span>
-
-      </div>
-
-      <div class="item_desc">
+    
+                <span><?php echo $producto->getNombreProducto();  ?></span>
+        </div>
+        <div class="item_title">
+    
+                <span><?php echo $producto->getNombreOriginalProducto();  ?></span>
+        </div>
+        <div class="item_desc">
         <p><?php echo $producto->getSinopsis();  ?></p>
+      </div>
+      <div class="item_reparto">
+      <ul>
+      <li><b>Director:</b> <?php echo $producto->getDirector();  ?></li>
+      <li><b>Reparto:</b> <?php echo $producto->getReparto();  ?></li>
+      <li><b>Año lanzamiento:</b> <?php echo $producto->getAnioLanzamiento();  ?></li>
+      <li></li>
+      
+      </ul>
       </div>
 
       <div class="item_valoracion">
@@ -73,17 +84,15 @@
       </div>
       <?php if($_SESSION['login']==true){ ?>
       <div class='item_desc'>
-      
            <a href='?controller=Valoraciones&action=nuevaValoracion&id=<?php echo $producto->getIdProducto();?>' class='buttom_green'>Valorar</a>
     </div> 
     <?php } ?>
-    
       <?php $valoraciones=$producto->getValoracionesBBDD($producto->getIdProducto()); ?>
       <?php foreach ($valoraciones as $valoracion){  
                     $usuario=new UsuariosModelo();
                     $id_usuario=$valoracion->getIdUsuario();
                     $usuario=$usuario->getById($id_usuario);
-                    
+                   
                     ?>
 		<div class="item_comentarios clearfix">
 		<div class="autor_comentario">
