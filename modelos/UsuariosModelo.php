@@ -636,6 +636,9 @@ $patron="/^(?=.*\d)(?=.*)(?=.*[A-Z])(?=.*[a-z])\S{8}$/";//contraseña longitud 8
 			echo('<script type="text/javascript">
 				alert("Los campos nombre y contraseña estan vacios ");
 				</script>');
+
+				$controller=new UsuariosControlador();
+                $controller->login();
 			
 		}else{
 			
