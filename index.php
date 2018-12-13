@@ -12,7 +12,7 @@ require_once 'modelos/UsuariosModelo.php';
                 $usuario=$usuarioAc->getById($id);
                 }
 
-require_once ('modelos/UsuariosModelo.php');
+
 require_once('modelos/ConectarModelo.php');
 
 
@@ -33,9 +33,19 @@ require_once('modelos/ConectarModelo.php');
               $action="index";
                
             }else{
-                $_GET['id']=1;
-           $controller="Productos";
-           $action="index";
+                if($_SESSION['login']==TRUE && $usuario->getTipoUsuario()->getTipoUsuario()=="Administrador"){
+                
+                
+                    
+                    $controller="Administrador";
+                    $action="index";
+                }else{
+                    
+                    $_GET['id']=1;
+                    $controller="Productos";
+                    $action="index";
+                }
+           
         }
     }
          

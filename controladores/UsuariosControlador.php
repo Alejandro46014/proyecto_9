@@ -137,14 +137,30 @@ class UsuariosControlador
                     session_start();
                 $_SESSION['login']=TRUE;   
 		$_SESSION['usuario']= $usuario->getIdUsuario();
-               
-                  
-                    $_GET['id']=1;
-                    $controller=new ProductosControlador();
-                    $controller->index();
-                    
-                   }
-                }
+        if($usuario->getTipoUsuario()->getTipoUsuario()=="Administrador"){
+                   
+            require_once 'controladores/AdministradorControlador.php';
+         
+                     
+             echo '<script type="text/javascript">
+     window.location.assign("index.php");
+     </script>';
+             
+             $controller=new AdministradorControlador();
+             $controller->index();
+            
+        }else{
+           
+             echo '<script type="text/javascript">
+     window.location.assign("index.php");
+     </script>';
+            
+             $_GET['id']=1;
+             $controller=new ProductosControlador();
+             $controller->index();
+        }  
+            }
+         }
                 
                 public function bajaVista(){
                     $usuario=new UsuariosModelo();
@@ -159,7 +175,15 @@ class UsuariosControlador
                                 $usuario->getById($id);  
                                 $usuario->setActivoUsuario($activo);
                                 $usuario->darseBaja();
-                                require_once 'index.php';
+                                
+                                echo '<script type="text/javascript">
+                                window.location.assign("index.php");
+                                </script>';
+                                                                    
+                                        require_once 'controladores/ProductosControlador.php';
+                                        $_GET['id']=1;
+                                        $controller=new ProductosControlador();
+                                        $controller->index();
                 }
 
                 
