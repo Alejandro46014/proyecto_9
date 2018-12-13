@@ -433,9 +433,11 @@ div.extendido-usuarios{
                 
 		
 	}
-        
+        div.portada{
+        padding-top:10px;
+        }
         div.portada img{
-                box-shadow: 6px 4px 20px 0px black;
+                box-shadow: 5px 6px 20px 0px black;
         
         }
         
