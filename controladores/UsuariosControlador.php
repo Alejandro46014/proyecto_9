@@ -169,23 +169,38 @@ class UsuariosControlador
                 }
 
                 public function darseBajaUsuario(){
+                    
+                    if(isset($_GET['id'])){
+                     
+                        if (isset($_POST['cancelar'])){
+                            
+                            echo '<script type="text/javascript">
+			window.location.assign("index.php");
+			</script>';
+                            
+                        }elseif(isset ($_POST['aceptar'])){
+                    
                    $id=$_GET['id'];
                                 
+                                $usuario=new UsuariosModelo();
+                                
                                 $usuario->darseBaja($id);
-                               
+                          
                                 session_start();
                                $_SESSION['usuario']="";
                                $_SESSION['login']=FALSE;
                                session_destroy();
-
+                               
                                 echo '<script type="text/javascript">
-                                window.location.assign("index.php");
-                                </script>';
-                                                                    
-                                        require_once 'controladores/ProductosControlador.php';
-                                        $_GET['id']=1;
-                                        $controller=new ProductosControlador();
-                                        $controller->index();
+			window.location.assign("index.php");
+			</script>';
+                                                
+                    require_once 'controladores/ProductosControlador.php';
+                    $_GET['id']=1;
+                    $controller=new ProductosControlador();
+                    $controller->index();
+                }
+                    }
                 }
 
                 
