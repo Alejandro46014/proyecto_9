@@ -12,7 +12,7 @@
       ?>
     
 <section class="seccion clearfix">
-	<h1>Ultimas peliculas valoradas</h1>
+	<h1>Peliculas para valorar</h1>
        
 <div id="box">
 
@@ -80,13 +80,16 @@
    ?>
   </h2>              
 
+        
+        
       </div>
       <?php if($_SESSION['login']==true){ ?>
       <div class='item_btn'>
            <a href='?controller=Valoraciones&action=nuevaValoracion&id=<?php echo $producto->getIdProducto();?>' class='buttom_green'>Valorar</a>
     </div> 
-    <div class="box_comentarios">
+    
     <?php } ?>
+    <div class="box_comentarios">
       <?php $valoraciones=$producto->getValoracionesBBDD($producto->getIdProducto()); ?>
       <?php foreach ($valoraciones as $valoracion){  
                     $usuario=new UsuariosModelo();
