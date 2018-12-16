@@ -215,6 +215,24 @@ nav.navegacion-principal a{
 	
 }
 
+nav.navegacion-principal .btn_users{
+	font-family: 'asap', sans-serif;
+	color: #9900cc;
+	background-color: green;
+	border:  2px solid #9900cc;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1.2em;
+	transition: all .6s ease;
+	
+	padding: 10px;
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	
+	
+}
+
 nav.navegacion-principal a:hover{
 		color: #ffffff;
 		background-color: #9900cc;
@@ -254,7 +272,22 @@ nav.navegacion-principal a:hover{
 	
 }
 
-
+nav.navegacion-principal .registrar {
+    font-family: oswald, sans-serif;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.2em;
+    transition: all .6s ease;
+    /* margin-right: 10px; */
+    padding: 10px;
+    display: inline-block;
+    width: auto;
+    background-color: #24CB60;
+    
+    
+}
 	
 	
 
@@ -428,7 +461,7 @@ div.extendido-usuarios{
 		margin: 50px 15px;
 		width: 25%;
                 display: inline-block;
-                height:1500px:
+                height:auto;
                 
                 
 		
@@ -457,6 +490,7 @@ div.extendido-usuarios{
            width:  100%;
            border-radius: 30px;
            margin-top: 20px;
+           padding: 5px;
         }
 }
 .item_box img{
@@ -470,18 +504,35 @@ margin: auto;
   font-weight: bold;
   font-size: 1.5em;
   margin-bottom: 20px;
+  height: 50px;
+
+}
+
+.item_title_vo{
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  height: 50px;
+  font-style: italic;
 }
 
 .item_desc{
   margin-bottom: 20px;
-  height: 130px;
-  overflow: hidden;
-	text-align: justify;
-  text-overflow: ellipsis;
-  white-space: normal;
+  height: 200px;
+  overflow: scroll;
+  text-align: justify;
+  
 }
 
-.item_desc a{
+.item_btn{
+        width: 30%;
+    margin: 0 auto;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+.item_btn a{
   width: 100%;
   text-align:center;
   
@@ -496,9 +547,26 @@ margin: auto;
 .item_reparto li{
   text-align: justify;
   padding: 15px 15px;
-  height: 120px;
  
 }
+
+.item_reparto li.director{
+                height: 50px;
+}
+.item_reparto li.reparto{
+        height: 150px;
+        
+}
+.item_reparto li.ano{
+        height: 50px;
+}
+
+.box_comentarios{
+        height: 300px;
+        overflow: scroll;
+}
+
+
 /*-------------------VALORACION-----------------------*/
 
 
@@ -553,6 +621,8 @@ div.estrellas_valoracion{
         font-size: 2em;
         margin: 0 auto;
         margin-bottom: 25px;
+        direction: ltr;/* left to right */
+    unicode-bidi: bidi-override;/* bidi de bidireccional */
 }
 @media only screen and (min-width:768px){
 	

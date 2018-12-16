@@ -4,18 +4,19 @@
 		<div class="contenedor clearfix">
 			<div class="footer-informacion">
 			<h3>Sobre <span>evaluaweb</span></h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper dui ut nibh hendrerit aliquam. Donec iaculis metus et dignissim iaculis.</p>
+			<p>Esta página nace de la idea de tres alumnos de la UOC, estudiantes de DAW, y cuyos nombres son Ález, Marta y Pau.</p>
 			</div>
 			<div class="ultimos-tweets">
-			<h3>Ultimos <span>tweets</span></h3>
+			<h3>Nuestras <span>favoritas</span></h3>
 				<ul>
-				<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper dui ut nibh hendrerit aliquam. Donec iaculis metus et dignissim iaculis.</li>
-					<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper dui ut nibh hendrerit aliquam. Donec iaculis metus et dignissim iaculis.</li>
-					<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla semper dui ut nibh hendrerit aliquam. Donec iaculis metus et dignissim iaculis.</li>
-				</ul>
+				<li><a href="?controller=Valoraciones&action=nuevaValoracion&id=35">La princesa prometida.</a></li>
+                                <li><a href="?controller=Valoraciones&action=nuevaValoracion&id=2">Deadpool.</a></li>
+                                <li><a href="?controller=Valoraciones&action=nuevaValoracion&id=22">El exorcista</a></li>
+                                </ul>
 			</div>
 			<div class="menu-footer">
 			<h3>Redes <span>sociales</span></h3>
+                        <p>Si quieres puedes seguirnos a través de nuestras redes sociales:</p>
 				<nav class="redes-sociales-footer">
 		    <a href="#"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>
 			<a href="#"><i class=" fab fa-twitter-square" aria-hidden="true"></i></a>

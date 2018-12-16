@@ -43,7 +43,7 @@
     
                 <span><?php echo $producto->getNombreProducto();  ?></span>
         </div>
-        <div class="item_title">
+        <div class="item_title_vo">
     
                 <span><?php echo $producto->getNombreOriginalProducto();  ?></span>
         </div>
@@ -52,9 +52,9 @@
       </div>
       <div class="item_reparto">
       <ul>
-      <li><b>Director:</b> <?php echo $producto->getDirector();  ?></li>
-      <li><b>Reparto:</b> <?php echo $producto->getReparto();  ?></li>
-      <li><b>Año lanzamiento:</b> <?php echo $producto->getAnioLanzamiento();  ?></li>
+      <li class="director"><b>Director:</b> <?php echo $producto->getDirector();  ?></li>
+      <li class="reparto"><b>Reparto:</b> <?php echo $producto->getReparto();  ?></li>
+      <li class="ano"><b>Año lanzamiento:</b> <?php echo $producto->getAnioLanzamiento();  ?></li>
             
       </ul>
       </div>
@@ -82,9 +82,10 @@
 
       </div>
       <?php if($_SESSION['login']==true){ ?>
-      <div class='item_desc'>
+      <div class='item_btn'>
            <a href='?controller=Valoraciones&action=nuevaValoracion&id=<?php echo $producto->getIdProducto();?>' class='buttom_green'>Valorar</a>
     </div> 
+    <div class="box_comentarios">
     <?php } ?>
       <?php $valoraciones=$producto->getValoracionesBBDD($producto->getIdProducto()); ?>
       <?php foreach ($valoraciones as $valoracion){  
@@ -93,15 +94,16 @@
                     $usuario=$usuario->getById($id_usuario);
                    
                     ?>
+                
 		<div class="item_comentarios clearfix">
-		<div class="autor_comentario">
-                    <h4><?php echo $usuario->getNombreUsuario();  ?></h4>
+                        <div class="autor_comentario">
+                            <h4><?php echo $usuario->getNombreUsuario();  ?></h4>
 			</div>
-			<div class="item_comentario">
-			<p><?php echo $valoracion->getComentario();  ?></p>
+                        <div class="item_comentario">
+                                <p><?php echo $valoracion->getComentario();  ?></p>
 			</div>
 			<div class="item_valoracion clearfix">
-			<div class="valor_valoracion">
+                                <div class="valor_valoracion">
 				
   <p class="clasificacion">Valor votación:
     <?php
@@ -119,9 +121,10 @@
 				<p> <?php echo $valoracion->getFechaValoracion();  ?></p>
 				</div>
 			</div>
-      
-		</div>
+                   </div>
+	
       <?php } ?>
+      </div><!--.box_comentarios-->
     </div><!--.item_box-->
 
       
