@@ -526,7 +526,7 @@ margin: auto;
 }
 
 .item_btn{
-        width: 30%;
+        width: 50%;
     margin: 0 auto;
     display: inline-block;
     margin-bottom: 50px;
@@ -569,7 +569,12 @@ margin: auto;
 
 /*-------------------VALORACION-----------------------*/
 
+p.clasificacion{
 
+direction: rtl;/* right to left */
+    unicode-bidi: bidi-override;/* bidi de bidireccional */
+
+}
 
 h2.clasificacion{
 	text-align: center;
