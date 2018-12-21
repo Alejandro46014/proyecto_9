@@ -15,18 +15,8 @@ body{
 
 /*----------------GENERALES------------------*/
 
-a:link {
-  color: red;
-}
-a:visited {
-  color: green;
-}
-a:hover {
-  color: #ffffff;;
-}
-a:active {
-  color: #ffffff;
-}
+
+
 
 .activo{
     color: #ffffff;
@@ -111,7 +101,7 @@ ul{
 
 
 .seccion{
-	padding: 30px 0;
+	padding: 30px;
 }
 
 .seccion p{
@@ -204,7 +194,7 @@ nav.navegacion-principal a{
 	border:  2px solid #9900cc;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 1.2em;
+	font-size: 1em;
 	transition: all .6s ease;
 	
 	padding: 10px;
@@ -222,7 +212,7 @@ nav.navegacion-principal .btn_users{
 	border:  2px solid #9900cc;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 1.2em;
+	font-size: 1em;
 	transition: all .6s ease;
 	
 	padding: 10px;
@@ -262,7 +252,7 @@ nav.navegacion-principal a:hover{
 	border-radius: 10px;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 1.2em;
+	font-size: 1em;
 	transition: all .6s ease;
 	/*margin-right: 10px;*/
 	padding: 10px;
@@ -278,7 +268,7 @@ nav.navegacion-principal .registrar {
     border-radius: 10px;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 1.2em;
+    font-size: 1em;
     transition: all .6s ease;
     /* margin-right: 10px; */
     padding: 10px;
@@ -346,7 +336,7 @@ div.extendido-usuarios a{
 	text-align: center;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 1.2em;
+	font-size: 1em;
 	transition: all .6s ease;
 	margin-right: 10px;
 	padding: 10px;
@@ -363,7 +353,7 @@ div.registro_inicio a.registrar{
 	border:  2px solid #9900cc;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 1.2em;
+	font-size: 1em;
 	transition: all .6s ease;
 	
 	padding: 10px;
@@ -389,7 +379,7 @@ div.registro_inicio a.registrar{
 	border-radius: 10px;
 	text-decoration: none;
 	text-transform: uppercase;
-	font-size: 1.2em;
+	font-size: 1em;
 	transition: all .6s ease;
 	/*margin-right: 10px;*/
 	padding: 10px;
@@ -403,7 +393,7 @@ div.extendido-usuarios{
 	border-top-right-radius: 5px; 
 	border-top-left-radius: 5px;
 	position: relative;
-	left:90%;
+	left:91%;
 	top:57px;
 	
 }
@@ -422,6 +412,8 @@ div.extendido-usuarios{
 	
 	display: none;
 }
+
+
 
 @media only screen and (min-width:768px){
 	
@@ -805,6 +797,15 @@ table{
 	border-spacing: 0;
 		
 }
+td.green{
+color:green;
+
+}
+
+td.red{
+color:red;
+
+}
 
 td,tr{
 	text-align: left;
@@ -864,6 +865,12 @@ footer h3{
 footer h3 span{
 	color: #9900cc;
 	margin-left: 20px;
+}
+
+div.ultimos-tweets li a{
+
+color:#ffffff;
+text-decoration:none;
 }
 
 nav.redes-sociales-footer{

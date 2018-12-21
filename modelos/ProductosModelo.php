@@ -212,7 +212,6 @@ class ProductosModelo{
 			$resultado=$consulta->fetchAll();
                         if ($resultado){
                             
-                            echo 'Siiiiiii';
 			foreach ($resultado as $fila){
                             
                             $producto=new ProductosModelo();
@@ -231,8 +230,6 @@ class ProductosModelo{
                             
                         
                         }
-                        }else{
-                            echo 'Nooooooooo';
                         }
 			$consulta->closeCursor();
 			
@@ -863,7 +860,7 @@ class ProductosModelo{
                     $valoracion->setIdUsuario($fila['usuarios_id_usuario']);
                     $valoracion->setFechaValoracion($fila["fecha_valoracion"]);
                     $valoracion->setComentario($fila['comentario']);
-                  
+                   
                     
                 $valoraciones[]=$valoracion;    
                 }

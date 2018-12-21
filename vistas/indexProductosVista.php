@@ -5,10 +5,11 @@
           $usuario=new UsuariosModelo();
           $usuario=$usuario->getById($id);
       }
-        if(isset($valorado)){
+        if($_SESSION['echo']==TRUE){
        session_start();
      $valorado=unserialize($_SESSION['valorado']);
-        }       
+     
+        }  
       ?>
     
 <section class="seccion clearfix">
@@ -87,7 +88,14 @@
       <div class='item_btn'>
            <a href='?controller=Valoraciones&action=nuevaValoracion&id=<?php echo $producto->getIdProducto();?>' class='buttom_green'>Valorar</a>
     </div> 
-    
+    <?php if ($_SESSION['echo']==TRUE){ ?>
+            <div class="item_btn">
+                    <?php if ($producto->getIdProducto() == $valorado->getIdProducto()){
+            
+                        enlaceModificarValoracion($valorado->getIdValoracion());
+                        } ?>
+                        </div>
+                       <?php } ?>
     <?php } ?>
     <div class="box_comentarios">
       <?php $valoraciones=$producto->getValoracionesBBDD($producto->getIdProducto()); ?>
@@ -108,7 +116,7 @@
 			<div class="item_valoracion clearfix">
                                 <div class="valor_valoracion">
 				
-  <p class="clasificacion">Valor votación:
+  <p class="clasificacion">
     <?php
     $cont=0;
     while($valoracion->getValorVotacion()>$cont){

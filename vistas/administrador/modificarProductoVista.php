@@ -1,53 +1,6 @@
 
-<!--CONTENIDO PRINCIPAL-->
-
 <section class="seccion">
-	
-    <div class="formulario clearfix">
-	<form action="?controller=Productos&action=buscarProductos" method="post">
-            <div class="col_3_formulario">
-            <label for="nombre_producto">Nombre producto<input type="text" id="nombre_producto" name="nombre_producto"/></label>
-            </div>
-            <div class="col_3_formulario">
-            <label for="categoria_producto">Categoria producto
-                <select name="categoria_producto" id="categoria_producto">
-                    <option value="">--Catregoria--</option>
-                    <option value="1">Acción</option>
-                    <option value="2">Terror</option>
-                    <option value="3">Románticas</option>
-                     <option value="4">Infantiles</option>
-                    <option value="5">Comedia</option>
-                    <option value="6">Ciencia-ficción</option>
-                    <option value="7">Drama</option>
-                    <option value="8">Musicales</option>
-                </select>
-            </label>
-            </div>
-             <?php
-        $cont = date("Y");
-            ?>
-            <div class="col_3_formulario">
-            <label for="anio_lanzamiento">Año lanzamiento
-                <select name="anio_lanzamiento" id="anio_lanzamiento">
-                    <option value="">--Año lanzamiento--</option>
-                  <?php while ($cont >= 1950) { ?>
-                    
-         <option value="<?php echo($cont); ?>"><?php echo($cont); ?></option>
-            <?php $cont = ($cont-1); } ?>   
-                </select>
-                </label>
-            </div>
-            <div class="col_formulario">
-                <input type="submit" name="buscar" value="Buscar" class="buttom_green"/>
-            </div>
-        </form>
-    </div>
-    <div class="row">
-        
-    </div>
-    <?php  foreach($productos as $producto) { ?>
-    
-	<div class="formulario clearfix">
+<div class="formulario clearfix">
             
 		<div class="cabecera_formularios">
                     <h3>Modificar producto <?php echo $producto->getIdProducto(); ?></h3>
@@ -258,17 +211,7 @@
              <div class="col_formulario">
                  <input type="submit" name="modificar_producto" value="Guardar" class="buttom_green"/><br>
              </div>
-             <div class="col_formulario ">
-                 <a class="buttom_red" href="?controller=Productos&action=eliminarProducto&id=<?php echo $producto->getIdProducto(); ?>">Eliminar producto</a>
-        
-                </div>
             
              </form>
                 </div>
-    <div class="row"></div>
-        <?php  } ?>
-		
-	</section>
-
-
-
+</section>

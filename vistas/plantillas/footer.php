@@ -4,14 +4,14 @@
 		<div class="contenedor clearfix">
 			<div class="footer-informacion">
 			<h3>Sobre <span>evaluaweb</span></h3>
-			<p>Esta página nace de la idea de tres alumnos de la UOC, estudiantes de DAW, y cuyos nombres son Ález, Marta y Pau.</p>
+			<p>Esta página nace de la idea de tres alumnos de la UOC, estudiantes de DAW, y cuyos nombres son Álex, Marta y Pau.</p>
 			</div>
 			<div class="ultimos-tweets">
 			<h3>Nuestras <span>favoritas</span></h3>
 				<ul>
-				<li><a href="?controller=Valoraciones&action=nuevaValoracion&id=35">La princesa prometida.</a></li>
-                                <li><a href="?controller=Valoraciones&action=nuevaValoracion&id=2">Deadpool.</a></li>
-                                <li><a href="?controller=Valoraciones&action=nuevaValoracion&id=22">El exorcista</a></li>
+				<li><a href="#">La princesa prometida.</a></li>
+                                <li><a href="#">Deadpool.</a></li>
+                                <li><a href="#">El exorcista</a></li>
                                 </ul>
 			</div>
 			<div class="menu-footer">

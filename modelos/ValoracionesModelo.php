@@ -159,6 +159,57 @@ class valoracionesModelo{
             return $listaValoraciones;
         }
         
+        public function getById($id){
+            
+            require_once 'ConectarModelo.php';
+            try{
+            $conexion= ConectarModelo::conexion();
+            
+		
+                
+            $sql="SELECT * FROM valoraciones  WHERE id_valoracion=:id";
+				
+            $consulta=$conexion->prepare($sql);
+            
+            $consulta->bindParam(':id',$id,PDO::PARAM_INT);
+            
+            $consulta->execute();
+			
+	    $resultado=$consulta->fetch(PDO::FETCH_ASSOC);
+				
+				
+					$valoracion=new valoracionesModelo();
+					
+					$valoracion->id_valoracion=$resultado['id_valoracion'];
+					$valoracion->id_usuario=$resultado['usuarios_id_usuario'];
+					$valoracion->id_producto=$resultado['productos_id_producto'];
+					$valoracion->valor_votacion=$resultado['valor_votacion'];
+					$valoracion->numero_votaciones=$resultado['numero_votaciones'];
+					$valoracion->comentario=$resultado['comentario'];
+					$valoracion->bloqueada=$resultado['bloqueada'];
+					
+					
+			
+
+		
+
+		
+
+				$consulta->closeCursor();
+			
+				
+			}catch(PDOException $e){
+				
+				die ("Error ".$e->getMessage());
+			echo("Linea de error ".$e->getLine());
+			}
+			
+			$conexion=null;
+                        
+                        return $valoracion;
+        }
+
+        
         public function getTodo(){
             
             require_once 'ConectarModelo.php';
@@ -234,7 +285,7 @@ class valoracionesModelo{
                  
                  
                     require_once 'vistas/usuario/nuevaValoracionVista.php';
-                   
+                    exit();
                 }
 		
 		if($tipo_usuario=="Usuario_novel"){
@@ -279,7 +330,7 @@ class valoracionesModelo{
 			}else{
                             
                             echo('<script type="text/javascript">
-				alert("Enhorabuena melón");
+				alert("Gracias por tu valoración");
 				</script>');
                         }
 		
@@ -296,6 +347,58 @@ class valoracionesModelo{
 		
 		return($valoracion);
 	}
+        
+        public function actualizar($id){
+            
+             require_once("ConectarModelo.php");
+		
+            $comentario= $this->comentario;
+            $valor_votacion= $this->valor_votacion;
+		
+	try{	
+		$conexion= ConectarModelo::conexion();
+			
+		$sql="UPDATE valoraciones SET comentario=:comentario, valor_votacion=:valor_votacion WHERE id_valoracion=:id";
+		
+		$consulta=$conexion->prepare($sql);
+		
+		$consulta->bindParam(':id',$id,PDO::PARAM_INT);
+                $consulta->bindParam(':comentario',$comentario,PDO::PARAM_STR);
+                $consulta->bindParam(':valor_votacion',$valor_votacion,PDO::PARAM_STR);
+		
+		
+		$resultado=$consulta->execute();
+                
+		if($resultado){
+				
+				echo '<script type="text/javascript">
+				alert("La valoración sé actualizó correctamente");
+				</script>';
+			
+				
+			}else{
+				
+				echo '<script type="text/javascript">
+				alert("La valoración sé pudo actualizar");
+				</script>';
+			
+				
+			}
+		$consulta->closeCursor();
+		
+		
+		
+	}catch(PDOException $e){
+		
+		die ("Error ".$e->getMessage());
+			echo("Linea de error ".$e->getLine());
+	}
+		$conexion=null;
+		
+		return($resultado);
+		
+        }
+
         
         public function bloquear($id){
             

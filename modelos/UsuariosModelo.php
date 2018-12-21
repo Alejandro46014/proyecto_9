@@ -239,7 +239,7 @@ class UsuariosModelo {
 		return($usuario);
 		
 	}
-        /*-----------------GUARDAR USUARIO-----------------------*/
+         /*-----------------GUARDAR USUARIO-----------------------*/
 	
 	public function guardar(){
 		
@@ -400,178 +400,178 @@ class UsuariosModelo {
 			
 		}
 		$conexion=null;
-		
+		}
 		return($usuario);
 	}
-	}
+	
 	
 	/*--------------------ACTUALIZAR USUARIO---------------------*/
 	public function actualizar($id){
             
-		require_once("ConectarModelo.php");
+            require_once("ConectarModelo.php");
+		
+               
+		$rpassword=$_POST['rpassword_usuario']; 
+		$nombre=$this->nombre_usuario;
+		$apellidos=$this->apellidos_usuario;
+		
+		
+		
+		$fecha_nacimiento=$this->fecha_nacimiento_usuario;
+		//$fecha_alta=$this->fecha_alta_usuario;
+		
+		/*----------------MAYOR DE EDAD----------------------------*/
+		
+		$diff=strtotime(date("Y-m-d"))-strtotime($fecha_nacimiento);
+		$anys = floor($diff / (365*60*60*24));
+		
+		$pais=$this->pais_usuario;
+		$email=$this->email_usuario;
+		
+		
+		$password=$this->password_usuario;
+		
 	
-		   
-	$rpassword=$_POST['rpassword_usuario']; 
-	$nombre=$this->nombre_usuario;
-	$apellidos=$this->apellidos_usuario;
-	
-	
-	
-	$fecha_nacimiento=$this->fecha_nacimiento_usuario;
-	//$fecha_alta=$this->fecha_alta_usuario;
-	
-	/*----------------MAYOR DE EDAD----------------------------*/
-	
-	$diff=strtotime(date("Y-m-d"))-strtotime($fecha_nacimiento);
-	$anys = floor($diff / (365*60*60*24));
-	
-	$pais=$this->pais_usuario;
-	$email=$this->email_usuario;
-	
-	
-	$password=$this->password_usuario;
-	
-
-	
-	
+		
+		
 /*-----------------COMPROBAMOS TODOS LOS CAMPOS INTRODUCIDOS-------------------------*/
-	
-		$mal=false;
-		$mal1=false;
-		$mal2=false;
-		$mal3=false;//declaro la variable $mal para controlar los fallos de la distintas condiciones
-		$mal4=false;
-		$mal5=false;
-		$mal6=false;
-		$mal7=false;
-		$mal8=false;
-		$mal9=false;
-	
-	
-		$patron="/[a-zA-Z\s]/";
 		
-	if(empty($nombre) || empty($apellidos) ){//compruebo que el campo este lleno
+			$mal=false;
+			$mal1=false;
+			$mal2=false;
+			$mal3=false;//declaro la variable $mal para controlar los fallos de la distintas condiciones
+			$mal4=false;
+			$mal5=false;
+			$mal6=false;
+			$mal7=false;
+			$mal8=false;
+			$mal9=false;
 		
-		echo '<p>Los campos nombre y apellidos son obligatorios</p>';
 		
-		$mal=true;
-	}
-	if(!preg_match($patron,$nombre) || !preg_match($patron,$apellidos)){//compruebo el patron ceado para el campo
-		
-		echo '<p>Los campos nombre, primer apellido y segundo apellido solo pueden contener caracteres alfabéticos</p>';
-		
-		$mal2=true;
-	}
-	
-	if(empty($password) || empty($rpassword)){//compruebo que no esten vacios
-		echo("<p>Los campos contraseña y repetir contraseña son obligatorios</p>");
-		$mal3=true;
-	}
-		if($password!=$rpassword){//compruebo que no sean diferentes
-		echo("<p>Los campos contraseña y repetir contraseña no coinciden</p>");
-		$mal4=true;
-	}
-$patron="/^(?=.*\d)(?=.*)(?=.*[A-Z])(?=.*[a-z])\S{8}$/";//contraseña longitud 8 con mayúsculas, minúsculas y dígitos
-	
-	if(!preg_match($patron,$password)){//compruebo que el campo cumpla el patron establecido
-		echo("<p>El campo contraseña no es valido, consulte la leyenda</p>");
-		$mal5=true;
-	}
-
-	$patron="/[a-zA-Z\s]/";		
-	
-	if(empty($pais) || !preg_match($patron,$pais)){//compruebo que el campo este lleno y respete el patron
-		
-		echo '<p>El campo pais es obligatorio</p>';
-		
-		$mal6=true;
-	}
-		
-	
-	
-	if(empty($fecha_nacimiento)){//compruebo que el campo este lleno
-		
-		echo '<p>El campo fecha de nacimiento es obligatorio</p>';
-		
-		$mal7=true;
-	}
-	
-		if(empty($email)){//compruebo que el campo este lleno
+			$patron="/[a-zA-Z\s]/";
 			
-			echo '<p>El campo correo electrónico obligatorio</p>';
-		
-		$mal8=true;
-	}
-				if($anys < 18){//compruebo si el usuario es mayor de edad
-					
-					echo '<script type="text/javascript">
-			alert("Debe ser mayor de edad, esta introduciendo una fecha de nacimiento no autorizada");
-			</script>';
-		
-		$mal9=true;
-	}
-	
-		
-		
-		
-	if($mal || $mal1 ||$mal2 || $mal3 || $mal4 || $mal5 ||$mal6 || $mal7 || $mal8 || $mal9){//con cualquiera de las variables añadimos el aviso final o tenemos exito
-		
-				echo '<script type="text/javascript">
-			alert("Verifique los campos he intentelo de nuevo");
-			</script>';
-				   
-		
-			}else{
+		if(empty($nombre) || empty($apellidos) ){//compruebo que el campo este lleno
 			
-			   
-			  try{
-	$conexion=ConectarModelo::conexion();
+			echo '<p>Los campos nombre y apellidos son obligatorios</p>';
 			
-	$sql="UPDATE `usuarios` SET `nombre_usuario`=:nombre,`apellidos_usuario`=:apellidos,`email_usuario`=:email,`fecha_nacimiento_usuario`=:fecha_nacimiento,`pais_usuario`=:pais,`password_usuario`=:password WHERE id_usuario=:id";
-	$consulta=$conexion->prepare($sql);
-	
-		$consulta->bindParam(':nombre',$nombre,PDO::PARAM_STR);
-		$consulta->bindParam(':apellidos',$apellidos,PDO::PARAM_STR);
-		$consulta->bindParam(':fecha_nacimiento',$fecha_nacimiento,PDO::PARAM_STR);
-		$consulta->bindParam(':pais',$pais,PDO::PARAM_STR);
-		
-		$consulta->bindParam(':password',$password,PDO::PARAM_STR);
-		$consulta->bindParam(':email',$email,PDO::PARAM_STR);
-					$consulta->bindParam(':id',$id,PDO::PARAM_INT);
-		
-		
-		$resultado=$consulta->execute();
-		
-		
-		
-		if($resultado){
+			$mal=true;
+		}
+		if(!preg_match($patron,$nombre) || !preg_match($patron,$apellidos)){//compruebo el patron ceado para el campo
 			
-			echo('<script type="text/javascript">
-			alert("Sus datos se modificaron correctamente ");
-			</script>');
-						   
-		}else{
-			echo('<script type="text/javascript">
-			alert("Hubo un error durante el proceso de modificación contacte con el administrador ");
-			</script>');
+			echo '<p>Los campos nombre, primer apellido y segundo apellido solo pueden contener caracteres alfabéticos</p>';
+			
+			$mal2=true;
 		}
 		
+		if(empty($password) || empty($rpassword)){//compruebo que no esten vacios
+			echo("<p>Los campos contraseña y repetir contraseña son obligatorios</p>");
+			$mal3=true;
+		}
+			if($password!=$rpassword){//compruebo que no sean diferentes
+			echo("<p>Los campos contraseña y repetir contraseña no coinciden</p>");
+			$mal4=true;
+		}
+	$patron="/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8}$/";//contraseña longitud 8 con mayúsculas, minúsculas y dígitos
 		
-		$consulta->closeCursor();
+		if(!preg_match($patron,$password)){//compruebo que el campo cumpla el patron establecido
+			echo("<p>El campo contraseña no es valido, consulte la leyenda</p>");
+			$mal5=true;
+		}
+
+		$patron="/[a-zA-Z\s]/";		
 		
-	
-	}catch(PDOException $e){
+		if(empty($pais) || !preg_match($patron,$pais)){//compruebo que el campo este lleno y respete el patron
+			
+			echo '<p>El campo pais es obligatorio</p>';
+			
+			$mal6=true;
+		}
+			
 		
-		die ("Error ".$e->getMessage());
-		echo("Linea de error ".$e->getLine());
+		
+		if(empty($fecha_nacimiento)){//compruebo que el campo este lleno
+			
+			echo '<p>El campo fecha de nacimiento es obligatorio</p>';
+			
+			$mal7=true;
+		}
+		
+			if(empty($email)){//compruebo que el campo este lleno
+				
+				echo '<p>El campo correo electrónico obligatorio</p>';
+			
+			$mal8=true;
+		}
+					if($anys < 18){//compruebo si el usuario es mayor de edad
+						
+						echo '<script type="text/javascript">
+				alert("Debe ser mayor de edad, esta introduciendo una fecha de nacimiento no autorizada");
+				</script>';
+			
+			$mal9=true;
+		}
+		
+			
+			
+			
+		if($mal || $mal1 ||$mal2 || $mal3 || $mal4 || $mal5 ||$mal6 || $mal7 || $mal8 || $mal9){//con cualquiera de las variables añadimos el aviso final o tenemos exito
+			
+                    echo '<script type="text/javascript">
+				alert("Verifique los campos he intentelo de nuevo");
+				</script>';
+                       
+			
+                }else{
+                
+                   
+                  try{
+		$conexion=ConectarModelo::conexion();
+                
+		$sql="UPDATE `usuarios` SET `nombre_usuario`=:nombre,`apellidos_usuario`=:apellidos,`email_usuario`=:email,`fecha_nacimiento_usuario`=:fecha_nacimiento,`pais_usuario`=:pais,`password_usuario`=:password WHERE id_usuario=:id";
+		$consulta=$conexion->prepare($sql);
+		
+			$consulta->bindParam(':nombre',$nombre,PDO::PARAM_STR);
+			$consulta->bindParam(':apellidos',$apellidos,PDO::PARAM_STR);
+			$consulta->bindParam(':fecha_nacimiento',$fecha_nacimiento,PDO::PARAM_STR);
+			$consulta->bindParam(':pais',$pais,PDO::PARAM_STR);
+			
+			$consulta->bindParam(':password',$password,PDO::PARAM_STR);
+			$consulta->bindParam(':email',$email,PDO::PARAM_STR);
+                        $consulta->bindParam(':id',$id,PDO::PARAM_INT);
+			
+			
+			$resultado=$consulta->execute();
+			
+			
+			
+			if($resultado){
+				
+				echo('<script type="text/javascript">
+				alert("Sus datos se modificaron correctamente ");
+				</script>');
+                               
+			}else{
+				echo('<script type="text/javascript">
+				alert("Hubo un error durante el proceso de modificación contacte con el administrador ");
+				</script>');
+			}
+			
+			
+			$consulta->closeCursor();
+			
+		
+		}catch(PDOException $e){
+			
+			die ("Error ".$e->getMessage());
+			echo("Linea de error ".$e->getLine());
+			
+		}
+		$conexion=null;
+		
 		
 	}
-	$conexion=null;
-	
-	
-}
-	return($resultado);
-	}
+        return($resultado);
+        }
 
 
 
@@ -636,9 +636,6 @@ $patron="/^(?=.*\d)(?=.*)(?=.*[A-Z])(?=.*[a-z])\S{8}$/";//contraseña longitud 8
 			echo('<script type="text/javascript">
 				alert("Los campos nombre y contraseña estan vacios ");
 				</script>');
-
-				$controller=new UsuariosControlador();
-                $controller->login();
 			
 		}else{
 			
@@ -671,6 +668,9 @@ $patron="/^(?=.*\d)(?=.*)(?=.*[A-Z])(?=.*[a-z])\S{8}$/";//contraseña longitud 8
 					echo('<script type="text/javascript">
 				alert("No existe ningun usuario con esas credenciales ");
 				</script>');
+                                
+                                        $controller=new UsuariosControlador();
+                                        $controller->login();
 					
 				}elseif($numero_filas==1){
 					

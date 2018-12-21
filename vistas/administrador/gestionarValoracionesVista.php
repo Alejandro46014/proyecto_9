@@ -1,6 +1,6 @@
 	<!--contenido principal-->
 	
-	<section class="seccion">
+<section class="seccion">
 	<div class="formulario clearfix">
 		<form action="?controller=Valoraciones&action=buscarValoraciones" method="post">
 		<div class="col_3_formulario">

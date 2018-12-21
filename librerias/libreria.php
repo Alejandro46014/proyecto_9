@@ -19,9 +19,7 @@ function enlaceModificarValoracion($id){
   $minutos = floor($diff / (60));
   
   if ($minutos<= 15){
-      echo '<a href="?controller=Valoraciones&action=modificarValoracion&id='. $id.'" >Enlace modificar</a>';
-  }else{
-      echo 'Ya han pasado los 15 minutos';
+      echo '<a class="buttom_green" href="?controller=Valoraciones&action=modificarValoracion&id='. $id.'" >Modificar valoración</a>';
   }
 }
 

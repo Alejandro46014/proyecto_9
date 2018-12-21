@@ -23,11 +23,11 @@
 	</div>
 	<div class="col_2_formulario">
 	
-            <label for="password"> * Contraseña: <input type="password" name="password_usuario" id="password" value="<?php echo $usuario->getpasswordUsuario(); ?>"/></label>
+            <label for="password"> * Contraseña: <input type="password" name="password_usuario" id="password" value="<?php echo $usuario->getpasswordUsuario(); ?>" title="La contraseña debe contener mayúsculas minúsculas, numeros y tener una longitud de 8 caracteres"/></label>
 	</div>
     <div class="col_2_formulario">
 	
-    <label for="rpassword"> * Repite contraseña: <input type="password" name="rpassword_usuario" id="rpassword"></label>
+    <label for="rpassword"> * Repite contraseña: <input type="password" name="rpassword_usuario" id="rpassword"value="<?php echo $usuario->getpasswordUsuario(); ?>"/></label>
 </div>
     
     
@@ -42,11 +42,11 @@
 		<div class="col_formulario">
 			
 			<input class="buttom_green" type="submit" name="actualizar" value="Actualizar datos" />
-		</div>
+		
         <div class="leyenda">
         <small>* los campos marcados con este símbolo son obligatorios</</small>
         </div>	
-
+        </div>
 	</form>
  </div>
 	</div>

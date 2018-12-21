@@ -9,13 +9,13 @@ class ValoracionesControlador{
     public function nuevaValoracion(){
         if (isset($_GET['id'])){
             $id_producto=$_GET['id'];
-            //$id_usuario=$_POST['id_usuario']
+            $id_usuario=$_GET['id_usuario']
 ;            
             require_once("modelos/ProductosModelo.php");
             require_once("modelos/UsuariosModelo.php");
             
-           // $usuario=new UsuariosModelo();
-            //$usuario=$usuario->getById($id_usuario);
+            $usuario=new UsuariosModelo();
+            $usuario=$usuario->getById("id_usuario");
             
             $producto=new ProductosModelo();
             $producto=$producto->getById($id_producto);
@@ -38,7 +38,7 @@ class ValoracionesControlador{
        $usuario=new UsuariosModelo();
        $usuario=$usuario->getById($id_usuario);
        
-       
+      
        
        $producto=new ProductosModelo();
        $producto=$producto->getById($id_producto);
@@ -64,6 +64,7 @@ class ValoracionesControlador{
        session_start();
         
         $_SESSION['valorado']=serialize($valorado);
+        $_SESSION['echo']=TRUE;
         
         
         $_GET['id']=$producto->getCategoria()->getIdCategoria();
@@ -97,8 +98,36 @@ class ValoracionesControlador{
                 }
     
 
-        public function modificarValoracion(){
+       public function modificarValoracion(){
+        if(isset($_GET['id'])){
+            
+            $id=$_GET['id'];
+            
+            $valoracion=new valoracionesModelo();
+            $valoracion=$valoracion->getById($id);
+            
+            require_once 'vistas/usuario/modificarValoracionVista.php';
+        }
+            
+    }
+    
+     public function actualizarValoracion(){
         
+         if (isset($_GET['id'])){
+             
+             $id=$_GET['id'];
+             
+             $valoracion=new valoracionesModelo();
+             $valoracion->setComentario($_POST['comentario']);
+             $valoracion->setValorVotacion($_POST['valor_votacion']);
+             
+             $valoracion->actualizar($id);
+             
+             require_once 'ProductosControlador.php';
+             $_GET['id']=1;
+             $controller=new ProductosControlador();
+             $controller->index();
+         }
             
     }
     

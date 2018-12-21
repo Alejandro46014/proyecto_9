@@ -66,43 +66,37 @@ class UsuariosControlador
               }else{
                   require_once 'vistas/usuario/registrarVista.php';
               }
-
-		}
-
+}
 
 
-        public function actualizarUsuario(){
+
+	public function actualizarUsuario(){
    
-            if(isset($_GET['id'])){
-                              
-                  $id=$_GET['id'];
-                  
-                  $usuario=new UsuariosModelo();
-                  
-               $apellidos=$_POST['apellido1_usuario'] ." ".$_POST['apellido2_usuario'];
-              
-              $usuario->setNombreUsuario($_POST['nombre_usuario']);
-              $usuario->setApellidosUsuario($apellidos);
-              $usuario->setEmailUsuario($_POST['email_usuario']);
-              $usuario->setFechaNacimientoUsuario($_POST['fecha_nacimiento_usuario']);
-              
-              $usuario->setPaisUsuario($_POST['pais_usuario']);
-              $usuario->setPasswordUsuario($_POST['password_usuario']);
-              
-              
-              
-             $usuario->actualizar($id);
-              
-              $controller=new UsuariosControlador();
-              $controller->modificarUsuario();
-                          }
-              
-          }
-      
-      
-      
+      if(isset($_GET['id'])){
+                        
+            $id=$_GET['id'];
             
-
+            $usuario=new UsuariosModelo();
+            
+         $apellidos=$_POST['apellido1_usuario'] ." ".$_POST['apellido2_usuario'];
+        
+        $usuario->setNombreUsuario($_POST['nombre_usuario']);
+        $usuario->setApellidosUsuario($apellidos);
+        $usuario->setEmailUsuario($_POST['email_usuario']);
+        $usuario->setFechaNacimientoUsuario($_POST['fecha_nacimiento_usuario']);
+        
+        $usuario->setPaisUsuario($_POST['pais_usuario']);
+        $usuario->setPasswordUsuario($_POST['password_usuario']);
+        
+        
+        
+       $usuario->actualizar($id);
+        
+        $controller=new UsuariosControlador();
+        $controller->modificarUsuario();
+                    }
+        
+    }
 
 		public function modificarUsuario(){
                        
@@ -126,6 +120,8 @@ class UsuariosControlador
                 }
                 
                 public function loguearse(){
+                
+                    require_once 'controladores/AdministradorControlador.php';
                     require_once 'controladores/ProductosControlador.php';
                     require_once 'modelos/ProductosModelo.php';
                     $usuarioAccion=new UsuariosModelo();
@@ -137,30 +133,30 @@ class UsuariosControlador
                     session_start();
                 $_SESSION['login']=TRUE;   
 		$_SESSION['usuario']= $usuario->getIdUsuario();
-        if($usuario->getTipoUsuario()->getTipoUsuario()=="Administrador"){
+             if($usuario->getTipoUsuario()->getTipoUsuario()=="Administrador"){
                    
-            require_once 'controladores/AdministradorControlador.php';
-         
-                     
-             echo '<script type="text/javascript">
-     window.location.assign("index.php");
-     </script>';
-             
-             $controller=new AdministradorControlador();
-             $controller->index();
-            
-        }else{
-           
-             echo '<script type="text/javascript">
-     window.location.assign("index.php");
-     </script>';
-            
-             $_GET['id']=1;
-             $controller=new ProductosControlador();
-             $controller->index();
-        }  
-            }
-         }
+                   require_once 'controladores/AdministradorControlador.php';
+                
+                            
+                    echo '<script type="text/javascript">
+			window.location.assign("index.php");
+			</script>';
+                    
+                    $controller=new AdministradorControlador();
+                    $controller->index();
+                   
+               }else{
+                  
+                    echo '<script type="text/javascript">
+			window.location.assign("index.php");
+			</script>';
+                   
+                    $_GET['id']=1;
+                    $controller=new ProductosControlador();
+                    $controller->index();
+               }  
+                   }
+                }
                 
                 public function bajaVista(){
                     $usuario=new UsuariosModelo();
@@ -168,7 +164,7 @@ class UsuariosControlador
                     require_once 'vistas/usuario/bajaVista.php';
                 }
 
-                public function darseBajaUsuario(){
+       public function darseBajaUsuario(){
                     
                     if(isset($_GET['id'])){
                      
@@ -202,8 +198,8 @@ class UsuariosControlador
                 }
                     }
                 }
-
-                
+              
+            
 
 
                 public function error(){

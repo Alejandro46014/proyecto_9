@@ -43,6 +43,7 @@
 		</div>
         <div class="leyenda">
         <p ><b>* los campos marcados con este símbolo son obligatorios</b></p>
+        <p>Es necesario que la contraseña tenga una longitud de 8 caracteres y se incluya una Mayúscula, números y símbolos</p>
         </div>	
 
 	</form>
